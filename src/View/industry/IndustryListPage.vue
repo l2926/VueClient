@@ -93,10 +93,10 @@ export default{
         "trade_date":getCurDate()
       }
 
-      this.$router.push({path:'/industry/basic_info',query:query_dic})
+      this.$router.push({path:'/industry/fundamental',query:query_dic})
     },
     onBasicInfo_area:function(index,index2){
-      this.$router.push({path:'/industry/basic_info',query:{
+      this.$router.push({path:'/industry/fundamental',query:{
           "select_id":1,
           "para_id":1,
           "sort_id":1,

@@ -15,10 +15,6 @@ const routes=[
         name:'home',
         component:import('@/View/QueryPage.vue')
     },{
-        path:'/industry/fundamental',
-        name:'fundamental',
-        component:import('@/View/industry/FundamentalPage.vue')
-    },{
         path:'/analysis/limit',
         name:'limit',
         component: import('@/View/analysis/LimitPage.vue')
