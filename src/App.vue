@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import HomeNavigation from './components/HomeNavigation.vue'
+import HomeNavigation from '@/components/HomeNavigation.vue'
 
 export default {
   name: 'App',
