@@ -3,12 +3,12 @@
     <p>
       <el-link href="#/" >首页</el-link>
       <el-link href="#/industry/industry_list?level=L1" >板块</el-link>
-      <el-link href="#/finance/industry_list?level=L1">财务</el-link>
-      <el-link href="#/statistics/industry_list?level=L1">统计</el-link>
+      <el-link href="#/finance/finance_list?level=L1">财务</el-link>
+      <el-link href="#/index/index_list?level=L1">指数</el-link>
       <el-link target="_blank" @click="onSelectAnalysis">分析</el-link>
-      <el-link to="#/test" target="_blank">对比</el-link>
-      <el-link href="#/test" target="_blank">国际</el-link>
-      <el-link href="#/test" target="_blank">衍生品</el-link>
+      <el-link to="#/test">对比</el-link>
+      <el-link href="#/test">国际</el-link>
+      <el-link href="#/test">衍生品</el-link>
     </p>
   </div>
 </template>

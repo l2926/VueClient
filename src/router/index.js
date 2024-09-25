@@ -1,13 +1,29 @@
 
 import {createRouter, createWebHashHistory} from "vue-router";
+import marketRoutes from "@/router/router/market"
+import industryRoutes from "@/router/router/industry"
+import financeRoutes from "@/router/router/finance"
+import indexRoutes from "@/router/router/index"
 
-const routes = [
+const routes=[
+    ...marketRoutes,
+    ...industryRoutes,
+    ...financeRoutes,
+    ...indexRoutes,
     {
-        path:'/market/daily',
-        name:'daily',
-        component: import('@/View/market/DailyPage.vue')
+        path:'/',
+        name:'home',
+        component:import('@/View/QueryPage.vue')
+    },{
+        path:'/industry/fundamental',
+        name:'fundamental',
+        component:import('@/View/industry/FundamentalPage.vue')
+    },{
+        path:'/analysis/limit',
+        name:'limit',
+        component: import('@/View/analysis/LimitPage.vue')
     }
-]
+];
 
 const router = createRouter({
     history: createWebHashHistory(process.env.BASE_URL),
