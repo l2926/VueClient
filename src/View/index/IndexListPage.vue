@@ -10,18 +10,18 @@
       <tbody id="m_table">
       <tr>
         <td rowspan="2">大盘指数</td>
-        <td><router-link style="height:150px;width:100px;color:black" to="">上证指数</router-link></td>
-        <td><router-link style="height:150px;width:100px;color:black" to="">深证指数</router-link></td>
-        <td><router-link style="height:150px;width:100px;color:black" to="">中小板指</router-link></td>
-        <td><router-link style="height:150px;width:100px;color:black" to="">创业板指</router-link></td>
-        <td><router-link style="height:150px;width:100px;color:black" to="">深证余指</router-link></td>
-        <td><router-link style="height:150px;width:100px;color:black" @click="Statistic" to="">行业统计图</router-link></td>
-        <td><router-link style="height:150px;width:100px;color:black" to="">涨跌统计图</router-link></td>
-        <td><router-link style="height:150px;width:100px;color:black" to="">地域统计图</router-link></td>
+        <td><el-link style="width:100px;color:black" to="">上证指数</el-link></td>
+        <td><el-link style="width:100px;color:black" to="">深证指数</el-link></td>
+        <td><el-link style="width:100px;color:black" to="">中小板指</el-link></td>
+        <td><el-link style="width:100px;color:black" to="">创业板指</el-link></td>
+        <td><el-link style="width:100px;color:black" to="">深证余指</el-link></td>
+        <td><el-link style="width:100px;color:black" @click="Statistic" to="">行业统计图</el-link></td>
+        <td><el-link style="width:100px;color:black" to="">涨跌统计图</el-link></td>
+        <td><el-link style="width:100px;color:black" to="">地域统计图</el-link></td>
       </tr>
       <tr>
-        <td><router-link style="height:150px;width:100px;color:black" to="">北向资金</router-link></td>
-        <td><router-link style="color:black" to="">融资融券</router-link></td>
+        <td><el-link style="height:30px;width:100px;color:black" to="">北向资金</el-link></td>
+        <td><el-link style="color:black" to="">融资融券</el-link></td>
       </tr>
       <tr v-for="(index) in industry_len" :key="index">
         <td v-if="index==1&&industries.length==31" rowspan="4" style="width:185px;">
@@ -46,7 +46,7 @@
           <router-link style="color: black;" to="/index/index_list?level=L3" >L3 </router-link>
         </td>
         <td v-for="(index2) in 8" :key="index2" >
-          <router-link style="height:150;width:100px;color:black;" to="" @click="onIndex(index,index2)" >{{industries[(index-1)*8 + index2-1]}}</router-link>
+          <el-link style="width:100px;color:black;" to="" @click="onIndex(index,index2)" >{{industries[(index-1)*8 + index2-1]}}</el-link>
         </td>
       </tr>
       <tr v-for="(index3) in (areas.length/8)" :key="index3">
@@ -54,7 +54,7 @@
           <text>地域</text>
         </td>
         <td v-for="(index4) in 8" :key="index4" >
-          <router-link style="width:100px;color:black;" to="" @click="onBasicInfo_area(index3,index4)" >{{areas[(index3-1)*8 + index4-1]}}</router-link>
+          <el-link style="width:100px;color:black;" to="" @click="onBasicInfo_area(index3,index4)" >{{areas[(index3-1)*8 + index4-1]}}</el-link>
         </td>
       </tr>
       </tbody>

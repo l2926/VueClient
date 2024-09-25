@@ -8,8 +8,7 @@
         :data="tableData"
         border
         style="width:100%"
-        class="no-header"
-        @sort-change="handleSortChange">
+        class="no-header">
 
       <el-table-column
           prop="date"
@@ -24,7 +23,7 @@
           label="公司名称"
           width="100">
         <template #default="{ row }">
-          <a :href="market" style="color: green">{{ row.date }}</a>
+          <el-link :href="`/#/market/daily?ts_code=${row.date}&name=平安银行`" style="color: green" target="_blank">{{ row.date }}</el-link>
         </template>
       </el-table-column>
       <el-table-column
@@ -163,35 +162,17 @@ import AnalysisNavigation from "@/components/analysis/AnalysisNavigation.vue";
 
 const tableData = ref([
   {
-    date: '内蒙古',
+    date: '1',
     name: '张三',
-    address: '1'
+    address: '青岛'
   },
   {
     date: '2',
     name: '李四',
-    address: '2'
-  },
-  {
-    date: '3',
-    name: '李四',
-    address: '5'
-  },
-  {
-    date: '4',
-    name: null,
-    address: '3'
+    address: '北京'
   }
 ]);
 
-const handleSortChange = ({ column, prop, order }) => {
-  console.log('排序的列：', column);
-  console.log('排序的字段：', prop);
-  console.log('排序的方式：', order);
-
-  // 在这里执行您想要的响应
-  alert("排序")
-};
 </script>
 
 <style scoped>

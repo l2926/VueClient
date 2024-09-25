@@ -5,7 +5,7 @@
       <el-link href="#/industry/industry_list?level=L1" >板块</el-link>
       <el-link href="#/finance/finance_list?level=L1">财务</el-link>
       <el-link href="#/index/index_list?level=L1">指数</el-link>
-      <el-link target="_blank" @click="onSelectAnalysis">分析</el-link>
+      <el-link @click="onSelectAnalysis">分析</el-link>
       <el-link to="#/test">对比</el-link>
       <el-link href="#/test">国际</el-link>
       <el-link href="#/test">衍生品</el-link>

@@ -31,7 +31,7 @@
           <router-link style="color: black;" to="/industry/industry_list?level=L3" >L3 </router-link>
         </td>
         <td v-for="(index2) in 8" :key="index2" >
-          <router-link style="width:100px;color:black;" to="" @click="onBasicInfo(index,index2)" >{{industries[(index-1)*8 + index2-1]}}</router-link>
+          <el-link style="width:100px;color:black;" to="" @click="onBasicInfo(index,index2)" >{{industries[(index-1)*8 + index2-1]}}</el-link>
         </td>
       </tr>
       <tr v-for="(index3) in (areas.length/8)" :key="index3">
@@ -39,7 +39,7 @@
           <text>地域</text>
         </td>
         <td v-for="(index4) in 8" :key="index4" >
-          <router-link style="width:100px;color:black;" to="" @click="onBasicInfo_area(index3,index4)" >{{areas[(index3-1)*8 + index4-1]}}</router-link>
+          <el-link style="width:100px;color:black;" to="" @click="onBasicInfo_area(index3,index4)" >{{areas[(index3-1)*8 + index4-1]}}</el-link>
         </td>
       </tr>
       </tbody>
@@ -145,5 +145,4 @@ export default{
 a {
   text-decoration:none
 }
-a:hover{text-decoration:underline; }
 </style>

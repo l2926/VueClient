@@ -4,12 +4,14 @@ import marketRoutes from "@/router/router/market"
 import industryRoutes from "@/router/router/industry"
 import financeRoutes from "@/router/router/finance"
 import indexRoutes from "@/router/router/index"
+import analysis from "@/router/router/analysis";
 
 const routes=[
     ...marketRoutes,
     ...industryRoutes,
     ...financeRoutes,
     ...indexRoutes,
+    ...analysis,
     {
         path:'/',
         name:'home',
