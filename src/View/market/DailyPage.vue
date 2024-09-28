@@ -11,12 +11,18 @@ import MarketNavigation from "@/components/market/MarketNavigation.vue";
 import {onMounted, onUpdated} from "vue";
 import axios from "axios";
 import {InitDailyECharts} from "@/Api/echarts/market/daily";
+import {useRoute} from "vue-router";
+import {marketParameterTransform} from "@/Api/utils/urlParameterTransform";
 
+const route = useRoute();
 
 const axiosEcharts = ()=>{
-  axios.post("http://127.0.0.1:8081/market/price").then(
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  // alert(JSON.stringify(query_dic))
+  const para_dic = marketParameterTransform(query_dic);
+  axios.post("http://127.0.0.1:8081/market/price",para_dic).then(
       response=>{
-        alert(JSON.stringify(response.data));
+        // alert(JSON.stringify(response.data));
         try{
           InitDailyECharts(response.data);
         }

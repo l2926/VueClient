@@ -23,7 +23,7 @@
           label="公司名称"
           width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?ts_code=${row.date}&name=平安银行`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=analysis&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="60">
@@ -235,8 +235,20 @@ const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   axios.post("http://127.0.0.1:8081/analysis/limit",query_dic).then(
       (response) => {
-      // alert(JSON.stringify(response.data));
-      tableData.value = response.data;
+        var raw_data = response.data;
+        // alert(JSON.stringify(raw_data));
+        tableData.value = raw_data;
+
+        var ts_code_list = raw_data.map((item)=>{
+          return item["ts_code"];
+        })
+
+        var name_list = raw_data.map((item)=>{
+          return item["name"];
+        })
+
+        localStorage.setItem("analysis_code",ts_code_list);
+        localStorage.setItem("analysis_name",name_list);
     }
   ).catch(error => {
     console.log(error);

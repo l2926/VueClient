@@ -8,11 +8,22 @@ import {getCookie} from "@/Api/utils/cookie";
 export function marketParameterTransform(param_dic) {
     //定义参数副本
     var param_dic_copy
-    if(param_dic["ts_code"] != null){
+    if(param_dic["ts_code"] == null){
         var select_id = param_dic["select_id"]
         var para_id = param_dic["para_id"]
-        var ts_code = param_dic["ts_code"]
-        var name = param_dic["name"]
+
+        var level = param_dic["level"]
+        var id = param_dic["id"]
+        var ts_code = ""
+        var name = ""
+        if(level == "analysis"){
+            var ts_code_list = getCookie("analysis_code")
+            var name_list = getCookie("analysis_name")
+
+            ts_code = ts_code_list[id - 1]
+            name = name_list[id - 1]
+        }
+
         var trade_date = param_dic["trade_date"]
         param_dic_copy = {
             "select_id":select_id,
@@ -21,6 +32,8 @@ export function marketParameterTransform(param_dic) {
             "name":name,
             "trade_date":trade_date
         }
+    }else{
+        return param_dic
     }
 
     return param_dic_copy;
