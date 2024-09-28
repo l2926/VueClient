@@ -80,14 +80,15 @@ const selectNextDay=()=>{
 const handleItemChange = (value) =>{
   console.log(value);
   const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["id"] = value;
+  query_dic["level_id"] = value;
   router.push({path: '/industry/fundamental', query: query_dic});
 };
 
 
 onMounted(()=>{
-  const query_dic = JSON.parse(JSON.stringify(route.query))
+  const query_dic = JSON.parse(JSON.stringify(route.query));
   selectedDate.value = new Date(dayjs(query_dic["trade_date"]).format('YYYY-MM-DD'));
+  levelId.value = query_dic["level_id"];
 });
 
 </script>

@@ -29,6 +29,15 @@
           :value="item.value">
       </el-option>
     </el-select>
+    <el-select v-model="defaultRange" placeholder="板块" style="width: 5%" popper-class="vertical-select"
+               @change="handleSelectionChange">
+      <el-option
+          v-for="item in rangeOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
     <el-select v-model="defaultRange" placeholder="市值" style="width: 5%" popper-class="vertical-select"
                @change="handleSelectionChange">
       <el-option

@@ -1,7 +1,7 @@
 import * as echarts from "echarts";
 
 export function InitDailyECharts(rawData){
-    var priceData = rawData.getDailyVoList;
+    var priceData = rawData.get_daily_vo_list;
 
     if(priceData == null){
         alert("请求价格为空");
@@ -21,8 +21,8 @@ export function InitDailyECharts(rawData){
 
     const option = {
         title: {
-            text: rawData.tsName,
-            subtext: rawData.tsCode
+            text: rawData.ts_name,
+            subtext: rawData.ts_code
         },
         legend: {
 

@@ -16,7 +16,7 @@ import {InitDailyECharts} from "@/Api/echarts/market/daily";
 const axiosEcharts = ()=>{
   axios.post("http://127.0.0.1:8081/market/price").then(
       response=>{
-        // alert(JSON.stringify(response.data));
+        alert(JSON.stringify(response.data));
         try{
           InitDailyECharts(response.data);
         }
