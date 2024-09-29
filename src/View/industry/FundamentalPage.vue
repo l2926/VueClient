@@ -186,7 +186,7 @@
       <el-table-column>
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            净资产
+            净资产(亿)
           </el-link>
         </template>
         <template #default="{ row }">
@@ -196,7 +196,7 @@
       <el-table-column>
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            市值
+            市值(亿)
           </el-link>
         </template>
         <template #default="{ row }">
