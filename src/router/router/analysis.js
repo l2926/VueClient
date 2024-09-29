@@ -1,8 +1,8 @@
 const routes = [
     {
-        path:'/industry/fundamental',
-        name:'fundamental',
-        component:import('@/View/industry/FundamentalPage.vue')
+        path:'/analysis/limit',
+        name:'limit',
+        component: import('@/View/analysis/LimitPage.vue')
     }
 ]
 

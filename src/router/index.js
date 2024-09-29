@@ -16,10 +16,6 @@ const routes=[
         path:'/',
         name:'home',
         component:import('@/View/QueryPage.vue')
-    },{
-        path:'/analysis/limit',
-        name:'limit',
-        component: import('@/View/analysis/LimitPage.vue')
     }
 ];
 
