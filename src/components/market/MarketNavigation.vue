@@ -67,8 +67,10 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import { useRoute,useRouter} from "vue-router";
+import {getNextDay, getNormDate, getPreviousDay} from "@/Api/utils/calcDate";
+import {dayjs} from "element-plus";
 const route = useRoute();
 const router = useRouter();
 
@@ -126,8 +128,51 @@ const onDailyLevel= (value) => {
   }
 };
 
+//板块id处理
 const levelId = ref(1);
+
+const handleItemChange = (value) =>{
+  console.log(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["id"] = value;
+  if(query_dic["ts_code"] == null){
+    router.push({path: '/market/daily', query: query_dic});
+  }
+};
+
+//日期处理
 const selectedDate = ref(new Date()); // 响应式变量，用于存储选择的日期
+
+const handleDateChange = (value)=>{
+  var date = getNormDate(value)
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["trade_date"] = date;
+  router.push({path: '/market/daily', query: query_dic});
+}
+
+const selectPreviousDay=()=>{
+  if (selectedDate.value) {
+    const day = getPreviousDay(selectedDate)
+    const query_dic = JSON.parse(JSON.stringify(route.query))
+    query_dic["trade_date"] = day;
+    router.push({path: '/market/daily', query: query_dic});
+  }
+};
+
+const selectNextDay=()=>{
+  if (selectedDate.value) {
+    const date = getNextDay(selectedDate)
+    const query_dic = JSON.parse(JSON.stringify(route.query))
+    query_dic["trade_date"] = date;
+    router.push({path: '/market/daily', query: query_dic});
+  }
+};
+
+onMounted(()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  selectedDate.value = new Date(dayjs(query_dic["trade_date"]).format('YYYY-MM-DD'));
+  levelId.value = query_dic["id"];
+});
 
 </script>
 

@@ -2,7 +2,7 @@
   <el-header>
     <MarketNavigation></MarketNavigation>
   </el-header>
-  <div id="priceCharts" class="container" style="width: 1500px;height:600px;"></div>
+  <div id="priceCharts" class="container-fluid" style="width:100%;height:600px;"></div>
 
 </template>
 
@@ -20,7 +20,7 @@ const axiosEcharts = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   // alert(JSON.stringify(query_dic))
   const para_dic = marketParameterTransform(query_dic);
-  axios.post("http://127.0.0.1:8081/market/price",para_dic).then(
+  axios.post("http://127.0.0.1:8081/market/daily",para_dic).then(
       response=>{
         // alert(JSON.stringify(response.data));
         try{

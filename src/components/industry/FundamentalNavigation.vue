@@ -51,6 +51,7 @@ const handleSelectionChange = (value)=> {
 };
 
 const selectedDate = ref(new Date()); // 响应式变量，用于存储选择的日期
+
 const handleDateChange = (value)=>{
   var date = getNormDate(value)
   const query_dic = JSON.parse(JSON.stringify(route.query))

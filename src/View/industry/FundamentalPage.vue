@@ -240,6 +240,17 @@ const axiosTable = ()=>{
       (response) => {
         // alert(JSON.stringify(response.data));
         tableData.value = response.data;
+
+        var ts_code_list = response.data.map((item)=>{
+          return item["ts_code"]
+        });
+
+        var name_list = response.data.map((item)=>{
+          return item["name"]
+        });
+
+        localStorage.setItem("industry_code",ts_code_list);
+        localStorage.setItem("industry_name",name_list);
       }
   ).catch(error => {
     console.log(error);

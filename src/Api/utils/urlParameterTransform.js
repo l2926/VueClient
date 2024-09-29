@@ -14,16 +14,25 @@ export function marketParameterTransform(param_dic) {
 
         var level = param_dic["level"]
         var id = param_dic["id"]
+
+        //解析ts_code和name
+        var ts_code_list = []
+        var name_list = []
         var ts_code = ""
         var name = ""
+
         if(level == "analysis"){
-            var ts_code_list = getCookie("analysis_code")
-            var name_list = getCookie("analysis_name")
-
-            ts_code = ts_code_list[id - 1]
-            name = name_list[id - 1]
+            ts_code_list = getCookie("analysis_code")
+            name_list = getCookie("analysis_name")
         }
+        if(level == 'L1' || level == 'L2' || level == 'L3'){
+            ts_code_list = getCookie("industry_code")
+            name_list = getCookie("industry_name")
+        }
+        ts_code = ts_code_list[id - 1]
+        name = name_list[id - 1]
 
+        //拼接最后的参数返回
         var trade_date = param_dic["trade_date"]
         param_dic_copy = {
             "select_id":select_id,

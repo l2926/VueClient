@@ -1,7 +1,7 @@
 import * as echarts from "echarts";
 
 export function InitDailyECharts(rawData){
-    var priceData = rawData.get_daily_vo_list;
+    var priceData = rawData.daily_vo_list;
 
     if(priceData == null){
         alert("请求价格为空");
@@ -11,13 +11,18 @@ export function InitDailyECharts(rawData){
         return item['trade_date'];
     });
 
-    var open = priceData.map(item => {
-        return item["open"];
-    });
-
     var data = priceData.map(item =>{
         return [+item["open"], +item["close"], +item["low"], +item["high"]];
     });
+
+    var amount = priceData.map(item => {
+        return item["amount"];
+    });
+
+    var total_mv = priceData.map(item=>{
+        return item['total_mv']
+    });
+
 
     const option = {
         title: {
@@ -37,8 +42,8 @@ export function InitDailyECharts(rawData){
         animation:false,
         grid:[
             {top:'7%',bottom:'7%',width:'',height:'45%'},
-            {top:'58%',bottom:'7%',width:'',height:'18%'},
-            {top:'81%',bottom:'0%',width:'',height:'10%'}
+            {top:'58%',bottom:'7%',width:'',height:'16%'},
+            {top:'81%',bottom:'0%',width:'',height:'12%'}
         ],
         xAxis: [{
             gridIndex:0,
@@ -46,12 +51,18 @@ export function InitDailyECharts(rawData){
         },{
             gridIndex:1,
             data: dates,
+        },{
+            gridIndex:2,
+            data: dates,
         }],
         yAxis: [{
             gridIndex:0,
             scale:true
         },{
             gridIndex: 1,
+            scale: true
+        },{
+            gridIndex: 2,
             scale: true
         }],
         dataZoom: [{
@@ -71,11 +82,35 @@ export function InitDailyECharts(rawData){
                 yAxisIndex:0,
                 data: data,
             },{
-                name: '成交量',
+                name: '成交金额',
                 type: 'bar',
                 xAxisIndex:1,
                 yAxisIndex:1,
-                data:open
+                data:amount,
+                itemStyle:{
+                    normal:{
+                        color:(params)=>{
+                            var colorList;
+                            if (data[params.dataIndex][1]>data[params.dataIndex][0]) {
+                                colorList = '#ff5900';
+                            } else {
+                                colorList = 'rgba(0,255,0,0.62)';
+                            }
+                            return colorList
+                        }
+                    }
+                }
+            },{
+                name: '市值',
+                type: 'line',
+                xAxisIndex:2,
+                yAxisIndex:2,
+                data:total_mv,
+                itemStyle:{
+                    normal:{
+                        color:'transparent'
+                    }
+                }
             }
         ],
     };
