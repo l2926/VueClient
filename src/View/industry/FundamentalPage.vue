@@ -223,15 +223,11 @@ import {useRoute} from "vue-router";
 import FundamentalNavigation from "@/components/industry/FundamentalNavigation.vue";
 import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
 
-const route = useRoute();
-
-
+//初始化所属表格内容
 var tableData = ref([]);
 
-const onSelectDate = ()=>{
-  alert("dsfds")
-}
-
+//ajax获取行业信息
+const route = useRoute();
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   const para_dic = industryParameterTransform(query_dic);
@@ -260,6 +256,11 @@ const axiosTable = ()=>{
 
 onMounted(axiosTable);
 onUpdated(axiosTable);
+
+//根据表格标题头排序
+const onSelectDate = ()=>{
+  alert("dsfds")
+}
 </script>
 
 <style scoped>
