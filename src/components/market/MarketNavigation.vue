@@ -48,7 +48,7 @@
     </el-option>
   </el-select>
 
-  <el-button style="margin-right: 0;margin-left:0">所属</el-button>
+  <el-button @click="onSelectSubordinate" style="margin-right: 0;margin-left:0">所属</el-button>
   <el-button style="margin-right: 0;margin-left:0">对比</el-button>
 
   <el-input-number v-model="levelId" :min="1" :max="100" :step="1" controls-position="right"
@@ -127,6 +127,12 @@ const onDailyLevel= (value) => {
     router.push({path: '/router/price', query: query_dic});
   }
 };
+
+//所属行业页面条抓按
+const onSelectSubordinate = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  router.push({path:"/market/subordinate",query:query_dic})
+}
 
 //板块id处理
 const levelId = ref(1);
