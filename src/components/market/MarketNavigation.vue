@@ -39,6 +39,14 @@
         :value="item.value">
     </el-option>
   </el-select>
+  <el-select v-model="monthlyLevel" placeholder="资金流向" style="width: 7%" @change="onMonthlyLevel">
+    <el-option
+        v-for="item in topHoldOptions"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+    </el-option>
+  </el-select>
   <el-select v-model="monthlyLevel" placeholder="十大股东" style="width: 7%" @change="onMonthlyLevel">
     <el-option
         v-for="item in topHoldOptions"
@@ -47,7 +55,6 @@
         :value="item.value">
     </el-option>
   </el-select>
-
   <el-button @click="onSelectSubordinate" style="margin-right: 0;margin-left:0">所属</el-button>
   <el-button style="margin-right: 0;margin-left:0">对比</el-button>
 
