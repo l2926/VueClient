@@ -2,7 +2,7 @@
   <el-header>
     <MarketNavigation></MarketNavigation>
   </el-header>
-  <div id="priceCharts" class="container-fluid" style="width:100%;height:600px;"></div>
+  <div id="priceCharts" class="container-fluid" style="width:98%;height:600px;"></div>
 
 </template>
 

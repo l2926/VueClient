@@ -23,6 +23,42 @@ export function InitDailyECharts(rawData){
         return item['total_mv']
     });
 
+    var pe = priceData.map(item=>{
+        return item["pe"]
+    })
+
+    var pb = priceData.map(item=>{
+        return item["pb"]
+    })
+
+    var roe = priceData.map(item=>{
+        if(item['pe'] == 0){
+            item['roe'] = 0;
+        }else{
+            item['roe'] = item['pb'] / item['pe'];
+        }
+        return item['roe'].toFixed(2);
+    })
+
+    var pct_chg = priceData.map(item=>{
+        return item["pct_chg"]
+    })
+
+    var turn_over_rate = priceData.map(item=>{
+        return item["turn_over_rate"]
+    })
+
+    var turn_over_rate_f = priceData.map(item=>{
+        return item["turn_over_rate_f"]
+    })
+
+    var asset = priceData.map((item=>{
+        if(item["pb"] != 0 && item["pb"] != null){
+            return (item["total_mv"] / item["pb"]).toFixed(2)
+        }else{
+            return 0
+        }
+    }))
 
     const option = {
         title: {
@@ -58,6 +94,24 @@ export function InitDailyECharts(rawData){
         yAxis: [{
             gridIndex:0,
             scale:true
+        },{
+            gridIndex: 1,
+            scale: true
+        },{
+            gridIndex: 2,
+            scale: true
+        },{
+            gridIndex: 1,
+            scale: true
+        },{
+            gridIndex: 1,
+            scale: true
+        },{
+            gridIndex: 2,
+            scale: true
+        },{
+            gridIndex: 0,
+            scale: true
         },{
             gridIndex: 1,
             scale: true
@@ -111,6 +165,63 @@ export function InitDailyECharts(rawData){
                         color:'transparent'
                     }
                 }
+            },{
+                name: '市盈率',
+                type: 'line',
+                xAxisIndex:1,
+                yAxisIndex:3,
+                data:pe,
+            },{
+                name: '市净率',
+                type: 'line',
+                xAxisIndex:1,
+                yAxisIndex:4,
+                data:pb,
+            },{
+                name: 'ROE',
+                type: 'line',
+                xAxisIndex:2,
+                yAxisIndex:5,
+                data:roe,
+            },{
+                name: '涨跌幅',
+                type: 'line',
+                xAxisIndex:0,
+                yAxisIndex:6,
+                data:pct_chg,
+                itemStyle:{
+                    normal:{
+                        color:'transparent'
+                    }
+                }
+            },{
+                name: '换手率',
+                type: 'line',
+                xAxisIndex:1,
+                yAxisIndex:7,
+                data:turn_over_rate,
+                itemStyle:{
+                    normal:{
+                        color:'transparent'
+                    }
+                }
+            },{
+                name: '真实换手率',
+                type: 'line',
+                xAxisIndex:1,
+                yAxisIndex:7,
+                data:turn_over_rate_f,
+                itemStyle:{
+                    normal:{
+                        color:'transparent'
+                    }
+                }
+            },{
+                name: '净资产',
+                type: 'bar',
+                xAxisIndex:2,
+                yAxisIndex:8,
+                data:asset
             }
         ],
     };
