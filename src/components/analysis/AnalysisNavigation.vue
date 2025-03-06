@@ -1,16 +1,6 @@
 <template>
   <div>
-    <el-button>看板</el-button>
-    <el-input v-model="input" placeholder="" style="width: 3%"></el-input>
-    <el-select v-model="defaultRange" placeholder="日幅" style="width: 5%" popper-class="vertical-select"
-               @change="handleSelectionChange">
-      <el-option
-          v-for="item in rangeOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
+    <el-button @click="handleSelectMarket">看板</el-button>
     <el-select v-model="defaultLimit" placeholder="涨停" style="width: 5%" popper-class="horizontal-select"
                @change="handleSelectionChange">
       <el-option
@@ -20,51 +10,9 @@
           :value="item.value">
       </el-option>
     </el-select>
-    <el-select v-model="defaultLimit" placeholder="跌停" style="width: 5%" popper-class="horizontal-select"
-               @change="handleSelectionChange">
-      <el-option
-          v-for="item in limitOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
-    <el-select v-model="defaultRange" placeholder="板块" style="width: 5%" popper-class="vertical-select"
-               @change="handleSelectionChange">
-      <el-option
-          v-for="item in rangeOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
-    <el-select v-model="defaultRange" placeholder="市值" style="width: 5%" popper-class="vertical-select"
-               @change="handleSelectionChange">
-      <el-option
-          v-for="item in rangeOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
-    <el-select v-model="defaultRange" placeholder="成交金额" style="width: 8%" popper-class="vertical-select"
-               @change="handleSelectionChange">
-      <el-option
-          v-for="item in rangeOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
-    <el-select v-model="defaultRange" placeholder="资金流入" style="width: 8%" popper-class="vertical-select"
-               @change="handleSelectionChange">
-      <el-option
-          v-for="item in rangeOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
+
+    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>
 
     <el-date-picker
         v-model="selectedDate"
@@ -96,13 +44,21 @@ const limitOptions = ref([
   {value:'limitDown',label:'跌停'}
 ]);
 
-const input = ref();
-const defaultRange = ref('');
-const rangeOptions = ref([
-  {value: 'daily', label: '日幅'},
-  {value: 'weekly', label: '周幅'},
-  {value: 'monthly', label: '月幅'}
-]);
+const handleSelectMarket = () =>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path:'/analysis/limit',query:query_dic});
+}
+
+const handleSelectFinaMain = () =>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path:'/analysis/fina_main',query:query_dic});
+}
+
+const handleSelectTopHold = () =>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path:'/analysis/top_hold',query:query_dic});
+}
+
 const handleSelectionChange = (value)=> {
   console.log('选中的选项值：', value);
   console.log("kkk")

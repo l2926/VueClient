@@ -1,5 +1,5 @@
 <template>
-  <el-select v-model="dailyLevel" placeholder="日线" style="width: 5%" @change="onDailyLevel">
+  <el-select v-model="dailyLevel" placeholder="日线" style="width: 5%" @change="onDailyLevel" id="test_select">
     <el-option
         v-for="item in dailyLeveloptions"
         :key="item.value"
@@ -119,19 +119,21 @@ const topHoldOptions = ref([
 ]);
 
 const onDailyLevel= (value) => {
+  console.log("mmmmmm")
+  alert("dsfds")
   const query_dic = JSON.parse(JSON.stringify(route.query));
 
   if(value === "daily1"){
     query_dic["select_id"] = 1;
-    router.push({path: '/router/price', query: query_dic});
+    router.push({path: '/market/price', query: query_dic});
   }
   if(value === "daily2"){
     query_dic["select_id"] = 2;
-    router.push({path: '/router/price', query: query_dic});
+    router.push({path: '/market/price', query: query_dic});
   }
   if(value === "daily3"){
     query_dic["select_id"] = 3;
-    router.push({path: '/router/price', query: query_dic});
+    router.push({path: '/market/price', query: query_dic});
   }
 };
 

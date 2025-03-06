@@ -73,7 +73,10 @@ export function industryParameterTransform(param_dic){
     if(param_dic["level"] == 'L3'){
         industry_list = getCookie("l3_list")
     }
-    var industry = industry_list[level_id-1];
+    if(param_dic["level"] == 'area'){
+        industry_list = getCookie("area_list")
+    }
+    var industry_code = industry_list[level_id-1];
 
     param_dic_copy = {
         "select_id":select_id,
@@ -81,7 +84,7 @@ export function industryParameterTransform(param_dic){
         "sort_id":sort_id,
         "block_id":block_id,
         "level":level,
-        "industry":industry,
+        "industry_code":industry_code,
         "trade_date":trade_date
     }
 

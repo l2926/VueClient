@@ -129,16 +129,6 @@
       <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            营/资
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: DarkViolet">{{ row.rev_asset_ratio }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             利润(%)
           </el-link>
         </template>
@@ -176,14 +166,25 @@
           <a :href="market" style="color: Teal">{{ row.amount }}</a>
         </template>
       </el-table-column>
+      <el-table-column width="60">
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            连扳
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: DarkViolet">{{ row.conti_up }}</a>
+        </template>
+      </el-table-column>
       <el-table-column
           prop="address"
-          label="板块">
+          label="板块"
+          width="70">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.market }}</a>
         </template>
       </el-table-column>
-      <el-table-column>
+      <el-table-column width="80">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             净资产

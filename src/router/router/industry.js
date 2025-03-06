@@ -7,6 +7,14 @@ const routes = [
         path:'/industry/fundamental',
         name:'fundamental',
         component:import('@/View/industry/FundamentalPage.vue')
+    },{
+        path:'/industry/fina_main',
+        name:'fina_main',
+        component:import('@/View/industry/FinaMainPage.vue')
+    },{
+        path:'/industry/top_hold',
+        name:'top_hold',
+        component: import('@/View/industry/TopHoldPage.vue')
     }
 ]
 
