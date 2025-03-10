@@ -12,7 +12,7 @@
 
       <el-table-column
           prop="date"
-          label="序号233"
+          label="序号"
           width="50">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.idx }}</a>
@@ -80,9 +80,9 @@
       </el-table-column>
       <el-table-column
           prop="address"
-          label="主营业务">
+          label="十大股东">
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.main_business }}</a>
+          <a :href="market" style="color: gray">{{ row.top_holder }}</a>
         </template>
       </el-table-column>
       <el-table-column
@@ -142,7 +142,7 @@ const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   const para_dic = industryParameterTransform(query_dic);
   // alert(JSON.stringify(para_dic))
-  axios.post("http://127.0.0.1:8081/industry/fina_main",para_dic).then(
+  axios.post("http://127.0.0.1:8081/industry/top_hold",para_dic).then(
       (response) => {
         // alert(JSON.stringify(response.data));
         tableData.value = response.data;
