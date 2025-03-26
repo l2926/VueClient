@@ -1,28 +1,10 @@
 <template>
   <div>
-    <el-button style="margin-left:0;margin-right: 0" @click="selectMarket">行情</el-button>
-    <el-button style="margin-left:0;margin-right: 0" @click="hanleSelectFundmental">基本面</el-button>
-    <el-select v-model="selectedRange" placeholder="后十日" style="width: 6%" popper-class="vertical-select"
-               @change="handleSelectionChange">
-      <el-option
-          v-for="item in optionsRange"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
-
-<!--    <el-select v-model="selectedFinaMain" style="width: 7%" placeholder="主营业务">-->
-<!--      <el-option-->
-<!--          v-for="item in optionsFinaMain"-->
-<!--          :key="item.value"-->
-<!--          :label="item.label"-->
-<!--          :value="item.value"-->
-<!--      ></el-option>-->
-<!--    </el-select>-->
-
-    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>
-    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickMarket">行情</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="hanleClickFundmental">基本面</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickFinaMain">主营业务</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTopHold">十大股东</el-button>
 
     <el-input-number v-model="levelId" :min="1" :max="500" :step="1" controls-position="right"
                      @change="handleItemChange" style="width: 5%"></el-input-number>
@@ -51,37 +33,31 @@ const router = useRouter();
 const route = useRoute();
 
 const levelId = ref(1);
-const selectedRange = ref('');
-// const selectedFinaMain = ref('');
 
 
-const optionsRange = ref([
-  {value: 'pre_10', label: '前十日'},
-  {value: 'post_10', label: '后十日'}
-]);
 
 // const optionsFinaMain = ref([
 //   {value: 'fina_main', label: '主营业务'},
 //   {value: 'top_hold', label: '十大股东'}
 // ]);
 
-const handleSelectionChange = (value)=> {
-  console.log('选中的选项值：', value);
-  console.log("kkk")
-  alert("sdf");
-};
 
-const hanleSelectFundmental = ()=>{
+const hanleClickFundmental = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   router.push({path:'/industry/fundamental',query:query_dic});
 }
 
-const handleSelectFinaMain = ()=>{
+const handleClickTenDays = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  router.push({path:'/industry/ten_days',query:query_dic});
+}
+
+const handleClickFinaMain = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   router.push({path:'/industry/fina_main',query:query_dic});
 };
 
-const handleSelectTopHold = ()=>{
+const handleClickTopHold = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   router.push({path:'/industry/top_hold',query:query_dic})
 }

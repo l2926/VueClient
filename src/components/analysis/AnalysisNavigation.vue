@@ -11,6 +11,7 @@
       </el-option>
     </el-select>
 
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>
 
@@ -47,6 +48,11 @@ const limitOptions = ref([
 const handleSelectMarket = () =>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   router.push({path:'/analysis/limit',query:query_dic});
+}
+
+const handleClickTenDays = () => {
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path:'/analysis/ten_days',query:query_dic});
 }
 
 const handleSelectFinaMain = () =>{

@@ -10,10 +10,10 @@
       <tbody id="m_table">
       <tr>
         <td rowspan="2">大盘指数</td>
-        <td><el-link style="width:100px;color:black" to="">上证指数</el-link></td>
-        <td><el-link style="width:100px;color:black" to="">深证指数</el-link></td>
-        <td><el-link style="width:100px;color:black" to="">中小板指</el-link></td>
-        <td><el-link style="width:100px;color:black" to="">创业板指</el-link></td>
+        <td><el-link style="width:100px;color:black" @click="ShangHai" to="">上证指数</el-link></td>
+        <td><el-link style="width:100px;color:black" @click="ShenZhen" to="">深证指数</el-link></td>
+        <td><el-link style="width:100px;color:black" @click="MidSmall" to="">中小板指</el-link></td>
+        <td><el-link style="width:100px;color:black" @click="ChinaNext" to="">创业板指</el-link></td>
         <td><el-link style="width:100px;color:black" to="">深证余指</el-link></td>
         <td><el-link style="width:100px;color:black" @click="Statistic" to="">行业统计图</el-link></td>
         <td><el-link style="width:100px;color:black" to="">涨跌统计图</el-link></td>
@@ -87,8 +87,20 @@ export default{
 
   },
   methods:{
+    ShangHai:function (){
+      this.$router.push({path:'/index/shanghai'})
+    },
+    ShenZhen:function (){
+      this.$router.push({path:'/index/shenzhen'})
+    },
+    MidSmall:function (){
+      this.$router.push({path:'/index/mid_small'})
+    },
+    ChinaNext:function (){
+      this.$router.push({path:'/index/china_next'})
+    },
     Statistic:function(){
-      this.$router.push({path:'/market/monthly'})
+      this.$router.push({path:'/index/statistics'})
     },
     onIndex:function(index,index2){
       // alert((index-1)*8 + index2)
@@ -102,7 +114,7 @@ export default{
         trade_date:getCurDate()
       }
 
-      this.$router.push({path:'/index/index',query:query_dic})
+      this.$router.push({path:'/index/sw_daily',query:query_dic})
     }
   },
   mounted(){

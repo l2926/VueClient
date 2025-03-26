@@ -15,6 +15,10 @@ const routes = [
         path:'/industry/top_hold',
         name:'top_hold',
         component: import('@/View/industry/TopHoldPage.vue')
+    },{
+        path:'/industry/ten_days',
+        name:'ten_days',
+        component: import('@/View/industry/TenDaysPage.vue')
     }
 ]
 
