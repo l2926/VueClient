@@ -40,6 +40,11 @@ export default {
     var area_list = ["北京","上海","深圳","广东","江苏","山东","浙江","河南","四川","福建","湖北","湖南","安徽","河北","陕西","江西","重庆","云南","辽宁","广西","山西","内蒙","贵州","新疆","天津","黑龙江","吉林","甘肃","海南","宁夏","青海","西藏"]
     localStorage.setItem('area_list',area_list)
 
+    //设置大盘指数和名称的cookie
+    var market_list = ["000001.sh","399001.sz","399005.sz","399006.sz"];
+    var market_name = ["上证指数","深证成指","中小板指","创业板指"];
+    localStorage.setItem('market_list',market_list);
+    localStorage.setItem('market_name',market_name)
     // alert(localStorage.getItem("area_list"))
   }
 }

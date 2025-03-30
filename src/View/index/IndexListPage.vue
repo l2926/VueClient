@@ -88,18 +88,48 @@ export default{
   },
   methods:{
     ShangHai:function (){
-      this.$router.push({path:'/index/shanghai'})
+      const query_dic = {
+        "para_id":1,
+        "level":"market",
+        "level_id":1,
+        "trade_date":"20250309"
+      }
+      this.$router.push({path:'/index/index_daily',query:query_dic})
     },
     ShenZhen:function (){
-      this.$router.push({path:'/index/shenzhen'})
+      const query_dic = {
+        "para_id":1,
+        "level":"market",
+        "level_id":2,
+        "trade_date":"20250309"
+      }
+      this.$router.push({path:'/index/index_daily',query:query_dic})
     },
     MidSmall:function (){
-      this.$router.push({path:'/index/mid_small'})
+      const query_dic = {
+        "para_id":1,
+        "level":"market",
+        "level_id":3,
+        "trade_date":"20250309"
+      }
+      this.$router.push({path:'/index/index_daily',query:query_dic})
     },
     ChinaNext:function (){
-      this.$router.push({path:'/index/china_next'})
+      const query_dic = {
+        "para_id":1,
+        "level":"market",
+        "level_id":4,
+        "trade_date":"20250309"
+      }
+      this.$router.push({path:'/index/index_daily',query:query_dic})
     },
     Statistic:function(){
+      const query_dic = {
+        "para_id":1,
+        "level":"market",
+        "level_id":3,
+        "trade_date":"20250309"
+      }
       this.$router.push({path:'/index/statistics'})
     },
     onIndex:function(index,index2){
@@ -110,11 +140,11 @@ export default{
         para_id:1,
         block_id:1,
         level:level,
-        id:(index-1)*8 + index2,
+        level_id:(index-1)*8 + index2,
         trade_date:getCurDate()
       }
 
-      this.$router.push({path:'/index/sw_daily',query:query_dic})
+      this.$router.push({path:'/index/index_daily',query:query_dic})
     }
   },
   mounted(){
