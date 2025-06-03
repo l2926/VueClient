@@ -118,11 +118,11 @@ const onSelectSubordinate = ()=>{
 const levelId = ref(1);
 
 const handleItemChange = (value) =>{
-  console.log(value);
+  alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["id"] = value;
+  query_dic["level_id"] = value;
   if(query_dic["ts_code"] == null){
-    router.push({path: '/market/daily', query: query_dic});
+    router.push({path: '/index/index_daily', query: query_dic});
   }
 };
 
@@ -157,7 +157,7 @@ const selectNextDay=()=>{
 onMounted(()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   selectedDate.value = new Date(dayjs(query_dic["trade_date"]).format('YYYY-MM-DD'));
-  levelId.value = query_dic["id"];
+  levelId.value = query_dic["level_id"];
 });
 
 </script>

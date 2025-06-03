@@ -130,7 +130,7 @@ export default{
         "level_id":3,
         "trade_date":"20250309"
       }
-      this.$router.push({path:'/index/statistics'})
+      this.$router.push({path:'/index/statistics',query:query_dic})
     },
     onIndex:function(index,index2){
       // alert((index-1)*8 + index2)
