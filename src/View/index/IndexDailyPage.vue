@@ -10,7 +10,7 @@
 import IndexNavigation from "@/components/index/IndexNavigation.vue";
 import {onMounted, onUpdated} from "vue";
 import axios from "axios";
-import {InitDailyECharts} from "@/Api/echarts/market/daily";
+import {InitDailyECharts} from "@/Api/echarts/index/index_daily";
 import {useRoute} from "vue-router";
 import {indexParameterTransform} from "@/Api/utils/urlParameterTransform";
 

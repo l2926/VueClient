@@ -17,6 +17,7 @@ import IndexNavigation from "@/components/index/IndexNavigation.vue";
 const route = useRoute();
 
 const axiosEcharts = ()=>{
+  alert("statistics");
   const query_dic = JSON.parse(JSON.stringify(route.query));
   // alert(JSON.stringify(query_dic))
   const para_dic = marketParameterTransform(query_dic);

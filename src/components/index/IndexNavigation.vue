@@ -118,7 +118,7 @@ const onSelectSubordinate = ()=>{
 const levelId = ref(1);
 
 const handleItemChange = (value) =>{
-  alert(value);
+  // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["level_id"] = value;
   if(query_dic["ts_code"] == null){
