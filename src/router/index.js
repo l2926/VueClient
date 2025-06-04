@@ -5,6 +5,7 @@ import industryRoutes from "@/router/router/industry"
 import financeRoutes from "@/router/router/finance"
 import indexRoutes from "@/router/router/index"
 import analysis from "@/router/router/analysis";
+import compare from "@/router/router/compare";
 
 const routes=[
     ...marketRoutes,
@@ -12,6 +13,7 @@ const routes=[
     ...financeRoutes,
     ...indexRoutes,
     ...analysis,
+    ...compare,
     {
         path:'/',
         name:'home',
