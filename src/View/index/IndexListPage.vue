@@ -125,10 +125,9 @@ export default{
     },
     Statistic:function(){
       const query_dic = {
-        "para_id":1,
-        "level":"market",
-        "level_id":3,
-        "trade_date":"20250309"
+        "block_id":1,
+        "level":"L1",
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/statistics',query:query_dic})
     },

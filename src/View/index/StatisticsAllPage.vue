@@ -10,7 +10,7 @@
 import {onMounted, onUpdated} from "vue";
 import axios from "axios";
 import {useRoute} from "vue-router";
-import {InitStatisticsECharts} from "@/Api/echarts/index/statistics";
+import {InitStatisticsAllECharts} from "@/Api/echarts/index/statistics_all";
 import StatisticsNavigation from "@/components/index/StatisticsNavigation.vue";
 
 const route = useRoute();
@@ -19,11 +19,11 @@ const axiosEcharts = ()=>{
   // alert("statistics");
   const query_dic = JSON.parse(JSON.stringify(route.query));
   // alert(JSON.stringify(query_dic))
-  axios.post("http://127.0.0.1:8081/index/statistics",query_dic).then(
+  axios.post("http://127.0.0.1:8081/index/statistics_all",query_dic).then(
       response=>{
         // alert(JSON.stringify(response.data));
         try{
-          InitStatisticsECharts(response.data);
+          InitStatisticsAllECharts(response.data);
         }
         catch (err){
           alert("echarts处理异常")

@@ -11,6 +11,10 @@ const routes = [
         path:'/index/statistics',
         name:'Statistics',
         component: import('@/View/index/StatisticsDailyPage.vue')
+    },{
+        path:'/index/statistics_all',
+        name:'StatisticsAll',
+        component: import('@/View/index/StatisticsAllPage.vue')
     }
 ]
 
