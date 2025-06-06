@@ -19,6 +19,10 @@ const routes = [
         path:'/industry/ten_days',
         name:'ten_days',
         component: import('@/View/industry/TenDaysPage.vue')
+    },{
+        path:'/industry/company_info',
+        name:'company_info',
+        component:import('@/View/industry/ComponyInfoPage.vue')
     }
 ]
 

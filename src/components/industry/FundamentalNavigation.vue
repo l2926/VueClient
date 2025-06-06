@@ -4,6 +4,7 @@
     <el-button style="margin-left:0;margin-right: 0" @click="hanleClickFundmental">基本面</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickFinaMain">主营业务</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickCompanyInfo">公司信息</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickTopHold">十大股东</el-button>
 
     <el-input-number v-model="levelId" :min="1" :max="500" :step="1" controls-position="right"
@@ -56,6 +57,12 @@ const handleClickFinaMain = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   router.push({path:'/industry/fina_main',query:query_dic});
 };
+
+
+const handleClickCompanyInfo = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  router.push({path:'/industry/company_info',query:query_dic});
+}
 
 const handleClickTopHold = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))

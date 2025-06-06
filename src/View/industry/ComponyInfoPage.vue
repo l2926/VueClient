@@ -1,0 +1,231 @@
+
+<template>
+  <el-container>
+    <el-header style="">
+      <FundamentalNavigation></FundamentalNavigation>
+    </el-header>
+    <el-table
+        :data="tableData"
+        border
+        style="width:100%"
+        class="no-header">
+
+      <el-table-column
+          prop="date"
+          label="序号"
+          width="50">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.idx }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
+          label="公司名称"
+          width="80">
+        <template #default="{ row }">
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=L1&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+        </template>
+      </el-table-column>
+      <el-table-column width="55">
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            省份
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.province }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column width="60">
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            城市
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.city }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column width="65">
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            行业1
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.industry_name_l1 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column width="65">
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            行业2
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.industry_name_l2 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column width="65">
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            行业3
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.industry_name_l3 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
+          label="公司全称"
+          width="150">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.com_name }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          prop="date"
+          label="实控人"
+          width="120">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.act_name }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
+          label="实控类型"
+          width="120">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.act_ent_type }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
+          label="市场"
+          width="50">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.exchange }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
+          label="注册资本"
+          width="60">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.reg_capital }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
+          label="官方网站"
+          width="120">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.website }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          prop="date"
+          label="成立日期"
+          width="90">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.setup_date }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
+          label="上市日期"
+          width="90">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.list_date }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="address"
+          label="板块"
+          width="60">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.market }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column>
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            净资产(亿)
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.asset }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column>
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            市值(亿)
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.total_mv }}</a>
+        </template>
+      </el-table-column>
+    </el-table>
+
+  </el-container>
+</template>
+
+
+<script setup>
+import {onMounted, onUpdated, ref} from "vue";
+import axios from "axios";
+import {useRoute} from "vue-router";
+import FundamentalNavigation from "@/components/industry/FundamentalNavigation.vue";
+import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
+
+//初始化所属表格内容
+var tableData = ref([]);
+
+//ajax获取行业信息
+const route = useRoute();
+const axiosTable = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  const para_dic = industryParameterTransform(query_dic);
+  // alert(JSON.stringify(para_dic))
+  axios.post("http://127.0.0.1:8081/industry/company_info",para_dic).then(
+      (response) => {
+        alert(JSON.stringify(response.data));
+        tableData.value = response.data;
+
+        var ts_code_list = response.data.map((item)=>{
+          return item["ts_code"]
+        });
+
+        var name_list = response.data.map((item)=>{
+          return item["name"]
+        });
+
+        localStorage.setItem("industry_code",ts_code_list);
+        localStorage.setItem("industry_name",name_list);
+      }
+  ).catch(error => {
+    console.log(error);
+    alert("axios请求错误");
+  });
+}
+
+onMounted(axiosTable);
+onUpdated(axiosTable);
+
+//根据表格标题头排序
+const onSelectDate = ()=>{
+  alert("dsfds")
+}
+</script>
+
+<style scoped>
+.headItem{
+  font-weight: bold;
+  text-align: left;
+}
+</style>
