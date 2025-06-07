@@ -4,9 +4,23 @@ const routes = [
         name:'limit',
         component: import('@/View/analysis/LimitPage.vue')
     },{
+        path:'/analysis/company_info',
+        name:'company_info_analysis',
+        component: import('@/View/analysis/CompanyInfoPage.vue')
+    },{
         path:'/analysis/fina_main',
         name:'fina_main_analysis',
         component: import('@/View/analysis/FinaMainPage.vue')
+    },
+    {
+        path:'/analysis/fina_main2',
+        name:'fina_main_analysis2',
+        component: import('@/View/analysis/FinaMain2Page.vue')
+    },
+    {
+        path:'/analysis/fina_main3',
+        name:'fina_main_analysis3',
+        component: import('@/View/analysis/FinaMain3Page.vue')
     },{
         path:'/analysis/top_hold',
         name:'top_hold2',
