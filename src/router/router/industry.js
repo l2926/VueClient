@@ -12,6 +12,14 @@ const routes = [
         name:'fina_main',
         component:import('@/View/industry/FinaMainPage.vue')
     },{
+        path:'/industry/fina_main2',
+        name:'fina_main2',
+        component:import('@/View/industry/FinaMain2Page.vue')
+    },{
+        path:'/industry/fina_main3',
+        name:'fina_main3',
+        component:import('@/View/industry/FinaMain3Page.vue')
+    },{
         path:'/industry/top_hold',
         name:'top_hold',
         component: import('@/View/industry/TopHoldPage.vue')

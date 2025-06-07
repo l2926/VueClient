@@ -5,7 +5,7 @@ const routes = [
         component: import('@/View/analysis/LimitPage.vue')
     },{
         path:'/analysis/fina_main',
-        name:'fina_main2',
+        name:'fina_main_analysis',
         component: import('@/View/analysis/FinaMainPage.vue')
     },{
         path:'/analysis/top_hold',
