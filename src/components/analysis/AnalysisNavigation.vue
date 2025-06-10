@@ -12,7 +12,19 @@
     </el-select>
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>
-    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>
+<!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>-->
+
+    <el-select v-model="dailyLevel" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
+      <el-option
+          v-for="item in dailyLeveloptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
+
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickCompanyInfo">公司信息</el-button>
+
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>
 
     <el-date-picker
@@ -38,6 +50,11 @@ import {dayjs} from "element-plus";
 const router = useRouter();
 const route = useRoute();
 
+const dailyLeveloptions = ref([
+  {value: 'fina_main1', label: '主营业务1'},
+  {value: 'fina_main2', label: '主营业务2'},
+  {value: 'fina_main3', label: '主营业务3'}
+]);
 
 const defaultLimit = ref('');
 const limitOptions = ref([
@@ -55,9 +72,31 @@ const handleClickTenDays = () => {
   router.push({path:'/analysis/ten_days',query:query_dic});
 }
 
-const handleSelectFinaMain = () =>{
-  const query_dic = JSON.parse(JSON.stringify(route.query));
-  router.push({path:'/analysis/fina_main',query:query_dic});
+// const handleSelectFinaMain = () =>{
+//   const query_dic = JSON.parse(JSON.stringify(route.query));
+//   router.push({path:'/analysis/fina_main',query:query_dic});
+// }
+
+const handleSelectFinaMain = (value)=>{
+  // alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  if(value === "fina_main1"){
+    router.push({path:'/analysis/fina_main',query:query_dic})
+  }
+
+  if(value === "fina_main2"){
+    router.push({path:'/analysis/fina_main2',query:query_dic})
+  }
+
+  if(value === "fina_main3"){
+    router.push({path:'/analysis/fina_main3',query:query_dic})
+  }
+
+}
+
+const handleClickCompanyInfo = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  router.push({path:'/analysis/company_info',query:query_dic});
 }
 
 const handleSelectTopHold = () =>{

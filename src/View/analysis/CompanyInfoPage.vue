@@ -2,7 +2,7 @@
 <template>
   <el-container>
     <el-header style="">
-      <FundamentalNavigation></FundamentalNavigation>
+      <AnalysisNavigation></AnalysisNavigation>
     </el-header>
     CompanyInfo Analysis
     <el-table
@@ -181,8 +181,8 @@
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
 import {useRoute} from "vue-router";
-import FundamentalNavigation from "@/components/industry/FundamentalNavigation.vue";
 import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
+import AnalysisNavigation from "@/components/analysis/AnalysisNavigation.vue";
 
 //初始化所属表格内容
 var tableData = ref([]);
