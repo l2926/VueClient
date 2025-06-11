@@ -107,10 +107,9 @@ const selectPriceOptions = ref([
 ]);
 
 const financeOptions = ref([
-  {value: 'monthly1', label: '财务概览'},
-  {value: 'monthly2', label: '净资产'},
-  {value: 'monthly3', label: '盈利情况'},
-  {value: 'monthly3', label: '成本中心'}
+  {value: 'monthly2', label: '资产概览'},
+  {value: 'monthly3', label: '利润概览'},
+  {value: 'monthly3', label: '财务概览'}
 ]);
 
 const topHoldOptions = ref([
