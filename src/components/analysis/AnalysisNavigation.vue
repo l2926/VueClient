@@ -27,6 +27,7 @@
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>
 
+    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTop100">A股百强</el-button>
     <el-date-picker
         v-model="selectedDate"
         type="date"
@@ -102,6 +103,11 @@ const handleClickCompanyInfo = ()=>{
 const handleSelectTopHold = () =>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   router.push({path:'/analysis/top_hold',query:query_dic});
+}
+
+const handleSelectTop100 = () => {
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path:'/analysis/top100',query:query_dic});
 }
 
 const handleSelectionChange = (value)=> {
