@@ -108,7 +108,6 @@ const selectPriceOptions = ref([
 
 const financeOptions = ref([
   {value: 'monthly2', label: '资产概览'},
-  {value: 'monthly3', label: '利润概览'},
   {value: 'monthly3', label: '财务概览'}
 ]);
 
