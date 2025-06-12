@@ -31,7 +31,7 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="财务概览" style="width: 7%" @change="onMonthlyLevel">
+  <el-select v-model="monthlyLevel" placeholder="财务概览" style="width: 7%" @change="onFinanceLevel">
     <el-option
         v-for="item in financeOptions"
         :key="item.value"
@@ -107,8 +107,8 @@ const selectPriceOptions = ref([
 ]);
 
 const financeOptions = ref([
-  {value: 'monthly2', label: '资产概览'},
-  {value: 'monthly3', label: '财务概览'}
+  {value: 'asset_center', label: '资产概览'},
+  {value: 'finance_center', label: '财务概览'}
 ]);
 
 const topHoldOptions = ref([
@@ -134,6 +134,17 @@ const onDailyLevel= (value) => {
     router.push({path: '/market/price', query: query_dic});
   }
 };
+
+const onFinanceLevel = (value) => {
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === "asset_center"){
+    router.push({path:'/market/asset_center',query:query_dic})
+  }
+
+  if(value === "finance_center"){
+    router.push({path:'/market/finance_center',query:query_dic})
+  }
+}
 
 //所属行业页面条抓按
 const onSelectSubordinate = ()=>{

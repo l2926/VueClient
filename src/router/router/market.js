@@ -7,6 +7,14 @@ const routes = [
         path:'/market/subordinate',
         name:'subordinate',
         component: import('@/View/market/SubordinatePage.vue')
+    },{
+        path:'/market/finance_center',
+        name: 'finance_center',
+        component: import('@/View/market/FinanceCenterPage.vue')
+    },{
+        path:'/market/asset_center',
+        name: 'asset_center',
+        component: import('@/View/market/AssetCenterPage.vue')
     }
 ]
 
