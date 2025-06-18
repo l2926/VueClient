@@ -1,10 +1,10 @@
 import * as echarts from "echarts";
 
-export function InitDailyECharts(rawData){
-    var priceData = rawData.daily_vo_list;
+export function InitFinanceCenterECharts(rawData){
+    var priceData = rawData.finance_center_vo_list;
 
     if(priceData == null){
-        alert("daily_vo_list为null");
+        alert("priceData为null");
     }
 
     var dates = priceData.map(item => {

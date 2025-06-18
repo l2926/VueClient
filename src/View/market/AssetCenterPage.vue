@@ -10,9 +10,9 @@
 import MarketNavigation from "@/components/market/MarketNavigation.vue";
 import {onMounted, onUpdated} from "vue";
 import axios from "axios";
-import {InitDailyECharts} from "@/Api/echarts/market/daily";
 import {useRoute} from "vue-router";
 import {marketParameterTransform} from "@/Api/utils/urlParameterTransform";
+import {InitAssetCenterEcharts} from "@/Api/echarts/market/asset_center";
 
 const route = useRoute();
 
@@ -24,10 +24,10 @@ const axiosEcharts = ()=>{
       response=>{
         alert(JSON.stringify(response.data));
         try{
-          InitDailyECharts(response.data);
+          InitAssetCenterEcharts(response.data);
         }
         catch (err){
-          alert("echarts处理异常")
+          alert(err)
         }
       }
   ).catch(error => {
