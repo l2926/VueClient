@@ -33,6 +33,22 @@ const routes = [
         path:'/analysis/top100',
         name:'top100',
         component: import('@/View/analysis/Top100Page.vue')
+    },{
+        path:'/analysis/two_days_diff',
+        name:'two_days_diff1',
+        component: import('@/View/analysis/TwoDaysDiff.vue')
+    },{
+        path:'/analysis/five_days_limit',
+        name:'five_days_limit1',
+        component: import('@/View/analysis/FiveDaysLimit.vue')
+    },{
+        path:'/analysis/money_flow',
+        name:'money_flow1',
+        component: import('@/View/analysis/MoneyFlow.vue')
+    },{
+        path:'/analysis/money_flow_pct',
+        name:'money_flow_pct1',
+        component: import('@/View/analysis/MoneyFlowPct.vue')
     }
 ]
 

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <el-button @click="handleSelectMarket">看板</el-button>
-    <el-select v-model="defaultLimit" placeholder="涨停" style="width: 5%" popper-class="horizontal-select"
-               @change="handleSelectionChange">
+    <el-button @click="handleSelectMarket">涨停</el-button>
+    <el-select v-model="defaultLimit" placeholder="五日涨停" style="width: 7%" popper-class="horizontal-select"
+               @change="handleSelectLimitChange">
       <el-option
           v-for="item in limitOptions"
           :key="item.value"
@@ -26,6 +26,16 @@
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickCompanyInfo">公司信息</el-button>
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>
+
+    <el-select v-model="dailyLevel" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
+      <el-option
+          v-for="item in moneyFlowOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
+
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTop100">A股百强</el-button>
     <el-date-picker
@@ -58,10 +68,29 @@ const dailyLeveloptions = ref([
 ]);
 
 const defaultLimit = ref('');
+
 const limitOptions = ref([
-  {value:'limitUp',label:'涨停'},
-  {value:'limitDown',label:'跌停'}
+  {value:'fiveDays',label:'五日涨停'},
+  {value:'tenDays',label:'十日涨停'},
+  {value: 'fifteenDays',label: '十五涨停'},
+  {value: 'twentyDays',label: '二十涨停'}
 ]);
+
+const moneyFlowOptions = ref([
+  {value:'money_flow',label:'资金流向'},
+  {value:'money_flow_pct',label:'资金流向(%)'}
+])
+
+const handleSelectMoneyFlow = (value) => {
+  // alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'money_flow'){
+    router.push({path:'/analysis/money_flow',query:query_dic});
+  }
+  if(value === 'money_flow_pct'){
+    router.push({path:'/analysis/money_flow_pct',query:query_dic});
+  }
+}
 
 const handleSelectMarket = () =>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
@@ -110,9 +139,10 @@ const handleSelectTop100 = () => {
   router.push({path:'/analysis/top100',query:query_dic});
 }
 
-const handleSelectionChange = (value)=> {
-  console.log('选中的选项值：', value);
-  console.log("kkk")
+const handleSelectLimitChange = (value)=> {
+  alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path:'/analysis/five_days_limit',query:query_dic});
 };
 
 const selectedDate = ref(new Date()); // 响应式变量，用于存储选择的日期
