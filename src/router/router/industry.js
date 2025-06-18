@@ -31,6 +31,18 @@ const routes = [
         path:'/industry/company_info',
         name:'company_info',
         component:import('@/View/industry/ComponyInfoPage.vue')
+    },{
+        path:'/industry/five_days_limit',
+        name:'five_days_limit2',
+        component: import('@/View/industry/FiveDaysLimit.vue')
+    },{
+        path:'/industry/money_flow',
+        name:'money_flow2',
+        component: import('@/View/industry/MoneyFlow.vue')
+    },{
+        path:'/industry/money_flow_pct',
+        name:'money_flow_pct2',
+        component: import('@/View/industry/MoneyFlowPct.vue')
     }
 ]
 

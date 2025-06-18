@@ -16,7 +16,7 @@
 
     <el-select v-model="dailyLevel" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
       <el-option
-          v-for="item in dailyLeveloptions"
+          v-for="item in finaMainOptions"
           :key="item.value"
           :label="item.label"
           :value="item.value">
@@ -61,7 +61,7 @@ import {dayjs} from "element-plus";
 const router = useRouter();
 const route = useRoute();
 
-const dailyLeveloptions = ref([
+const finaMainOptions = ref([
   {value: 'fina_main1', label: '主营业务1'},
   {value: 'fina_main2', label: '主营业务2'},
   {value: 'fina_main3', label: '主营业务3'}
