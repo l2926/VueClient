@@ -18,6 +18,18 @@ export function InitStatisticsECharts(rawData){
         return item['up_count'];
     })
 
+    var upCountPct = priceData.map(item => {
+        return (100*item['up_count'] / item['all_count']).toFixed(2);
+    })
+
+    var downCount = priceData.map(item=>{
+        return -item["down_count"];
+    })
+
+    var pctChange = priceData.map(item=>{
+        return item["pct_change"];
+    })
+
     // alert(upCount)
 
     const option = {
@@ -39,8 +51,7 @@ export function InitStatisticsECharts(rawData){
         animation:false,
         grid:[
             {top:'7%',bottom:'7%',width:'',height:'45%'},
-            {top:'58%',bottom:'7%',width:'',height:'16%'},
-            {top:'81%',bottom:'0%',width:'',height:'12%'}
+            {top:'58%',bottom:'7%',width:'',height:'26%'}
         ],
         xAxis: [{
             gridIndex:0,
@@ -48,36 +59,15 @@ export function InitStatisticsECharts(rawData){
         },{
             gridIndex:1,
             data: dates,
-        },{
-            gridIndex:2,
-            data: dates,
         }],
         yAxis: [{
             gridIndex:0,
             scale:true
         },{
-            gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 2,
-            scale: true
-        },{
-            gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 2,
-            scale: true
-        },{
             gridIndex: 0,
             scale: true
         },{
             gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 2,
             scale: true
         }],
         dataZoom: [{
@@ -112,11 +102,37 @@ export function InitStatisticsECharts(rawData){
         }],
         series: [
             {
-                name: '大盘涨跌幅统计',
+                name: '大盘涨幅统计',
                 type: 'bar',
                 xAxisIndex:0,
                 yAxisIndex:0,
                 data: upCount,
+            },
+            {
+                name: '大盘跌幅统计',
+                type: 'bar',
+                xAxisIndex:0,
+                yAxisIndex:0,
+                data: downCount,
+                color:'red',
+                barGap: '-100%'
+            },{
+                name:'大盘涨幅统计(%)',
+                type:'line',
+                xAxisIndex: 0,
+                yAxisIndex: 1,
+                data:upCountPct
+            },{
+                name:'涨跌幅统计(%)',
+                type:'bar',
+                xAxisIndex: 1,
+                yAxisIndex: 2,
+                data: pctChange,
+                itemStyle:{
+                    color: function (params){
+                        return params.value > 0 ? 'blue':'red'
+                    }
+                }
             }
         ],
     };

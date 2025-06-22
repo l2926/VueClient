@@ -14,11 +14,27 @@ export function InitStatisticsAllECharts(rawData){
 
     // alert(dates);
 
-    var upCount = priceData.map(item => {
+    var allCount = priceData.map(item => {
         return item['count'];
     })
 
-    // alert(upCount)
+    var allMv = priceData.map(item=>{
+        return item['total_mv'];
+    })
+
+    var pb = priceData.map(item=>{
+        return item['pb']
+    })
+
+    var assets = priceData.map(item=>{
+        return (item['total_mv'] / item['pb']).toFixed(2);
+    })
+
+    var avgMv = priceData.map(item=>{
+        return (item['total_mv'] / item['count']).toFixed(2);
+    })
+
+    alert(allMv)
 
     const option = {
         title: {
@@ -56,10 +72,10 @@ export function InitStatisticsAllECharts(rawData){
             gridIndex:0,
             scale:true
         },{
-            gridIndex: 1,
+            gridIndex: 0,
             scale: true
         },{
-            gridIndex: 2,
+            gridIndex: 0,
             scale: true
         },{
             gridIndex: 1,
@@ -116,7 +132,31 @@ export function InitStatisticsAllECharts(rawData){
                 type: 'bar',
                 xAxisIndex:0,
                 yAxisIndex:0,
-                data: upCount,
+                data: allCount,
+            },{
+                name:'大盘市值统计',
+                type:'bar',
+                xAxisIndex: 0,
+                yAxisIndex: 1,
+                data: allMv
+            },{
+                name:'pb',
+                type:'line',
+                xAxisIndex: 0,
+                yAxisIndex: 2,
+                data: pb
+            },{
+                name:'平均市值',
+                type:'line',
+                xAxisIndex: 1,
+                yAxisIndex: 3,
+                data:avgMv
+            },{
+                name:'净资产',
+                type:'bar',
+                xAxisIndex: 1,
+                yAxisIndex: 4,
+                data:assets
             }
         ],
     };
