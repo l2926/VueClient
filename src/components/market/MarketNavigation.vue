@@ -1,5 +1,5 @@
 <template>
-  <el-select v-model="dailyLevel" placeholder="日线" style="width: 5%" @change="onDailyLevel" id="test_select">
+  <el-select v-model="dailyLevel" placeholder="日线" style="width: 6%" @change="onDailyLevel" id="test_select">
     <el-option
         v-for="item in dailyLeveloptions"
         :key="item.value"
@@ -7,23 +7,8 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="weeklyLevel" placeholder="周线" style="width: 5%" @change="onWeeklyLevel">
-    <el-option
-        v-for="item in weeklyLeveloptions"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-    </el-option>
-  </el-select>
-  <el-select v-model="monthlyLevel" placeholder="月线" style="width: 5%" @change="onMonthlyLevel">
-    <el-option
-        v-for="item in monthlyLeveloptions"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-    </el-option>
-  </el-select>
-  <el-select v-model="monthlyLevel" placeholder="复权" style="width: 5%" @change="onMonthlyLevel">
+
+  <el-select v-model="monthlyLevel" placeholder="对数" style="width: 5%" @change="onMonthlyLevel">
     <el-option
         v-for="item in selectPriceOptions"
         :key="item.value"
@@ -41,24 +26,24 @@
   </el-select>
   <el-select v-model="monthlyLevel" placeholder="资金流向" style="width: 7%" @change="onMonthlyLevel">
     <el-option
-        v-for="item in topHoldOptions"
+        v-for="item in moneyFlowOptions"
         :key="item.value"
         :label="item.label"
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="十大股东" style="width: 7%" @change="onMonthlyLevel">
-    <el-option
-        v-for="item in topHoldOptions"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-    </el-option>
-  </el-select>
+<!--  <el-select v-model="monthlyLevel" placeholder="十大股东" style="width: 7%" @change="onMonthlyLevel">-->
+<!--    <el-option-->
+<!--        v-for="item in topHoldOptions"-->
+<!--        :key="item.value"-->
+<!--        :label="item.label"-->
+<!--        :value="item.value">-->
+<!--    </el-option>-->
+<!--  </el-select>-->
   <el-button @click="onSelectSubordinate" style="margin-right: 0;margin-left:0">所属</el-button>
   <el-button style="margin-right: 0;margin-left:0">对比</el-button>
 
-  <el-input-number v-model="levelId" :min="1" :max="100" :step="1" controls-position="right"
+  <el-input-number v-model="levelId" :min="1" :max="1000" :step="1" controls-position="right"
                    @change="handleItemChange" style="width: 5%"></el-input-number>
   <el-date-picker
       v-model="selectedDate"
@@ -84,26 +69,18 @@ const router = useRouter();
 const dailyLeveloptions = ref([
   {value: 'daily1', label: '日线1'},
   {value: 'daily2', label: '日线2'},
-  {value: 'daily3', label: '日线3'}
-]);
-
-const weeklyLeveloptions = ref([
-  {value: 'weekly1', label: '周线1'},
-  {value: 'weekly2', label: '周线2'},
-  {value: 'weekly3', label: '周线3'}
-]);
-
-const monthlyLeveloptions = ref([
-  {value: 'monthly1', label: '月线1'},
-  {value: 'monthly2', label: '月线2'},
-  {value: 'monthly3', label: '月线3'}
+  {value: 'daily3', label: '日线3'},
+  {value: 'daily4', label: '日线4'},
+  {value: 'daily5', label: '日线5'}
 ]);
 
 
 const selectPriceOptions = ref([
-  {value: 'monthly1', label: '复权'},
-  {value: 'monthly2', label: '对数'},
-  {value: 'monthly3', label: '涨跌'}
+  {value: 'log1', label: '对数1'},
+  {value: 'log2', label: '对数2'},
+  {value: 'log3', label: '对数3'},
+  {value: 'log3', label: '对数4'},
+  {value: 'log3', label: '对数5'}
 ]);
 
 const financeOptions = ref([
@@ -111,27 +88,41 @@ const financeOptions = ref([
   {value: 'finance_center', label: '财务概览'}
 ]);
 
-const topHoldOptions = ref([
-  {value: 'monthly1', label: '十大股东'},
-  {value: 'monthly2', label: '十大流通股东'}
+const moneyFlowOptions = ref([
+  {value: 'money_flow', label: '资金流向'},
+  {value: 'money_flow_pct', label: '资金流向(%)'}
 ]);
+
+// const topHoldOptions = ref([
+//   {value: 'monthly1', label: '十大股东'},
+//   {value: 'monthly2', label: '十大流通股东'}
+// ]);
 
 const onDailyLevel= (value) => {
   console.log("mmmmmm")
-  alert("dsfds")
+  // alert(value)
+
   const query_dic = JSON.parse(JSON.stringify(route.query));
 
   if(value === "daily1"){
-    query_dic["select_id"] = 1;
-    router.push({path: '/market/price', query: query_dic});
+    query_dic["para_id"] = 1;
+    router.push({path: '/market/daily', query: query_dic});
   }
   if(value === "daily2"){
-    query_dic["select_id"] = 2;
-    router.push({path: '/market/price', query: query_dic});
+    query_dic["para_id"] = 3;
+    router.push({path: '/market/daily', query: query_dic});
   }
   if(value === "daily3"){
-    query_dic["select_id"] = 3;
-    router.push({path: '/market/price', query: query_dic});
+    query_dic["para_id"] = 5;
+    router.push({path: '/market/daily', query: query_dic});
+  }
+  if(value === "daily4"){
+    query_dic["para_id"] = 10;
+    router.push({path: '/market/daily', query: query_dic});
+  }
+  if(value === "daily5"){
+    query_dic["para_id"] = 20;
+    router.push({path: '/market/daily', query: query_dic});
   }
 };
 

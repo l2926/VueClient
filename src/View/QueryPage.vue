@@ -35,7 +35,7 @@ const handleButtonClick = () => {
     router.push({
       path: '/market/daily', query: {
         "select_id": 1,
-        "para_id": 1,
+        "para_id": 20,
         "ts_code": ts_code,
         "name": name,
         "trade_date":getCurDate()
