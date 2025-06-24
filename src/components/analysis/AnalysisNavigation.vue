@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-button @click="handleSelectMarket">涨停</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectLimitBoard">涨停板</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectMarket">行情</el-button>
     <el-select v-model="defaultLimit" placeholder="五日涨停" style="width: 7%" popper-class="horizontal-select"
                @change="handleSelectLimitChange">
       <el-option
@@ -90,6 +91,11 @@ const handleSelectMoneyFlow = (value) => {
   if(value === 'money_flow_pct'){
     router.push({path:'/analysis/money_flow_pct',query:query_dic});
   }
+}
+
+const handleSelectLimitBoard = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path:'/analysis/limit_board',query:query_dic});
 }
 
 const handleSelectMarket = () =>{

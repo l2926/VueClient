@@ -49,6 +49,10 @@ const routes = [
         path:'/analysis/money_flow_pct',
         name:'money_flow_pct1',
         component: import('@/View/analysis/MoneyFlowPct.vue')
+    },{
+        path:'/analysis/limit_board',
+        name:'limit_board',
+        component: import('@/View/analysis/LimitBoardPage.vue')
     }
 ]
 
