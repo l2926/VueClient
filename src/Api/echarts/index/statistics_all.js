@@ -34,8 +34,6 @@ export function InitStatisticsAllECharts(rawData){
         return (item['total_mv'] / item['count']).toFixed(2);
     })
 
-    alert(allMv)
-
     const option = {
         title: {
             text: rawData.index_name,

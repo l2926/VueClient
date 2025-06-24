@@ -1,6 +1,7 @@
 <template>
   <el-button style="margin-left:0;margin-right: 0" @click="handleStatistics">行情统计</el-button>
   <el-button style="margin-left:0;margin-right: 0" @click="handleStatisticsAll">所有统计</el-button>
+  <el-button style="margin-left:0;margin-right: 0" @click="handleKaipanla">开盘啦题材</el-button>
 
   <el-date-picker
       v-model="selectedDate"
@@ -64,6 +65,10 @@ const handleStatisticsAll = ()=>{
   // alert("ddd")
   const query_dic = JSON.parse(JSON.stringify(route.query));
   router.push({path:"/index/statistics_all",query:query_dic});
+}
+
+const handleKaipanla = ()=>{
+  alert("kaipanla")
 }
 
 </script>

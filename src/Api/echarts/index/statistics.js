@@ -139,4 +139,10 @@ export function InitStatisticsECharts(rawData){
 
     const mychart = echarts.init(document.getElementById("priceCharts"));
     mychart.setOption(option)
+
+    mychart.on('click', function (params) {
+        // 可以根据 params.name 或 params.dataIndex 进行不同跳转
+        console.log(params); // 打印参数方便调试
+        alert(params.name)
+    });
 }
