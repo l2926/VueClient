@@ -29,21 +29,11 @@
       <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            省份
+            地区
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.province }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            城市
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.city }}</a>
+          <a :href="market" style="color: gray">{{ row.area }}</a>
         </template>
       </el-table-column>
       <el-table-column width="90">
