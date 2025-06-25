@@ -1,36 +1,22 @@
 import * as echarts from "echarts";
 
-export function InitStatisticsECharts(rawData){
-    // JSON.stringify(rawData);
+export function InitKplConceptECharts(rawData,route,router){
+    JSON.stringify(rawData);
     var priceData = rawData;
 
     if(priceData == null){
         alert("请求价格为空");
     }
 
-    var dates = priceData.map(item => {
-        return item['industry_name'];
+    var name = priceData.map(item => {
+        return item['name'];
     });
 
     // alert(dates);
 
-    var upCount = priceData.map(item => {
-        return item['up_count'];
+    var ztnum = priceData.map(item => {
+        return item['ztnum'];
     })
-
-    var upCountPct = priceData.map(item => {
-        return (100*item['up_count'] / item['all_count']).toFixed(2);
-    })
-
-    var downCount = priceData.map(item=>{
-        return -item["down_count"];
-    })
-
-    var pctChange = priceData.map(item=>{
-        return item["pct_change"];
-    })
-
-    // alert(upCount)
 
     const option = {
         title: {
@@ -50,25 +36,15 @@ export function InitStatisticsECharts(rawData){
         },
         animation:false,
         grid:[
-            {top:'7%',bottom:'7%',width:'',height:'45%'},
-            {top:'58%',bottom:'7%',width:'',height:'26%'}
+            {top:'7%',bottom:'7%',width:'',height:'60%'}
         ],
         xAxis: [{
             gridIndex:0,
-            data: dates,
-        },{
-            gridIndex:1,
-            data: dates,
+            data: name,
         }],
         yAxis: [{
             gridIndex:0,
             scale:true
-        },{
-            gridIndex: 0,
-            scale: true
-        },{
-            gridIndex: 1,
-            scale: true
         }],
         dataZoom: [{
             textStyle: {
@@ -102,41 +78,24 @@ export function InitStatisticsECharts(rawData){
         }],
         series: [
             {
-                name: '大盘涨幅统计',
+                name: '大盘涨跌幅统计',
                 type: 'bar',
                 xAxisIndex:0,
                 yAxisIndex:0,
-                data: upCount,
-            },
-            {
-                name: '大盘跌幅统计',
-                type: 'bar',
-                xAxisIndex:0,
-                yAxisIndex:0,
-                data: downCount,
-                color:'red',
-                barGap: '-100%'
-            },{
-                name:'大盘涨幅统计(%)',
-                type:'line',
-                xAxisIndex: 0,
-                yAxisIndex: 1,
-                data:upCountPct
-            },{
-                name:'涨跌幅统计(%)',
-                type:'bar',
-                xAxisIndex: 1,
-                yAxisIndex: 2,
-                data: pctChange,
-                itemStyle:{
-                    color: function (params){
-                        return params.value > 0 ? 'blue':'red'
-                    }
-                }
+                data: ztnum,
             }
         ],
     };
 
     const mychart = echarts.init(document.getElementById("priceCharts"));
     mychart.setOption(option)
+
+    mychart.on('click', function (params) {
+        // 可以根据 params.name 或 params.dataIndex 进行不同跳转
+        console.log(params); // 打印参数方便调试
+        // alert(params.name)
+        const query_dic = JSON.parse(JSON.stringify(route.query));
+        router.push({path:"/index/kpl_concept_cons",query:{"name":params.name,"trade_date":query_dic["trade_date"]}});
+    });
+
 }

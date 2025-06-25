@@ -15,6 +15,14 @@ const routes = [
         path:'/index/statistics_all',
         name:'StatisticsAll',
         component: import('@/View/index/StatisticsAllPage.vue')
+    },{
+        path:'/index/kpl_concept',
+        name:'KplConcept',
+        component: import('@/View/index/KplConceptPage.vue')
+    },{
+        path:'/index/kpl_concept_cons',
+        name:'KplConceptCons',
+        component: import('@/View/index/KplConceptConsPage.vue')
     }
 ]
 

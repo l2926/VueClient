@@ -68,8 +68,11 @@ const handleStatisticsAll = ()=>{
 }
 
 const handleKaipanla = ()=>{
-  alert("kaipanla")
+  // alert("kaipanla")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path:"/index/kpl_concept",query:query_dic});
 }
+
 
 </script>
 
