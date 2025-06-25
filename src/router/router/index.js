@@ -23,6 +23,14 @@ const routes = [
         path:'/index/kpl_concept_cons',
         name:'KplConceptCons',
         component: import('@/View/index/KplConceptConsPage.vue')
+    },{
+        path:'/index/dc_index',
+        name:'DcIndex',
+        component: import('@/View/index/DcIndexPage.vue')
+    },{
+        path:'/index/dc_member',
+        name:'DcMember',
+        component: import('@/View/index/DcMemberPage.vue')
     }
 ]
 
