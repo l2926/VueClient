@@ -31,6 +31,18 @@ const routes = [
         path:'/index/dc_member',
         name:'DcMember',
         component: import('@/View/index/DcMemberPage.vue')
+    },{
+        path:'/index/fina_main2',
+        name:'FinaMain2Member',
+        component: import('@/View/index/FinaMain2Page.vue')
+    },{
+        path:'/index/fina_main3',
+        name:'FinaMain3Member',
+        component: import('@/View/index/FinaMain3Page.vue')
+    },{
+        path:'/index/company_info',
+        name:'CompanyInfo',
+        component: import('@/View/index/CompanyInfoPage.vue')
     }
 ]
 
