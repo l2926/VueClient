@@ -23,7 +23,7 @@
           label="概念名称"
           width="150">
         <template #default="{ row }">
-          <el-link :href="`/#/index/dc_member`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/index/dc_member?select_id=2&name=${row.name}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
 

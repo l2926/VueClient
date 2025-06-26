@@ -1,8 +1,8 @@
 
 <template>
   <el-container>
-    <el-header style="">
-      KplConceptCons
+    <el-header>
+      <ConceptMemberNavigation></ConceptMemberNavigation>
     </el-header>
     <el-table
         :data="tableData"
@@ -119,6 +119,7 @@ import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
 import {useRoute} from "vue-router";
 import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
+import ConceptMemberNavigation from "@/components/index/ConceptMemberNavigation.vue";
 //初始化所属表格内容
 var tableData = ref([]);
 

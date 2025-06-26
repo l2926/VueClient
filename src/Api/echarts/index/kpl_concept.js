@@ -95,7 +95,7 @@ export function InitKplConceptECharts(rawData,route,router){
         console.log(params); // 打印参数方便调试
         // alert(params.name)
         const query_dic = JSON.parse(JSON.stringify(route.query));
-        router.push({path:"/index/kpl_concept_cons",query:{"name":params.name,"trade_date":query_dic["trade_date"]}});
+        router.push({path:"/index/kpl_concept_cons",query:{"select_id":1,"name":params.name,"trade_date":query_dic["trade_date"]}});
     });
 
 }
