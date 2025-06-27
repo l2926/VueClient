@@ -8,9 +8,9 @@
     </el-option>
   </el-select>
 
-  <el-select v-model="monthlyLevel" placeholder="对数" style="width: 5%" @change="onMonthlyLevel">
+  <el-select v-model="logDailyLevel" placeholder="对数" style="width: 5%" @change="onLogDailyLevel">
     <el-option
-        v-for="item in selectPriceOptions"
+        v-for="item in logDailyLevelOptions"
         :key="item.value"
         :label="item.label"
         :value="item.value">
@@ -75,12 +75,12 @@ const dailyLeveloptions = ref([
 ]);
 
 
-const selectPriceOptions = ref([
+const logDailyLevelOptions = ref([
   {value: 'log1', label: '对数1'},
   {value: 'log2', label: '对数2'},
   {value: 'log3', label: '对数3'},
-  {value: 'log3', label: '对数4'},
-  {value: 'log3', label: '对数5'}
+  {value: 'log4', label: '对数4'},
+  {value: 'log5', label: '对数5'}
 ]);
 
 const financeOptions = ref([
@@ -125,6 +125,12 @@ const onDailyLevel= (value) => {
     router.push({path: '/market/daily', query: query_dic});
   }
 };
+
+const onLogDailyLevel = (value) => {
+  alert(value)
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path: '/market/log_daily', query: query_dic});
+}
 
 const onFinanceLevel = (value) => {
   const query_dic = JSON.parse(JSON.stringify(route.query));

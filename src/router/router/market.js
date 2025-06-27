@@ -15,6 +15,10 @@ const routes = [
         path:'/market/asset_center',
         name: 'asset_center',
         component: import('@/View/market/AssetCenterPage.vue')
+    },{
+        path:'/market/log_daily',
+        name: 'log_daily',
+        component: import('@/View/market/LogDailyPage.vue')
     }
 ]
 
