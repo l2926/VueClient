@@ -11,46 +11,26 @@ export function InitFinanceCenterECharts(rawData){
         return item['trade_date'];
     });
 
-    var data = priceData.map(item =>{
-        return [+item["open"], +item["close"], +item["low"], +item["high"]];
+    var profit = priceData.map(item =>{
+        return item['profit'];
     });
 
-    var amount = priceData.map(item => {
-        return item["amount"];
+    var revenue = priceData.map(item => {
+        return item["revenue"];
     });
 
     var total_mv = priceData.map(item=>{
         return item['total_mv']
     });
 
-    var pe = priceData.map(item=>{
-        return item["pe"]
-    })
-
-    var pb = priceData.map(item=>{
-        return item["pb"]
+    var profit_rate = priceData.map(item=>{
+        return item["profit_rate"]
     })
 
     var roe = priceData.map(item=>{
-        if(item['pe'] == 0){
-            item['roe'] = 0;
-        }else{
-            item['roe'] = item['pb'] / item['pe'];
-        }
-        return item['roe'].toFixed(2);
+        return item["roe"]
     })
 
-    var pct_chg = priceData.map(item=>{
-        return item["pct_chg"]
-    })
-
-    var turn_over_rate = priceData.map(item=>{
-        return item["turn_over_rate"]
-    })
-
-    var turn_over_rate_f = priceData.map(item=>{
-        return item["turn_over_rate_f"]
-    })
 
     var asset = priceData.map((item=>{
         if(item["pb"] != 0 && item["pb"] != null){
@@ -152,30 +132,17 @@ export function InitFinanceCenterECharts(rawData){
         }],
         series: [
             {
-                name: 'K线',
-                type: 'candlestick',
+                name: '利润',
+                type: 'bar',
                 xAxisIndex:0,
                 yAxisIndex:0,
-                data: data,
+                data: profit,
             },{
-                name: '成交金额',
+                name: '营收',
                 type: 'bar',
                 xAxisIndex:1,
                 yAxisIndex:1,
-                data:amount,
-                itemStyle:{
-                    normal:{
-                        color:(params)=>{
-                            var colorList;
-                            if (data[params.dataIndex][1]>data[params.dataIndex][0]) {
-                                colorList = '#ff5900';
-                            } else {
-                                colorList = 'rgba(0,255,0,0.62)';
-                            }
-                            return colorList
-                        }
-                    }
-                }
+                data:revenue,
             },{
                 name: '市值',
                 type: 'line',
@@ -188,19 +155,12 @@ export function InitFinanceCenterECharts(rawData){
                     }
                 }
             },{
-                name: '市盈率',
+                name: '利润率',
                 type: 'line',
                 xAxisIndex:1,
                 yAxisIndex:3,
                 symbol:"none",
-                data:pe,
-            },{
-                name: '市净率',
-                type: 'line',
-                xAxisIndex:1,
-                yAxisIndex:4,
-                symbol:"none",
-                data:pb,
+                data:profit_rate,
             },{
                 name: 'ROE',
                 type: 'line',
@@ -208,39 +168,6 @@ export function InitFinanceCenterECharts(rawData){
                 yAxisIndex:5,
                 symbol:"none",
                 data:roe,
-            },{
-                name: '涨跌幅',
-                type: 'line',
-                xAxisIndex:0,
-                yAxisIndex:6,
-                data:pct_chg,
-                itemStyle:{
-                    normal:{
-                        color:'transparent'
-                    }
-                }
-            },{
-                name: '换手率',
-                type: 'line',
-                xAxisIndex:1,
-                yAxisIndex:7,
-                data:turn_over_rate,
-                itemStyle:{
-                    normal:{
-                        color:'transparent'
-                    }
-                }
-            },{
-                name: '真实换手率',
-                type: 'line',
-                xAxisIndex:1,
-                yAxisIndex:7,
-                data:turn_over_rate_f,
-                itemStyle:{
-                    normal:{
-                        color:'transparent'
-                    }
-                }
             },{
                 name: '净资产',
                 type: 'bar',
