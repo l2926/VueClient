@@ -8,57 +8,47 @@ export function InitAssetCenterEcharts(rawData){
     }
 
     var dates = priceData.map(item => {
-        return item['trade_date'];
+        return item['end_date'];
     });
 
-    var data = priceData.map(item =>{
-        return [+item["open"], +item["close"], +item["low"], +item["high"]];
+    var total_revenue = priceData.map(item =>{
+        return item['total_revenue'];
     });
 
-    var amount = priceData.map(item => {
-        return item["amount"];
+    var total_cogs = priceData.map(item =>{
+        return item['total_cogs'];
     });
 
-    var total_mv = priceData.map(item=>{
-        return item['total_mv']
+    var total_assets = priceData.map(item => {
+        return item["total_assets"];
     });
 
-    var pe = priceData.map(item=>{
-        return item["pe"]
+    // alert(total_assets)
+
+    var net_assets = priceData.map(item=>{
+        return item['net_assets']
     })
 
-    var pb = priceData.map(item=>{
-        return item["pb"]
+    var nincome_attr_p = priceData.map(item=>{
+        return item['nincome_attr_p']
+    })
+
+    var total_liab = priceData.map(item=>{
+        return item["total_liab"]
+    })
+
+    var level_rate = priceData.map(item=>{
+        return item["level_rate"]
+    })
+
+
+    var profit_rate = priceData.map(item=>{
+        return item["profit_rate"]
     })
 
     var roe = priceData.map(item=>{
-        if(item['pe'] == 0){
-            item['roe'] = 0;
-        }else{
-            item['roe'] = item['pb'] / item['pe'];
-        }
-        return item['roe'].toFixed(2);
+        return item["roe"]
     })
-
-    var pct_chg = priceData.map(item=>{
-        return item["pct_chg"]
-    })
-
-    var turn_over_rate = priceData.map(item=>{
-        return item["turn_over_rate"]
-    })
-
-    var turn_over_rate_f = priceData.map(item=>{
-        return item["turn_over_rate_f"]
-    })
-
-    var asset = priceData.map((item=>{
-        if(item["pb"] != 0 && item["pb"] != null){
-            return (item["total_mv"] / item["pb"]).toFixed(2)
-        }else{
-            return 0
-        }
-    }))
 
     const option = {
         title: {
@@ -78,9 +68,9 @@ export function InitAssetCenterEcharts(rawData){
         },
         animation:false,
         grid:[
-            {top:'7%',bottom:'7%',width:'',height:'45%'},
-            {top:'58%',bottom:'7%',width:'',height:'16%'},
-            {top:'81%',bottom:'0%',width:'',height:'12%'}
+            {top:'7%',bottom:'7%',width:'',height:'40%'},
+            {top:'53%',bottom:'7%',width:'',height:'16%'},
+            {top:'76%',bottom:'0%',width:'',height:'12%'}
         ],
         xAxis: [{
             gridIndex:0,
@@ -96,25 +86,16 @@ export function InitAssetCenterEcharts(rawData){
             gridIndex:0,
             scale:true
         },{
-            gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 2,
-            scale: true
-        },{
-            gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 2,
-            scale: true
-        },{
             gridIndex: 0,
             scale: true
         },{
             gridIndex: 1,
+            scale: true
+        },{
+            gridIndex: 1,
+            scale: true
+        },{
+            gridIndex: 2,
             scale: true
         },{
             gridIndex: 2,
@@ -152,101 +133,61 @@ export function InitAssetCenterEcharts(rawData){
         }],
         series: [
             {
-                name: 'K线',
-                type: 'candlestick',
+                name: '总营收',
+                type: 'bar',
                 xAxisIndex:0,
                 yAxisIndex:0,
-                data: data,
+                data: total_revenue,
             },{
-                name: '成交金额',
+                name: '总成本',
+                type: 'bar',
+                xAxisIndex:0,
+                yAxisIndex:0,
+                data: total_cogs,
+            },{
+                name: '利润率',
+                type: 'line',
+                xAxisIndex:0,
+                yAxisIndex:1,
+                data:profit_rate
+            },{
+                name: '总资产',
                 type: 'bar',
                 xAxisIndex:1,
-                yAxisIndex:1,
-                data:amount,
-                itemStyle:{
-                    normal:{
-                        color:(params)=>{
-                            var colorList;
-                            if (data[params.dataIndex][1]>data[params.dataIndex][0]) {
-                                colorList = '#ff5900';
-                            } else {
-                                colorList = 'rgba(0,255,0,0.62)';
-                            }
-                            return colorList
-                        }
-                    }
-                }
-            },{
-                name: '市值',
-                type: 'line',
-                xAxisIndex:2,
                 yAxisIndex:2,
-                data:total_mv,
-                itemStyle:{
-                    normal:{
-                        color:'transparent'
-                    }
-                }
+                data:total_assets
             },{
-                name: '市盈率',
+                name: '总负债',
+                type: 'bar',
+                xAxisIndex:1,
+                yAxisIndex:2,
+                symbol:"none",
+                data:total_liab,
+            },{
+                name: '杠杆率',
                 type: 'line',
                 xAxisIndex:1,
                 yAxisIndex:3,
                 symbol:"none",
-                data:pe,
-            },{
-                name: '市净率',
-                type: 'line',
-                xAxisIndex:1,
-                yAxisIndex:4,
-                symbol:"none",
-                data:pb,
-            },{
-                name: 'ROE',
-                type: 'line',
-                xAxisIndex:2,
-                yAxisIndex:5,
-                symbol:"none",
-                data:roe,
-            },{
-                name: '涨跌幅',
-                type: 'line',
-                xAxisIndex:0,
-                yAxisIndex:6,
-                data:pct_chg,
-                itemStyle:{
-                    normal:{
-                        color:'transparent'
-                    }
-                }
-            },{
-                name: '换手率',
-                type: 'line',
-                xAxisIndex:1,
-                yAxisIndex:7,
-                data:turn_over_rate,
-                itemStyle:{
-                    normal:{
-                        color:'transparent'
-                    }
-                }
-            },{
-                name: '真实换手率',
-                type: 'line',
-                xAxisIndex:1,
-                yAxisIndex:7,
-                data:turn_over_rate_f,
-                itemStyle:{
-                    normal:{
-                        color:'transparent'
-                    }
-                }
+                data:level_rate,
             },{
                 name: '净资产',
                 type: 'bar',
                 xAxisIndex:2,
-                yAxisIndex:8,
-                data:asset
+                yAxisIndex:4,
+                data:net_assets
+            },{
+                name: '净利润',
+                type: 'bar',
+                xAxisIndex:2,
+                yAxisIndex:4,
+                data:nincome_attr_p
+            },{
+                name: 'roe',
+                type: 'line',
+                xAxisIndex:2,
+                yAxisIndex:5,
+                data:roe
             }
         ],
     };
