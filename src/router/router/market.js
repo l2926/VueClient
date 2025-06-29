@@ -19,6 +19,10 @@ const routes = [
         path:'/market/log_daily',
         name: 'log_daily',
         component: import('@/View/market/LogDailyPage.vue')
+    },{
+        path:'/market/money_flow',
+        name: 'money_flow_market',
+        component: import('@/View/market/MoneyFlowPage.vue')
     }
 ]
 

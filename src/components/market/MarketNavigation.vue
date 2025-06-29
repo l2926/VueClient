@@ -24,14 +24,15 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="资金流向" style="width: 7%" @change="onMonthlyLevel">
-    <el-option
-        v-for="item in moneyFlowOptions"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-    </el-option>
-  </el-select>
+<!--  <el-select v-model="monthlyLevel" placeholder="资金流向" style="width: 7%" @change="onMonthlyLevel">-->
+<!--    <el-option-->
+<!--        v-for="item in moneyFlowOptions"-->
+<!--        :key="item.value"-->
+<!--        :label="item.label"-->
+<!--        :value="item.value">-->
+<!--    </el-option>-->
+<!--  </el-select>-->
+  <el-button @click="onSelectMoneyFlow" style="margin-right: 0;margin-left:0">资金流向</el-button>
 <!--  <el-select v-model="monthlyLevel" placeholder="十大股东" style="width: 7%" @change="onMonthlyLevel">-->
 <!--    <el-option-->
 <!--        v-for="item in topHoldOptions"-->
@@ -88,10 +89,10 @@ const financeOptions = ref([
   {value: 'finance_center', label: '财务概览'}
 ]);
 
-const moneyFlowOptions = ref([
-  {value: 'money_flow', label: '资金流向'},
-  {value: 'money_flow_pct', label: '资金流向(%)'}
-]);
+// const moneyFlowOptions = ref([
+//   {value: 'money_flow', label: '资金流向'},
+//   {value: 'money_flow_pct', label: '资金流向(%)'}
+// ]);
 
 // const topHoldOptions = ref([
 //   {value: 'monthly1', label: '十大股东'},
@@ -143,7 +144,13 @@ const onFinanceLevel = (value) => {
   }
 }
 
-//所属行业页面条抓按
+//资金流向页面跳转
+const onSelectMoneyFlow = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  router.push({path:"/market/money_flow",query:query_dic})
+}
+
+//所属行业页面跳转
 const onSelectSubordinate = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   router.push({path:"/market/subordinate",query:query_dic})
