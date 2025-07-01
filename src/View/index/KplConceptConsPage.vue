@@ -118,7 +118,6 @@
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
 import {useRoute} from "vue-router";
-import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
 import ConceptMemberNavigation from "@/components/index/ConceptMemberNavigation.vue";
 //初始化所属表格内容
 var tableData = ref([]);
@@ -127,11 +126,10 @@ var tableData = ref([]);
 const route = useRoute();
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  const para_dic = industryParameterTransform(query_dic);
-  // alert(JSON.stringify(para_dic))
-  axios.post("http://127.0.0.1:8081/index/kpl_concept_cons",para_dic).then(
+  // alert(JSON.stringify(query_dic))
+  axios.post("http://127.0.0.1:8081/index/kpl_concept_cons",query_dic).then(
       (response) => {
-        alert(JSON.stringify(response.data));
+        // alert(JSON.stringify(response.data));
         tableData.value = response.data;
 
         var ts_code_list = response.data.map((item)=>{
