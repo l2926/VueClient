@@ -23,7 +23,7 @@
           label="公司名称"
           width="80">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=analysis&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=analysis&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="55">
@@ -180,7 +180,6 @@
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
 import {useRoute} from "vue-router";
-import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
 import AnalysisNavigation from "@/components/analysis/AnalysisNavigation.vue";
 
 //初始化所属表格内容
@@ -190,9 +189,8 @@ var tableData = ref([]);
 const route = useRoute();
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  const para_dic = industryParameterTransform(query_dic);
-  // alert(JSON.stringify(para_dic))
-  axios.post("http://127.0.0.1:8081/analysis/company_info",para_dic).then(
+  // alert(JSON.stringify(query_dic))
+  axios.post("http://127.0.0.1:8081/analysis/company_info",query_dic).then(
       (response) => {
         // alert(JSON.stringify(response.data));
         tableData.value = response.data;
