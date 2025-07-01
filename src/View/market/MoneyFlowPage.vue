@@ -2,6 +2,7 @@
   <el-header>
     <MarketNavigation></MarketNavigation>
   </el-header>
+  <div id="myDiv">资金净流入(亿):</div>
   <div id="priceCharts" class="container-fluid" style="width:99%;height:600px;margin-left: 0"></div>
 
 </template>
@@ -27,7 +28,7 @@ const axiosEcharts = ()=>{
           InitMoneyFlowEcharts(response.data);
         }
         catch (err){
-          alert("echarts处理异常")
+            alert("echarts处理异常")
         }
       }
   ).catch(error => {
@@ -38,6 +39,7 @@ const axiosEcharts = ()=>{
 
 onMounted(axiosEcharts);
 onUpdated(axiosEcharts);
+
 </script>
 
 <style scoped>
