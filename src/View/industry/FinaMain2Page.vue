@@ -4,7 +4,6 @@
     <el-header style="">
       <FundamentalNavigation></FundamentalNavigation>
     </el-header>
-    FinaMain2
     <el-table
         :data="tableData"
         border
