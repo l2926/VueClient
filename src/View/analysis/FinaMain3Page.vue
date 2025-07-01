@@ -4,7 +4,6 @@
     <el-header style="">
       <AnalysisNavigation></AnalysisNavigation>
     </el-header>
-    FinaMain3Analysis
     <el-table
         :data="tableData"
         border
@@ -24,7 +23,7 @@
           label="公司名称"
           width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=L1&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=analysis&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="60">
@@ -150,7 +149,7 @@ const axiosTable = ()=>{
   // alert(JSON.stringify(para_dic))
   axios.post("http://127.0.0.1:8081/analysis/fina_main3",para_dic).then(
       (response) => {
-        alert(JSON.stringify(response.data));
+        // alert(JSON.stringify(response.data));
         tableData.value = response.data;
 
         var ts_code_list = response.data.map((item)=>{
@@ -161,8 +160,8 @@ const axiosTable = ()=>{
           return item["name"]
         });
 
-        localStorage.setItem("industry_code",ts_code_list);
-        localStorage.setItem("industry_name",name_list);
+        localStorage.setItem("analysis_code",ts_code_list);
+        localStorage.setItem("analysis_name",name_list);
       }
   ).catch(error => {
     console.log(error);

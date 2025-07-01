@@ -25,6 +25,7 @@ export function marketParameterTransform(param_dic) {
             ts_code_list = getCookie("analysis_code")
             name_list = getCookie("analysis_name")
         }
+
         if(level == 'L1' || level == 'L2' || level == 'L3'){
             ts_code_list = getCookie("industry_code")
             name_list = getCookie("industry_name")
