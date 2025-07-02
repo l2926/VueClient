@@ -240,7 +240,7 @@ const axiosTable = ()=>{
   axios.post("http://127.0.0.1:8081/industry/two_days_differ",para_dic).then(
       (response) => {
         var raw_data = response.data;
-        // alert(JSON.stringify(raw_data));
+        alert(JSON.stringify(raw_data));
         tableData.value = raw_data;
 
         var ts_code_list = raw_data.map((item)=>{
