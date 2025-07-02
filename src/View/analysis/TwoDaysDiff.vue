@@ -235,7 +235,7 @@ const onSelectDate = ()=>{
 
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  alert(JSON.stringify(query_dic))
+  // alert(JSON.stringify(query_dic))
   axios.post("http://127.0.0.1:8081/analysis/two_days_differ",query_dic).then(
       (response) => {
         var raw_data = response.data;
