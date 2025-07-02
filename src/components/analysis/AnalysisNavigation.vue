@@ -39,6 +39,9 @@
 
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTop100">A股百强</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTop100">TOP成交量</el-button>
+
+
     <el-date-picker
         v-model="selectedDate"
         type="date"
@@ -49,6 +52,15 @@
 
     <el-button style="margin-left:0;margin-right: 0" @click="selectPreviousDay">前一天</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="selectNextDay">后一天</el-button>
+
+    <el-date-picker
+        v-model="selectedStartDate"
+        type="date"
+        placeholder="选择日期"
+        @change="handleStartDateChange"
+        style="width: 8%"
+    ></el-date-picker>
+
 
   </div>
 </template>
@@ -152,12 +164,22 @@ const handleSelectLimitChange = (value)=> {
 };
 
 const selectedDate = ref(new Date()); // 响应式变量，用于存储选择的日期
+const selectedStartDate = ref(new Date());
+
 const handleDateChange = (selectDate)=>{
   var date = getNormDate(selectDate)
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["trade_date"] = date;
   router.push({path: '/analysis/limit', query: query_dic});
 }
+
+const handleStartDateChange = (selectDate)=>{
+  var date = getNormDate(selectDate)
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["start_date"] = date;
+  router.push({path: '/analysis/two_days_diff', query: query_dic});
+}
+
 const selectPreviousDay=()=>{
   if (selectedDate.value) {
     const day = getPreviousDay(selectedDate);
@@ -179,6 +201,7 @@ const selectNextDay=()=>{
 onMounted(()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   selectedDate.value = new Date(dayjs(query_dic["trade_date"]).format('YYYY-MM-DD'));
+  selectedStartDate.value =new Date(dayjs(query_dic["start_date"]).format('YYYY-MM-DD'));
 });
 
 </script>
