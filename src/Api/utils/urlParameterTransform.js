@@ -60,6 +60,7 @@ export function industryParameterTransform(param_dic){
     var level = param_dic["level"]
     var level_id = param_dic["level_id"]
     var trade_date = param_dic["trade_date"]
+    var start_date = param_dic["start_date"]
 
     // 定义行业列表
     var industry_list = []
@@ -86,7 +87,8 @@ export function industryParameterTransform(param_dic){
         "block_id":block_id,
         "level":level,
         "industry_code":industry_code,
-        "trade_date":trade_date
+        "trade_date":trade_date,
+        "start_date":start_date
     }
 
     return param_dic_copy

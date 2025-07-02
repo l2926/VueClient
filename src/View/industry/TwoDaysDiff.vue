@@ -4,7 +4,7 @@
     <el-header style="">
       <FundamentalNavigation></FundamentalNavigation>
     </el-header>
-    TowDaysDiff
+    TowDaysDiff Industry
     <el-table
         :data="tableData"
         border
@@ -223,6 +223,7 @@ import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
 import {useRoute} from "vue-router";
 import FundamentalNavigation from "@/components/industry/FundamentalNavigation.vue";
+import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
 
 const route = useRoute();
 
@@ -235,7 +236,8 @@ const onSelectDate = ()=>{
 
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  axios.post("http://127.0.0.1:8081/analysis/top100",query_dic).then(
+  const para_dic = industryParameterTransform(query_dic);
+  axios.post("http://127.0.0.1:8081/industry/two_days_differ",para_dic).then(
       (response) => {
         var raw_data = response.data;
         // alert(JSON.stringify(raw_data));
