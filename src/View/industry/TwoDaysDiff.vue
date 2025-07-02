@@ -220,7 +220,6 @@
 
 <script setup>
 import {onMounted, onUpdated, ref} from "vue";
-import AnalysisNavigation from "@/components/analysis/AnalysisNavigation.vue";
 import axios from "axios";
 import {useRoute} from "vue-router";
 import FundamentalNavigation from "@/components/industry/FundamentalNavigation.vue";

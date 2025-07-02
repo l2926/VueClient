@@ -90,7 +90,8 @@ export default{
         "block_id":1,
         "level":level,
         "level_id":(index-1)*8 + index2,
-        "trade_date":getCurDate()
+        "trade_date":getCurDate(),
+        "start_date":getCurDate()
       }
 
       this.$router.push({path:'/industry/fundamental',query:query_dic})

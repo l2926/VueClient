@@ -24,6 +24,10 @@ const routes = [
         name:'top_hold',
         component: import('@/View/industry/TopHoldPage.vue')
     },{
+        path:'/industry/two_days_diff',
+        name:'two_days_diff2',
+        component: import('@/View/industry/TwoDaysDiff.vue')
+    },{
         path:'/industry/ten_days',
         name:'ten_days',
         component: import('@/View/industry/TenDaysPage.vue')
