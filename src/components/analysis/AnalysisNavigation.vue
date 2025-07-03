@@ -3,7 +3,7 @@
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectLimitBoard">涨停板</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectMarket">行情</el-button>
     <el-select v-model="defaultLimit" placeholder="五日涨停" style="width: 7%" popper-class="horizontal-select"
-               @change="handleSelectLimitChange">
+               @change="handleSelectFiveDaysLimitChange">
       <el-option
           v-for="item in limitOptions"
           :key="item.value"
@@ -157,9 +157,26 @@ const handleSelectTop100 = () => {
   router.push({path:'/analysis/top100',query:query_dic});
 }
 
-const handleSelectLimitChange = (value)=> {
-  alert(value);
+const handleSelectFiveDaysLimitChange = (value)=> {
+  // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query));
+
+  if(value === "fiveDays"){
+    query_dic["select_id"] = 2;
+  }
+
+  if(value === "tenDays"){
+    query_dic["select_id"] = 3;
+  }
+
+  if(value === "fifteenDays"){
+    query_dic["select_id"] = 4;
+  }
+
+  if(value === "twentyDays"){
+    query_dic["select_id"] = 5;
+  }
+
   router.push({path:'/analysis/five_days_limit',query:query_dic});
 };
 

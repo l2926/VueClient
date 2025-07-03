@@ -2,15 +2,17 @@
   <div>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickMarket">行情</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="hanleClickFundmental">基本面</el-button>
-    <el-select v-model="defaultLimit" placeholder="五日涨停" style="width: 7%" popper-class="horizontal-select"
-               @change="handleSelectLimitChange">
-      <el-option
-          v-for="item in limitOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
+<!--    <el-select v-model="defaultLimit" placeholder="五日涨停" style="width: 7%" popper-class="horizontal-select"-->
+<!--               @change="handleSelectLimitChange">-->
+<!--      <el-option-->
+<!--          v-for="item in limitOptions"-->
+<!--          :key="item.value"-->
+<!--          :label="item.label"-->
+<!--          :value="item.value">-->
+<!--      </el-option>-->
+<!--    </el-select>-->
+
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickFiveDaysLimit">五日涨停</el-button>
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>
 <!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>-->
@@ -75,12 +77,12 @@ const finaMainOptions = ref([
   {value: 'fina_main3', label: '主营业务3'}
 ]);
 
-const limitOptions = ref([
-  {value:'fiveDays',label:'五日涨停'},
-  {value:'tenDays',label:'十日涨停'},
-  {value: 'fifteenDays',label: '十五涨停'},
-  {value: 'twentyDays',label: '二十涨停'}
-]);
+// const limitOptions = ref([
+//   {value:'fiveDays',label:'五日涨停'},
+//   {value:'tenDays',label:'十日涨停'},
+//   {value: 'fifteenDays',label: '十五涨停'},
+//   {value: 'twentyDays',label: '二十涨停'}
+// ]);
 
 const moneyFlowOptions = ref([
   {value:'money_flow',label:'资金流向'},
@@ -92,8 +94,8 @@ const hanleClickFundmental = ()=>{
   router.push({path:'/industry/fundamental',query:query_dic});
 }
 
-const handleSelectLimitChange = (value)=> {
-  alert(value);
+const handleClickFiveDaysLimit = ()=> {
+  // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query));
   router.push({path:'/industry/five_days_limit',query:query_dic});
 };

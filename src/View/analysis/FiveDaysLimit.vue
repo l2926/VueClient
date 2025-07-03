@@ -87,96 +87,73 @@
           <a :href="market" style="color: blue">{{ row.close }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            振幅
-          </el-link>
-        </template>
+
+      <el-table-column
+          prop="date"
+          label="5日涨停"
+          width="70">
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.amp }}</a>
+          <a :href="market" style="color: red">{{ row.up10_count5 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="70">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            PE
-          </el-link>
-        </template>
+      <el-table-column
+          prop="date"
+          label="10日涨停"
+          width="70">
         <template #default="{ row }">
-          <a :href="market" style="color: navy">{{ row.pe_ttm }}</a>
+          <a :href="market" style="color: red">{{ row.up10_count10 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            PB
-          </el-link>
-        </template>
+      <el-table-column
+          prop="date"
+          label="15日涨停"
+          width="70">
         <template #default="{ row }">
-          <a :href="market" style="color: Olive">{{ row.pb }}</a>
+          <a :href="market" style="color: red">{{ row.up10_count15 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            PS
-          </el-link>
-        </template>
+      <el-table-column
+          prop="date"
+          label="20日涨停"
+          width="70">
         <template #default="{ row }">
-          <a :href="market" style="color: Teal">{{ row.ps_ttm }}</a>
+          <a :href="market" style="color: red">{{ row.up10_count20 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            利润(%)
-          </el-link>
-        </template>
+      <el-table-column
+          prop="date"
+          label="5日跌停"
+          width="70">
         <template #default="{ row }">
-          <a :href="market" style="color: Fuchsia">{{ row.profit_rate }}</a>
+          <a :href="market" style="color: green">{{ row.down10_count5 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            ROE
-          </el-link>
-        </template>
+      <el-table-column
+          prop="date"
+          label="10日跌停"
+          width="70">
         <template #default="{ row }">
-          <a :href="market" style="color: purple">{{ row.roe }}</a>
+          <a :href="market" style="color: green">{{ row.down10_count10 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            换手(%)
-          </el-link>
-        </template>
+      <el-table-column
+          prop="date"
+          label="15日跌停"
+          width="70">
         <template #default="{ row }">
-          <a :href="market" style="color: Silver">{{ row.turnover_rate }}</a>
+          <a :href="market" style="color: green">{{ row.down10_count15 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            成交金额
-          </el-link>
-        </template>
+      <el-table-column
+          prop="date"
+          label="20日跌停"
+          width="70">
         <template #default="{ row }">
-          <a :href="market" style="color: Teal">{{ row.amount }}</a>
+          <a :href="market" style="color: green">{{ row.down10_count20 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            连扳
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: DarkViolet">{{ row.conti_up }}</a>
-        </template>
-      </el-table-column>
+
+
       <el-table-column
           prop="address"
           label="板块"
@@ -235,7 +212,7 @@ const onSelectDate = ()=>{
 
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  axios.post("http://127.0.0.1:8081/analysis/top100",query_dic).then(
+  axios.post("http://127.0.0.1:8081/analysis/five_days_limit",query_dic).then(
       (response) => {
         var raw_data = response.data;
         // alert(JSON.stringify(raw_data));
