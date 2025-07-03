@@ -112,6 +112,7 @@ const handleSelectLimitBoard = ()=>{
 
 const handleSelectMarket = () =>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id"] = 1;
   router.push({path:'/analysis/limit',query:query_dic});
 }
 
