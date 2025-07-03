@@ -4,7 +4,6 @@
     <el-header style="">
       <AnalysisNavigation></AnalysisNavigation>
     </el-header>
-    FiveDaysLimit
     <el-table
         :data="tableData"
         border
@@ -169,7 +168,7 @@
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.asset }}</a>
+          <a :href="market" style="color: gray">{{ row.assets }}</a>
         </template>
       </el-table-column>
       <el-table-column>
