@@ -211,7 +211,7 @@ export function InitLogDailyECharts(rawData){
                     // 每个柱子设置颜色
                     color: function(params) {
                         const value = params.value;
-                        return value >= 0 ? 'green' : 'red';
+                        return value >= 0 ? 'red' : 'green';
                     }
                 }
             }
