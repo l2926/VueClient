@@ -68,6 +68,16 @@
       </el-table-column>
       <el-table-column
           prop="address"
+          label="涨跌幅"
+          width="70">
+        <template #default="{ row }">
+          <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="address"
           label="概念描述">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.desc }}</a>
@@ -88,7 +98,7 @@
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.asset }}</a>
+          <a :href="market" style="color: gray">{{ row.assets }}</a>
         </template>
       </el-table-column>
       <el-table-column width="90">
