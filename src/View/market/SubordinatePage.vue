@@ -84,6 +84,7 @@ const axiosTable = ()=>{
   // alert(JSON.stringify(para_dic))
   axios.post("http://127.0.0.1:8081/market/subordinate",para_dic).then(
       (response) => {
+        // alert(JSON.stringify(response.data));
         tableData.value = response.data;
       }
   ).catch(error => {

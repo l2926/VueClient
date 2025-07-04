@@ -24,23 +24,17 @@
         :value="item.value">
     </el-option>
   </el-select>
-<!--  <el-select v-model="monthlyLevel" placeholder="资金流向" style="width: 7%" @change="onMonthlyLevel">-->
-<!--    <el-option-->
-<!--        v-for="item in moneyFlowOptions"-->
-<!--        :key="item.value"-->
-<!--        :label="item.label"-->
-<!--        :value="item.value">-->
-<!--    </el-option>-->
-<!--  </el-select>-->
+
   <el-button @click="onSelectMoneyFlow" style="margin-right: 0;margin-left:0">资金流向</el-button>
-<!--  <el-select v-model="monthlyLevel" placeholder="十大股东" style="width: 7%" @change="onMonthlyLevel">-->
-<!--    <el-option-->
-<!--        v-for="item in topHoldOptions"-->
-<!--        :key="item.value"-->
-<!--        :label="item.label"-->
-<!--        :value="item.value">-->
-<!--    </el-option>-->
-<!--  </el-select>-->
+  <el-select v-model="dailyLevel" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
+    <el-option
+        v-for="item in finaMainOptions"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+    </el-option>
+  </el-select>
+  <el-button @click="onSelectCompanyInfo" style="margin-right: 0;margin-left:0">公司信息</el-button>
   <el-button @click="onSelectSubordinate" style="margin-right: 0;margin-left:0">所属</el-button>
   <el-button style="margin-right: 0;margin-left:0">对比</el-button>
 
@@ -89,15 +83,10 @@ const financeOptions = ref([
   {value: 'finance_center', label: '财务概览'}
 ]);
 
-// const moneyFlowOptions = ref([
-//   {value: 'money_flow', label: '资金流向'},
-//   {value: 'money_flow_pct', label: '资金流向(%)'}
-// ]);
-
-// const topHoldOptions = ref([
-//   {value: 'monthly1', label: '十大股东'},
-//   {value: 'monthly2', label: '十大流通股东'}
-// ]);
+const finaMainOptions = ref([
+  {value: 'fina_main2', label: '主营业务2'},
+  {value: 'fina_main3', label: '主营业务3'}
+]);
 
 const onDailyLevel= (value) => {
   console.log("mmmmmm")
@@ -148,6 +137,26 @@ const onFinanceLevel = (value) => {
 const onSelectMoneyFlow = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   router.push({path:"/market/money_flow",query:query_dic})
+}
+
+//主营业务选项
+const handleSelectFinaMain = (value)=>{
+  // alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+
+  if(value === "fina_main2"){
+    router.push({path:'/market/fina_mian2',query:query_dic})
+  }
+
+  if(value === "fina_main3"){
+    router.push({path:'/market/fina_mian3',query:query_dic})
+  }
+
+}
+
+const onSelectCompanyInfo = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  router.push({path:'/market/company_info',query:query_dic})
 }
 
 //所属行业页面跳转

@@ -23,6 +23,18 @@ const routes = [
         path:'/market/money_flow',
         name: 'money_flow_market',
         component: import('@/View/market/MoneyFlowPage.vue')
+    },{
+        path:'/market/fina_mian2',
+        name: 'fina_main2_market',
+        component: import('@/View/market/FinaMain2Page.vue')
+    },{
+        path:'/market/fina_mian3',
+        name: 'fina_main3_market',
+        component: import('@/View/market/FinaMain3Page.vue')
+    },{
+        path:'/market/company_info',
+        name: 'company_info_market',
+        component: import('@/View/market/ComponyInfoPage.vue')
     }
 ]
 
