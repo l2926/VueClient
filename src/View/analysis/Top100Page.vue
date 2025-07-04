@@ -87,16 +87,6 @@
           <a :href="market" style="color: blue">{{ row.close }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            振幅
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.amp }}</a>
-        </template>
-      </el-table-column>
       <el-table-column width="70">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
@@ -170,11 +160,21 @@
       <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            连扳
+            五日涨停
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: DarkViolet">{{ row.conti_up }}</a>
+          <a :href="market" style="color: DarkViolet">{{ row.up10_count5 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column width="70">
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            二十日涨停
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.up10_count20 }}</a>
         </template>
       </el-table-column>
       <el-table-column
@@ -192,7 +192,7 @@
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.asset }}</a>
+          <a :href="market" style="color: gray">{{ row.assets }}</a>
         </template>
       </el-table-column>
       <el-table-column>
