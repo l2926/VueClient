@@ -78,6 +78,14 @@
       </el-table-column>
       <el-table-column
           prop="date"
+          label="概念名称"
+          width="90">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.concept_name }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
           label="公司全称"
           width="150">
         <template #default="{ row }">
