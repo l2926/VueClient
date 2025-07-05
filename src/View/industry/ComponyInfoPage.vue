@@ -170,6 +170,13 @@
           <a :href="market" style="color: gray">{{ row.total_mv }}</a>
         </template>
       </el-table-column>
+      <el-table-column width="90"
+                       prop="address"
+                       label="日期">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.trade_date }}</a>
+        </template>
+      </el-table-column>
     </el-table>
 
   </el-container>
