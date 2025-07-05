@@ -23,7 +23,7 @@
           label="公司名称"
           width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=L1&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=L1&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="60">
@@ -74,6 +74,14 @@
           <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>
           <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>
           <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
+          label="概念名称"
+          width="90">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.concept_name }}</a>
         </template>
       </el-table-column>
       <el-table-column
@@ -155,7 +163,7 @@ const axiosTable = ()=>{
       }
   ).catch(error => {
     console.log(error);
-    alert("axios请求错误");
+    alert(error);
   });
 }
 
