@@ -43,6 +43,22 @@ const routes = [
         path:'/index/company_info',
         name:'CompanyInfo',
         component: import('@/View/index/CompanyInfoPage.vue')
+    },{
+        path:'/index/five_days_limit',
+        name:'five_days_limit_index',
+        component: import('@/View/index/FiveDaysLimit.vue')
+    },{
+        path:'/index/money_flow',
+        name:'money_flow_index',
+        component: import('@/View/index/MoneyFlow.vue')
+    },{
+        path:'/index/money_flow_pct',
+        name:'money_flow_pct_index',
+        component: import('@/View/index/MoneyFlowPct.vue')
+    },{
+        path:'/index/ten_days',
+        name:'ten_days_index',
+        component: import('@/View/index/TenDaysPage.vue')
     }
 ]
 
