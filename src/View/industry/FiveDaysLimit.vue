@@ -152,6 +152,15 @@
       </el-table-column>
 
       <el-table-column
+          prop="date"
+          label="连板"
+          width="70">
+        <template #default="{ row }">
+          <a :href="market">{{ row.conti_up }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
           prop="address"
           label="板块"
           width="70">
