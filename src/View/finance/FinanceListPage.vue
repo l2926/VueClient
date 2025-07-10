@@ -34,14 +34,14 @@
           <el-link style="width:100px;color:black;" to="" @click="onBasicInfo(index,index2)" >{{industries[(index-1)*8 + index2-1]}}</el-link>
         </td>
       </tr>
-      <tr v-for="(index3) in (areas.length/8)" :key="index3">
-        <td v-if="index3==1" rowspan="4" style="width:185px;">
-          <text>地域</text>
-        </td>
-        <td v-for="(index4) in 8" :key="index4" >
-          <el-link style="width:100px;color:black;" to="" @click="onBasicInfo_area(index3,index4)" >{{areas[(index3-1)*8 + index4-1]}}</el-link>
-        </td>
-      </tr>
+<!--      <tr v-for="(index3) in (areas.length/8)" :key="index3">-->
+<!--        <td v-if="index3==1" rowspan="4" style="width:185px;">-->
+<!--          <text>地域</text>-->
+<!--        </td>-->
+<!--        <td v-for="(index4) in 8" :key="index4" >-->
+<!--          <el-link style="width:100px;color:black;" to="" @click="onBasicInfo_area(index3,index4)" >{{areas[(index3-1)*8 + index4-1]}}</el-link>-->
+<!--        </td>-->
+<!--      </tr>-->
       </tbody>
     </table>
   </el-main>
