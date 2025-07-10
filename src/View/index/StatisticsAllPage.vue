@@ -26,7 +26,7 @@ const axiosEcharts = ()=>{
           InitStatisticsAllECharts(response.data);
         }
         catch (err){
-          alert("echarts处理异常")
+          alert(err)
         }
       }
   ).catch(error => {

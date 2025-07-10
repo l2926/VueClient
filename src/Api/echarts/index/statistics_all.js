@@ -53,17 +53,13 @@ export function InitStatisticsAllECharts(rawData){
         animation:false,
         grid:[
             {top:'7%',bottom:'7%',width:'',height:'45%'},
-            {top:'58%',bottom:'7%',width:'',height:'16%'},
-            {top:'81%',bottom:'0%',width:'',height:'12%'}
+            {top:'60%',bottom:'7%',width:'',height:'25%'}
         ],
         xAxis: [{
             gridIndex:0,
             data: dates,
         },{
             gridIndex:1,
-            data: dates,
-        },{
-            gridIndex:2,
             data: dates,
         }],
         yAxis: [{
@@ -80,18 +76,6 @@ export function InitStatisticsAllECharts(rawData){
             scale: true
         },{
             gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 2,
-            scale: true
-        },{
-            gridIndex: 0,
-            scale: true
-        },{
-            gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 2,
             scale: true
         }],
         dataZoom: [{
@@ -126,7 +110,7 @@ export function InitStatisticsAllECharts(rawData){
         }],
         series: [
             {
-                name: '大盘涨跌幅统计',
+                name: '大盘个数统计',
                 type: 'bar',
                 xAxisIndex:0,
                 yAxisIndex:0,
@@ -138,17 +122,17 @@ export function InitStatisticsAllECharts(rawData){
                 yAxisIndex: 1,
                 data: allMv
             },{
-                name:'pb',
+                name:'平均市值',
                 type:'line',
                 xAxisIndex: 0,
                 yAxisIndex: 2,
-                data: pb
+                data: avgMv
             },{
-                name:'平均市值',
+                name:'PB',
                 type:'line',
                 xAxisIndex: 1,
                 yAxisIndex: 3,
-                data:avgMv
+                data:pb
             },{
                 name:'净资产',
                 type:'bar',
