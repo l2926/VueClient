@@ -1,4 +1,28 @@
 <template>
+  <el-select v-model="dailyLevel" placeholder="行业级别" style="width: 7%" @change="handleSelectLevel" id="test_select">
+    <el-option
+        v-for="item in levelOptions"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+    </el-option>
+  </el-select>
+  <el-select v-model="dailyLevel" placeholder="板块" style="width: 7%" @change="handleSelectBlock" id="test_select">
+    <el-option
+        v-for="item in blockOptions"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+    </el-option>
+  </el-select>
+  <el-select v-model="dailyLevel" placeholder="市值" style="width: 7%" @change="handleSelectMv" id="test_select">
+    <el-option
+        v-for="item in mvOptions"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+    </el-option>
+  </el-select>
   <el-button style="margin-left:0;margin-right: 0" @click="handleStatistics">行情统计</el-button>
   <el-button style="margin-left:0;margin-right: 0" @click="handleStatisticsAll">所有统计</el-button>
   <el-button style="margin-left:0;margin-right: 0" @click="handleKaipanla">开盘啦题材</el-button>
@@ -25,6 +49,73 @@ import {getNextDay, getNormDate, getPreviousDay} from "@/Api/utils/calcDate";
 
 const route = useRoute();
 const router = useRouter();
+
+const levelOptions = ref([
+  {value:'l1',label:'行业L1'},
+  {value:'l2',label:'行业L2'},
+  {value: 'l3',label: '行业L3'},
+]);
+
+const blockOptions = ref([
+  {value:'main',label:'主板'},
+  {value:'startup',label:'创业板'},
+  {value:'kcb',label:'科创板'},
+  {value:'bj',label:'北交所'}
+])
+
+const mvOptions = ref([
+  {value:'big',label:'大盘股'},
+  {value:'mid',label:'中盘股'},
+  {value:'small',label:'小盘股'}
+])
+
+const handleSelectLevel = (value)=>{
+  // alert(value)
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'l1'){
+    query_dic['level'] = "L1";
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'l2'){
+    query_dic['level'] = "L2";
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'l3'){
+    query_dic['level'] = "L3";
+    router.push({path:route.path,query:query_dic});
+  }
+}
+
+const handleSelectBlock = (value)=>{
+  // alert(value)
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'main'){
+    router.push({path:'/analysis/money_flow',query:query_dic});
+  }
+  if(value === 'startup'){
+    router.push({path:'/analysis/money_flow_pct',query:query_dic});
+  }
+  if(value === 'kcb'){
+    router.push({path:'/analysis/money_flow',query:query_dic});
+  }
+  if(value === 'bj'){
+    router.push({path:'/analysis/money_flow_pct',query:query_dic});
+  }
+}
+
+const handleSelectMv = (value)=>{
+  // alert(value)
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'big'){
+    router.push({path:'/analysis/money_flow',query:query_dic});
+  }
+  if(value === 'mid'){
+    router.push({path:'/analysis/money_flow_pct',query:query_dic});
+  }
+  if(value === 'small'){
+    router.push({path:'/analysis/money_flow_pct',query:query_dic});
+  }
+}
 
 //日期处理
 const selectedDate = ref(new Date()); // 响应式变量，用于存储选择的日期
