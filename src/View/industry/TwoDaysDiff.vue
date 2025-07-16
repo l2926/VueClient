@@ -21,12 +21,12 @@
       <el-table-column
           prop="date"
           label="公司名称"
-          width="100">
+          width="90">
         <template #default="{ row }">
           <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=analysis&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
-      <el-table-column width="80">
+      <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             地区
@@ -36,7 +36,7 @@
           <a :href="market" style="color: gray">{{ row.area }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="120">
+      <el-table-column width="90">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             行业1
@@ -46,7 +46,7 @@
           <a :href="market" style="color: gray">{{ row.industry_name_l1 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="120">
+      <el-table-column width="90">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             行业2
@@ -56,7 +56,7 @@
           <a :href="market" style="color: gray">{{ row.industry_name_l2 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="150">
+      <el-table-column width="120">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             行业3
@@ -66,7 +66,7 @@
           <a :href="market" style="color: gray">{{ row.industry_name_l3 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="110">
+      <el-table-column width="80">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             涨跌幅(%)
@@ -81,7 +81,7 @@
       <el-table-column
           prop="date"
           label="收盘价1"
-          width="100">
+          width="80">
         <template #default="{ row }">
           <a :href="market" style="color: blue">{{ row.close1 }}</a>
         </template>
@@ -89,15 +89,32 @@
       <el-table-column
           prop="date"
           label="收盘价2"
-          width="100">
+          width="80">
         <template #default="{ row }">
           <a :href="market" style="color: blue">{{ row.close2 }}</a>
         </template>
       </el-table-column>
       <el-table-column
+          prop="date"
+          label="PB1"
+          width="80">
+        <template #default="{ row }">
+          <a :href="market" style="color: Olive">{{ row.pb1 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          prop="date"
+          label="PB2"
+          width="80">
+        <template #default="{ row }">
+          <a :href="market" style="color: Olive">{{ row.pb2 }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
           prop="address"
           label="板块"
-          width="100">
+          width="80">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.market }}</a>
         </template>
@@ -141,6 +158,14 @@
         </template>
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.total_mv2 }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          prop="address"
+          label="起始日期">
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.start_date }}</a>
         </template>
       </el-table-column>
 

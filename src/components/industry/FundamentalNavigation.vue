@@ -163,6 +163,7 @@ const handleStartDateChange = (value)=>{
   var date = getNormDate(value)
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["start_date"] = date;
+  query_dic["para_id"] = 2;
   router.push({path: '/industry/two_days_diff', query: query_dic});
 }
 
