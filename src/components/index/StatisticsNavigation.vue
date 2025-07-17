@@ -23,6 +23,14 @@
         :value="item.value">
     </el-option>
   </el-select>
+  <el-select v-model="dailyLevel" placeholder="统计范围" style="width: 7%" @change="handleSelectScope" id="test_select">
+    <el-option
+        v-for="item in scopeOptions"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+    </el-option>
+  </el-select>
   <el-button style="margin-left:0;margin-right: 0" @click="handleStatistics">行情统计</el-button>
   <el-button style="margin-left:0;margin-right: 0" @click="handleStatisticsAll">所有统计</el-button>
   <el-button style="margin-left:0;margin-right: 0" @click="handleKaipanla">开盘啦题材</el-button>
@@ -72,6 +80,12 @@ const mvOptions = ref([
   {value:'small',label:'小盘股'}
 ])
 
+const scopeOptions = ref([
+  {value:'nine',label:'九点'},
+  {value:'five',label:'五点'},
+  {value:'zero',label:'零点'}
+])
+
 const handleSelectLevel = (value)=>{
   // alert(value)
   const query_dic = JSON.parse(JSON.stringify(route.query));
@@ -117,14 +131,38 @@ const handleSelectBlock = (value)=>{
 const handleSelectMv = (value)=>{
   // alert(value)
   const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'all'){
+    query_dic["mv_id"] = 1;
+    router.push({path:route.path,query:query_dic});
+  }
   if(value === 'big'){
-    router.push({path:'/analysis/money_flow',query:query_dic});
+    query_dic["mv_id"] = 2;
+    router.push({path:route.path,query:query_dic});
   }
   if(value === 'mid'){
-    router.push({path:'/analysis/money_flow_pct',query:query_dic});
+    query_dic["mv_id"] = 3;
+    router.push({path:route.path,query:query_dic});
   }
   if(value === 'small'){
-    router.push({path:'/analysis/money_flow_pct',query:query_dic});
+    query_dic["mv_id"] = 4;
+    router.push({path:route.path,query:query_dic});
+  }
+}
+
+//统计范围处理
+const handleSelectScope = (value)=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'nine'){
+    query_dic["para_id"] = 9;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'five'){
+    query_dic["para_id"] = 5;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'zero'){
+    query_dic["para_id"] = 0;
+    router.push({path:route.path,query:query_dic});
   }
 }
 

@@ -128,6 +128,7 @@ export default{
         "level":"L1",
         "block_id":1,
         "mv_id":1,
+        "para_id":9,
         "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/statistics',query:query_dic})

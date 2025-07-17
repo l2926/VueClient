@@ -102,14 +102,14 @@ export function InitStatisticsECharts(rawData){
         }],
         series: [
             {
-                name: '大盘涨停统计(个)',
+                name: '大盘上涨统计(个)',
                 type: 'bar',
                 xAxisIndex:0,
                 yAxisIndex:0,
                 data: upCount,
             },
             {
-                name: '大盘跌停统计(个)',
+                name: '大盘下跌统计(个)',
                 type: 'bar',
                 xAxisIndex:0,
                 yAxisIndex:0,
@@ -117,7 +117,7 @@ export function InitStatisticsECharts(rawData){
                 color:'red',
                 barGap: '-100%'
             },{
-                name:'大盘涨停统计(%)',
+                name:'大盘上涨统计(%)',
                 type:'line',
                 xAxisIndex: 0,
                 yAxisIndex: 1,
