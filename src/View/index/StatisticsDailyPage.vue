@@ -21,7 +21,7 @@ const axiosEcharts = ()=>{
   // alert(JSON.stringify(query_dic))
   axios.post("http://127.0.0.1:8081/index/statistics",query_dic).then(
       response=>{
-        // alert(JSON.stringify(response.data));
+        alert(JSON.stringify(response.data));
         try{
           InitStatisticsECharts(response.data);
         }
@@ -31,7 +31,7 @@ const axiosEcharts = ()=>{
       }
   ).catch(error => {
     console.log(error);
-    alert("axios请求错误");
+    alert(error);
   });
 }
 

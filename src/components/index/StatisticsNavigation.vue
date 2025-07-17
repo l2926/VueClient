@@ -51,12 +51,14 @@ const route = useRoute();
 const router = useRouter();
 
 const levelOptions = ref([
+  {value:'all',label:'行业级别'},
   {value:'l1',label:'行业L1'},
   {value:'l2',label:'行业L2'},
   {value: 'l3',label: '行业L3'},
 ]);
 
 const blockOptions = ref([
+  {value:'all',label:'板块'},
   {value:'main',label:'主板'},
   {value:'startup',label:'创业板'},
   {value:'kcb',label:'科创板'},
@@ -64,6 +66,7 @@ const blockOptions = ref([
 ])
 
 const mvOptions = ref([
+  {value:'all',label:'市值'},
   {value:'big',label:'大盘股'},
   {value:'mid',label:'中盘股'},
   {value:'small',label:'小盘股'}
@@ -89,17 +92,25 @@ const handleSelectLevel = (value)=>{
 const handleSelectBlock = (value)=>{
   // alert(value)
   const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'all'){
+    query_dic['block_id'] = 1
+    router.push({path:route.path,query:query_dic});
+  }
   if(value === 'main'){
-    router.push({path:'/analysis/money_flow',query:query_dic});
+    query_dic['block_id'] = 2
+    router.push({path:route.path,query:query_dic});
   }
   if(value === 'startup'){
-    router.push({path:'/analysis/money_flow_pct',query:query_dic});
+    query_dic['block_id'] = 3
+    router.push({path:route.path,query:query_dic});
   }
   if(value === 'kcb'){
-    router.push({path:'/analysis/money_flow',query:query_dic});
+    query_dic['block_id'] = 4
+    router.push({path:route.path,query:query_dic});
   }
   if(value === 'bj'){
-    router.push({path:'/analysis/money_flow_pct',query:query_dic});
+    query_dic['block_id'] = 5
+    router.push({path:route.path,query:query_dic});
   }
 }
 
