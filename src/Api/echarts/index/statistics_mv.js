@@ -102,14 +102,14 @@ export function InitStatisticsMvECharts(rawData){
         }],
         series: [
             {
-                name: '大盘上涨统计(个)',
+                name: '大盘上涨市值(亿)',
                 type: 'bar',
                 xAxisIndex:0,
                 yAxisIndex:0,
                 data: upCount,
             },
             {
-                name: '大盘下跌统计(个)',
+                name: '大盘下跌市值(亿)',
                 type: 'bar',
                 xAxisIndex:0,
                 yAxisIndex:0,
