@@ -54,7 +54,7 @@
 
 import {useRoute, useRouter} from "vue-router";
 import {ref} from "vue";
-import {getNextDay, getNormDate, getPreviousDay} from "@/Api/utils/calcDate";
+import {dateFormatTrans, getNextDay, getNormDate, getPreviousDay} from "@/Api/utils/calcDate";
 
 const route = useRoute();
 const router = useRouter();
@@ -177,7 +177,7 @@ const handleSelectScope = (value)=>{
 }
 
 //日期处理
-const selectedDate = ref(new Date()); // 响应式变量，用于存储选择的日期
+const selectedDate = ref(new Date(dateFormatTrans(route.query["trade_date"]))); // 响应式变量，用于存储选择的日期
 
 const handleDateChange = (value)=>{
   var date = getNormDate(value)

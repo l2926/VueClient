@@ -43,3 +43,11 @@ export function getNextDay(selectedDate){
 
     return `${year}${month}${day}`;
 }
+
+export function dateFormatTrans(originDate){
+    const year = originDate.substring(0,4);
+    const month = originDate.substring(4,6);
+    const day = originDate.substring(6,8);
+
+    return year+'-'+month+'-'+day;
+}
