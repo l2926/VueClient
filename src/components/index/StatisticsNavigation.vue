@@ -32,6 +32,7 @@
     </el-option>
   </el-select>
   <el-button style="margin-left:0;margin-right: 0" @click="handleStatistics">行情统计</el-button>
+  <el-button style="margin-left:0;margin-right: 0" @click="handleStatisticsMv">市值统计</el-button>
   <el-button style="margin-left:0;margin-right: 0" @click="handleStatisticsAll">所有统计</el-button>
   <el-button style="margin-left:0;margin-right: 0" @click="handleKaipanla">开盘啦题材</el-button>
   <el-button style="margin-left:0;margin-right: 0" @click="handleOriental">东方财富题材</el-button>
@@ -208,6 +209,12 @@ const handleStatistics = ()=>{
   // alert("dsff")
   const query_dic = JSON.parse(JSON.stringify(route.query));
   router.push({path:"/index/statistics",query:query_dic});
+}
+
+const handleStatisticsMv = ()=>{
+  // alert("dsff")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path:"/index/statistics_mv",query:query_dic});
 }
 
 //处理统计所有点击事件
