@@ -3,7 +3,7 @@
     <StatisticsNavigation></StatisticsNavigation>
   </el-header>
 
-  <div style="display: flex; justify-content: center;">
+  <div style="display: flex; justify-content: center;margin-bottom: 20px;">
     <div id="upText">大盘上涨个数:</div>
     <div id="upDiv" style="color:red"></div>
     <div id="downText">,大盘下跌个数:</div>
