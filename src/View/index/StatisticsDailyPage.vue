@@ -4,8 +4,10 @@
   </el-header>
 
   <div style="display: flex; justify-content: center;">
-    <div id="upDiv">大盘上涨个数:,</div>
-    <div id="downDiv">大盘下跌个数:</div>
+    <div id="upText">大盘上涨个数:</div>
+    <div id="upDiv" style="color:red"></div>
+    <div id="downText">,大盘下跌个数:</div>
+    <div id="downDiv" style="color: green"></div>
   </div>
 
   <div id="priceCharts" class="container-fluid" style="width:99%;height:600px;margin-left: 0"></div>
@@ -29,8 +31,8 @@ const axiosEcharts = ()=>{
   axios.post("http://127.0.0.1:8081/index/statistics_count",query_dic).then(
       response=>{
         // alert(JSON.stringify(response.data));
-        document.getElementById("upDiv").innerText = "大盘上涨个数:" + response.data.up_count + ",";
-        document.getElementById("downDiv").innerText = "大盘下跌个数:" + response.data.down_count;
+        document.getElementById("upDiv").innerText = response.data.up_count;
+        document.getElementById("downDiv").innerText = response.data.down_count;
       }
   ).catch(error=>{
     alert(error)

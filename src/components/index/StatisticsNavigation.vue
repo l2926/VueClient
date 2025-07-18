@@ -59,7 +59,6 @@ const route = useRoute();
 const router = useRouter();
 
 const levelOptions = ref([
-  {value:'all',label:'行业级别'},
   {value:'l1',label:'行业L1'},
   {value:'l2',label:'行业L2'},
   {value: 'l3',label: '行业L3'},
@@ -83,6 +82,8 @@ const mvOptions = ref([
 const scopeOptions = ref([
   {value:'nine',label:'九点'},
   {value:'five',label:'五点'},
+  {value:'three',label:'三点'},
+  {value:'one',label:'一点'},
   {value:'zero',label:'零点'}
 ])
 
@@ -158,6 +159,14 @@ const handleSelectScope = (value)=>{
   }
   if(value === 'five'){
     query_dic["para_id"] = 5;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'three'){
+    query_dic["para_id"] = 3;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'one'){
+    query_dic["para_id"] = 1;
     router.push({path:route.path,query:query_dic});
   }
   if(value === 'zero'){
