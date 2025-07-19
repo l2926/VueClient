@@ -1,7 +1,19 @@
 <template>
   <div>
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectLimitBoard">涨停板</el-button>
-    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectMarket">行情</el-button>
+<!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectMarket">行情</el-button>-->
+
+    <el-select v-model="defaultLimit2" placeholder="行情" style="width: 6%" popper-class="horizontal-select"
+               @change="hanldeSelectLimit">
+      <el-option
+          v-for="item in dailyOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
+
+
     <el-select v-model="defaultLimit" placeholder="五日涨停" style="width: 7%" popper-class="horizontal-select"
                @change="handleSelectFiveDaysLimitChange">
       <el-option
@@ -28,7 +40,7 @@
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>
 
-    <el-select v-model="dailyLevel" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
+    <el-select v-model="dailyLevel2" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
       <el-option
           v-for="item in moneyFlowOptions"
           :key="item.value"
@@ -80,7 +92,14 @@ const finaMainOptions = ref([
   {value: 'fina_main3', label: '主营业务3'}
 ]);
 
-const defaultLimit = ref('');
+// const defaultLimit = ref('');
+
+const dailyOptions = ref([
+  {value:"limit1",label:"涨停1"},
+  {value:"limit2",label:"涨停2"},
+  {value:"limit3",label:"涨停3"},
+  {value:"limit5",label:"涨停5"}
+]);
 
 const limitOptions = ref([
   {value:'fiveDays',label:'五日涨停'},
@@ -110,11 +129,11 @@ const handleSelectLimitBoard = ()=>{
   router.push({path:'/analysis/limit_board',query:query_dic});
 }
 
-const handleSelectMarket = () =>{
-  const query_dic = JSON.parse(JSON.stringify(route.query));
-  query_dic["select_id"] = 1;
-  router.push({path:'/analysis/limit',query:query_dic});
-}
+// const handleSelectMarket = () =>{
+//   const query_dic = JSON.parse(JSON.stringify(route.query));
+//   query_dic["select_id"] = 1;
+//   router.push({path:'/analysis/limit',query:query_dic});
+// }
 
 const handleClickTenDays = () => {
   const query_dic = JSON.parse(JSON.stringify(route.query));
@@ -165,6 +184,27 @@ const handleSelectTop100Amount = () => {
   router.push({path:'/analysis/top100',query:query_dic});
 }
 
+const hanldeSelectLimit = (value)=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+
+  if(value == "limit1"){
+    query_dic["para_id"] = 1;
+  }
+
+  if(value == "limit2"){
+    query_dic["para_id"] = 2;
+  }
+
+  if(value == "limit3"){
+    query_dic["para_id"] = 3;
+  }
+
+  if(value == "limit5"){
+    query_dic["para_id"] = 5;
+  }
+
+  router.push({path:'/analysis/limit',query:query_dic});
+}
 const handleSelectFiveDaysLimitChange = (value)=> {
   // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query));
