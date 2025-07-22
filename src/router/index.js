@@ -17,7 +17,7 @@ const routes=[
     {
         path:'/',
         name:'home',
-        component:import('@/View/QueryPage.vue')
+        component: () => import('@/View/QueryPage.vue')
     }
 ];
 
