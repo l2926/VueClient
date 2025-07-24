@@ -1,5 +1,5 @@
 <template>
-  <el-select v-model="dailyLevel" placeholder="行业级别" style="width: 7%" @change="handleSelectLevel" id="test_select">
+  <el-select v-model="dailyLevel1" placeholder="行业级别" style="width: 7%" @change="handleSelectLevel" id="test_select">
     <el-option
         v-for="item in levelOptions"
         :key="item.value"
@@ -7,7 +7,7 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="dailyLevel" placeholder="板块" style="width: 7%" @change="handleSelectBlock" id="test_select">
+  <el-select v-model="dailyLevel2" placeholder="板块" style="width: 7%" @change="handleSelectBlock" id="test_select">
     <el-option
         v-for="item in blockOptions"
         :key="item.value"
@@ -15,15 +15,15 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="dailyLevel" placeholder="市值" style="width: 7%" @change="handleSelectMv" id="test_select">
-    <el-option
-        v-for="item in mvOptions"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-    </el-option>
-  </el-select>
-  <el-select v-model="dailyLevel" placeholder="统计范围" style="width: 7%" @change="handleSelectScope" id="test_select">
+<!--  <el-select v-model="dailyLevel3" placeholder="市值" style="width: 7%" @change="handleSelectMv" id="test_select">-->
+<!--    <el-option-->
+<!--        v-for="item in mvOptions"-->
+<!--        :key="item.value"-->
+<!--        :label="item.label"-->
+<!--        :value="item.value">-->
+<!--    </el-option>-->
+<!--  </el-select>-->
+  <el-select v-model="dailyLevel4" placeholder="统计范围" style="width: 7%" @change="handleSelectScope" id="test_select">
     <el-option
         v-for="item in scopeOptions"
         :key="item.value"
@@ -73,12 +73,12 @@ const blockOptions = ref([
   {value:'bj',label:'北交所'}
 ])
 
-const mvOptions = ref([
-  {value:'all',label:'市值'},
-  {value:'big',label:'大盘股'},
-  {value:'mid',label:'中盘股'},
-  {value:'small',label:'小盘股'}
-])
+// const mvOptions = ref([
+//   {value:'all',label:'市值'},
+//   {value:'big',label:'大盘股'},
+//   {value:'mid',label:'中盘股'},
+//   {value:'small',label:'小盘股'}
+// ])
 
 const scopeOptions = ref([
   {value:'nine',label:'九点'},
@@ -130,26 +130,26 @@ const handleSelectBlock = (value)=>{
   }
 }
 
-const handleSelectMv = (value)=>{
-  // alert(value)
-  const query_dic = JSON.parse(JSON.stringify(route.query));
-  if(value === 'all'){
-    query_dic["mv_id"] = 1;
-    router.push({path:route.path,query:query_dic});
-  }
-  if(value === 'big'){
-    query_dic["mv_id"] = 2;
-    router.push({path:route.path,query:query_dic});
-  }
-  if(value === 'mid'){
-    query_dic["mv_id"] = 3;
-    router.push({path:route.path,query:query_dic});
-  }
-  if(value === 'small'){
-    query_dic["mv_id"] = 4;
-    router.push({path:route.path,query:query_dic});
-  }
-}
+// const handleSelectMv = (value)=>{
+//   // alert(value)
+//   const query_dic = JSON.parse(JSON.stringify(route.query));
+//   if(value === 'all'){
+//     query_dic["mv_id"] = 1;
+//     router.push({path:route.path,query:query_dic});
+//   }
+//   if(value === 'big'){
+//     query_dic["mv_id"] = 2;
+//     router.push({path:route.path,query:query_dic});
+//   }
+//   if(value === 'mid'){
+//     query_dic["mv_id"] = 3;
+//     router.push({path:route.path,query:query_dic});
+//   }
+//   if(value === 'small'){
+//     query_dic["mv_id"] = 4;
+//     router.push({path:route.path,query:query_dic});
+//   }
+// }
 
 //统计范围处理
 const handleSelectScope = (value)=>{
