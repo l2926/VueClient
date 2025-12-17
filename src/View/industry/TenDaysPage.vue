@@ -23,7 +23,7 @@
           label="公司名称"
           width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=L1&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=20&level=L1&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="60">
@@ -66,6 +66,51 @@
           <a :href="market" style="color: gray">{{ row.industry_name_l3 }}</a>
         </template>
       </el-table-column>
+      <el-table-column
+          label="14天前">
+        <template #default="{ row }">
+          <a v-if="row.ypct14 > 0" :href="market" style="color: red">{{ row.ypct14 }}</a>
+          <a v-if="row.ypct14 == 0" :href="market" style="color: gray">{{ row.ypct14 }}</a>
+          <a v-if="row.ypct14 < 0" :href="market" style="color: green">{{ row.ypct14 }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          label="13天前">
+        <template #default="{ row }">
+          <a v-if="row.ypct13 > 0" :href="market" style="color: red">{{ row.ypct13 }}</a>
+          <a v-if="row.ypct13 == 0" :href="market" style="color: gray">{{ row.ypct13 }}</a>
+          <a v-if="row.ypct13 < 0" :href="market" style="color: green">{{ row.ypct13 }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          label="12天前">
+        <template #default="{ row }">
+          <a v-if="row.ypct12 > 0" :href="market" style="color: red">{{ row.ypct12 }}</a>
+          <a v-if="row.ypct12 == 0" :href="market" style="color: gray">{{ row.ypct12 }}</a>
+          <a v-if="row.ypct12 < 0" :href="market" style="color: green">{{ row.ypct12 }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          label="11天前">
+        <template #default="{ row }">
+          <a v-if="row.ypct11 > 0" :href="market" style="color: red">{{ row.ypct11 }}</a>
+          <a v-if="row.ypct11 == 0" :href="market" style="color: gray">{{ row.ypct11 }}</a>
+          <a v-if="row.ypct11 < 0" :href="market" style="color: green">{{ row.ypct11 }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          label="10天前">
+        <template #default="{ row }">
+          <a v-if="row.ypct10 > 0" :href="market" style="color: red">{{ row.ypct10 }}</a>
+          <a v-if="row.ypct10 == 0" :href="market" style="color: gray">{{ row.ypct10 }}</a>
+          <a v-if="row.ypct10 < 0" :href="market" style="color: green">{{ row.ypct10 }}</a>
+        </template>
+      </el-table-column>
+
       <el-table-column
           label="9天前">
         <template #default="{ row }">

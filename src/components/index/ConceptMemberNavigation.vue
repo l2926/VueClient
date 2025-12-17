@@ -150,11 +150,11 @@ const handleCompanyInfo=()=>{
 const handleReturn=()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   if(query_dic["select_id"] == 1){
-    router.push({path: "kpl_concept", query: {"block_id":1,"level":"L1","trade_date":query_dic["trade_date"]}});
+    router.push({path: "kpl_concept", query: {"block_id":1,"level":"L1","mv_id":1,"para_id":9,"trade_date":query_dic["trade_date"]}});
   }
 
   if(query_dic["select_id"] == 2){
-    router.push({path: "dc_index", query: {"block_id":1,"level":"L1","trade_date":query_dic["trade_date"]}});
+    router.push({path: "dc_index", query: {"block_id":1,"level":"L1","mv_id":1,"para_id":9,"trade_date":query_dic["trade_date"]}});
   }
 
 }

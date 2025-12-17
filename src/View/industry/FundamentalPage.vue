@@ -23,7 +23,7 @@
           label="公司名称"
           width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=L1&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=20&level=L1&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="60">
@@ -181,6 +181,26 @@
           label="板块">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.market }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column>
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            销售额(亿)
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.revenue }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column>
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            盈利(亿)
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.profit }}</a>
         </template>
       </el-table-column>
       <el-table-column>
