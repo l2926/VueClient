@@ -146,14 +146,6 @@ const axiosTable = ()=>{
       (response) => {
         // alert(JSON.stringify(response.data));
         tableData.value = response.data;
-
-        var ts_code_list = response.data.map((item)=>{
-          return item["ts_code"]
-        });
-
-        var name_list = response.data.map((item)=>{
-          return item["name"]
-        });
       }
   ).catch(error => {
     console.log(error);
