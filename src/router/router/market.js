@@ -24,6 +24,14 @@ const routes = [
         name: 'money_flow_market',
         component:  ()=>import('@/View/market/MoneyFlowPage.vue')
     },{
+        path:'/market/top_hold',
+        name: 'top_hold_market',
+        component:  ()=>import('@/View/market/TopHoldPage.vue')
+    },{
+        path:'/market/fina_mian',
+        name: 'fina_main_market',
+        component:  ()=>import('@/View/market/FinaMainPage.vue')
+    },{
         path:'/market/fina_mian2',
         name: 'fina_main2_market',
         component:  ()=>import('@/View/market/FinaMain2Page.vue')

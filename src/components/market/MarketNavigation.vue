@@ -34,6 +34,7 @@
         :value="item.value">
     </el-option>
   </el-select>
+  <el-button @click="onSelectTopHold" style="margin-right: 0;margin-left:0">十大股东</el-button>
   <el-button @click="onSelectCompanyInfo" style="margin-right: 0;margin-left:0">公司信息</el-button>
   <el-button @click="onSelectSubordinate" style="margin-right: 0;margin-left:0">所属</el-button>
   <el-button style="margin-right: 0;margin-left:0">对比</el-button>
@@ -84,6 +85,7 @@ const financeOptions = ref([
 ]);
 
 const finaMainOptions = ref([
+  {value: 'fina_main1', label: '主营业务1'},
   {value: 'fina_main2', label: '主营业务2'},
   {value: 'fina_main3', label: '主营业务3'}
 ]);
@@ -144,6 +146,10 @@ const handleSelectFinaMain = (value)=>{
   // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query))
 
+  if(value === "fina_main1"){
+    router.push({path:'/market/fina_mian',query:query_dic})
+  }
+
   if(value === "fina_main2"){
     router.push({path:'/market/fina_mian2',query:query_dic})
   }
@@ -152,6 +158,12 @@ const handleSelectFinaMain = (value)=>{
     router.push({path:'/market/fina_mian3',query:query_dic})
   }
 
+}
+
+
+const onSelectTopHold = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  router.push({path:'/market/top_hold',query:query_dic})
 }
 
 const onSelectCompanyInfo = ()=>{

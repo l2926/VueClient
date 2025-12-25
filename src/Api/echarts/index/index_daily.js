@@ -41,7 +41,11 @@ export function InitDailyECharts(rawData){
     })
 
     var pct_chg = priceData.map(item=>{
-        return item["pct_chg"]
+        if(rawData.index_code == "000001.sh" || rawData.index_code == "399001.sz" || rawData.index_code == "399005.sz" || rawData.index_code == "399006.sz"){
+            return item["pct_chg"]
+        }else{
+            return item["pct_change"]
+        }
     })
 
     var turn_over_rate = priceData.map(item=>{
