@@ -37,7 +37,8 @@
         label="行业1"
         width="150">
       <template #default="{ row }">
-        <a :href="market" style="color: gray">{{ row.industry_name_l1 }}</a>
+<!--        <a :href="market" style="color: gray">{{ row.industry_name_l1 }}</a>-->
+        <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L1&industry_code=${row.index_code_l1}&trade_date=${row.trade_date}&start_date=20251231`" style="color: gray" target="_blank">{{ row.industry_name_l1 }}</el-link>
       </template>
     </el-table-column>
     <el-table-column
@@ -45,7 +46,8 @@
         label="行业2"
         width="150">
       <template #default="{ row }">
-        <a :href="market" style="color: gray">{{ row.industry_name_l2 }}</a>
+<!--        <a :href="market" style="color: gray">{{ row.industry_name_l2 }}</a>-->
+        <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L2&industry_code=${row.index_code_l2}&trade_date=${row.trade_date}&start_date=20251231`" style="color: gray" target="_blank">{{ row.industry_name_l2 }}</el-link>
       </template>
     </el-table-column>
     <el-table-column
@@ -53,7 +55,8 @@
         label="行业3"
         width="150">
       <template #default="{ row }">
-        <a :href="market" style="color: gray">{{ row.industry_name_l3 }}</a>
+<!--        <a :href="market" style="color: gray">{{ row.industry_name_l3 }}</a>-->
+        <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L3&industry_code=${row.index_code_l3}&trade_date=${row.trade_date}&start_date=20251231`" style="color: gray" target="_blank">{{ row.industry_name_l3 }}</el-link>
       </template>
     </el-table-column>
     <el-table-column
