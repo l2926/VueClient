@@ -53,6 +53,22 @@ const routes = [
         path:'/analysis/limit_board',
         name:'limit_board',
         component:  ()=>import('@/View/analysis/LimitBoardPage.vue')
+    },{
+        path:'/analysis/week_overview',
+        name:'week_overview_analysis',
+        component:  ()=>import('@/View/analysis/WeekMarketOverview.vue')
+    },{
+        path:'/analysis/month_overview',
+        name:'month_overview_analysis',
+        component:  ()=>import('@/View/analysis/MonthMarketOverview.vue')
+    },{
+        path:'/analysis/season_overview',
+        name:'season_overview_analysis',
+        component:  ()=>import('@/View/analysis/SeasonMarketOverview.vue')
+    },{
+        path:'/analysis/year_overview',
+        name:'year_overview_analysis',
+        component:  ()=>import('@/View/analysis/YearMarketOverview.vue')
     }
 ]
 

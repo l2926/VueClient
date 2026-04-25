@@ -24,6 +24,14 @@
           :value="item.value">
       </el-option>
     </el-select>
+    <el-select v-model="dailyLevel" placeholder="历史行情" style="width: 7%" @change="handleSelectMarketOverview" id="test_select">
+      <el-option
+          v-for="item in MarketOverviewOpetions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickCompanyInfo">公司信息</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickTopHold">十大股东</el-button>
 
@@ -77,6 +85,12 @@ const finaMainOptions = ref([
   {value: 'fina_main3', label: '主营业务3'}
 ]);
 
+const MarketOverviewOpetions = ref([
+  {value: 'weekPctChg', label: '周度行情'},
+  {value: 'monthPctChg', label: '月度行情'},
+  {value: 'seasonPctChg', label: '季度行情'},
+  {value: 'yearPctChg',label: '年度行情'}
+]);
 // const limitOptions = ref([
 //   {value:'fiveDays',label:'五日涨停'},
 //   {value:'tenDays',label:'十日涨停'},
@@ -125,6 +139,23 @@ const handleSelectFinaMain = (value)=>{
     router.push({path:'/industry/fina_main3',query:query_dic})
   }
 
+}
+
+const handleSelectMarketOverview = (value)=>{
+  // alert(value)
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  if(value == "weekPctChg"){
+    router.push(({path:'/industry/week_overview',query:query_dic}))
+  }
+  if(value == "monthPctChg"){
+    router.push(({path:'/industry/month_overview',query:query_dic}))
+  }
+  if(value == "seasonPctChg"){
+    router.push(({path:'/industry/season_overview',query:query_dic}))
+  }
+  if(value == "yearPctChg"){
+    router.push(({path:'/industry/year_overview',query:query_dic}))
+  }
 }
 
 const handleClickCompanyInfo = ()=>{

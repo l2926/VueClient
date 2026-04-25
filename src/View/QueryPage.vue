@@ -42,6 +42,7 @@ const handleButtonClick = () => {
       }
     });
   }).catch(function (error) {
+    // alert("shibaile")
     alert(error)
   })
 };

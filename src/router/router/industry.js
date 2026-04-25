@@ -47,6 +47,22 @@ const routes = [
         path:'/industry/money_flow_pct',
         name:'money_flow_pct2',
         component:  ()=>import('@/View/industry/MoneyFlowPct.vue')
+    },{
+        path:'/industry/week_overview',
+        name:'week_overview',
+        component: ()=>import('@/View/industry/WeekMarketOverview.vue')
+    },{
+        path:'/industry/month_overview',
+        name:'month_overview',
+        component: ()=>import('@/View/industry/MonthMarketOverview.vue')
+    },{
+        path:'/industry/season_overview',
+        name:'season_overview',
+        component: ()=>import('@/View/industry/SeasonMarketOverview.vue')
+    },{
+        path:'/industry/year_overview',
+        name:'year_overview',
+        component: ()=>import('@/View/industry/YearMarketOverview.vue')
     }
 ]
 
