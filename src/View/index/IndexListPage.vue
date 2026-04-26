@@ -14,12 +14,14 @@
         <td><el-link style="width:100px;color:black" @click="ShenZhen" to="">深证指数</el-link></td>
         <td><el-link style="width:100px;color:black" @click="MidSmall" to="">中小板指</el-link></td>
         <td><el-link style="width:100px;color:black" @click="ChinaNext" to="">创业板指</el-link></td>
-        <td><el-link style="width:100px;color:black" to="">深证余指</el-link></td>
+        <td><el-link style="width:100px;color:black" @click="KeChuang" to="">科创板指</el-link></td>
+        <td><el-link style="width:100px;color:black" @click="BeiJiao" to="">北交所指</el-link></td>
+<!--        <td><el-link style="width:100px;color:black" to="">深证余指</el-link></td>-->
         <td><el-link style="width:100px;color:black" @click="Statistic" to="">行业统计图</el-link></td>
         <td><el-link style="width:100px;color:black" to="">涨跌统计图</el-link></td>
-        <td><el-link style="width:100px;color:black" to="">地域统计图</el-link></td>
       </tr>
       <tr>
+        <td><el-link style="width:100px;color:black" to="">地域统计图</el-link></td>
         <td><el-link style="height:30px;width:100px;color:black" to="">北向资金</el-link></td>
         <td><el-link style="color:black" to="">融资融券</el-link></td>
       </tr>
@@ -90,6 +92,7 @@ export default{
     ShangHai:function (){
       const query_dic = {
         "para_id":1,
+        "block_id":1,
         "level":"market",
         "level_id":1,
         "trade_date":"20250309"
@@ -99,6 +102,7 @@ export default{
     ShenZhen:function (){
       const query_dic = {
         "para_id":1,
+        "block_id":1,
         "level":"market",
         "level_id":2,
         "trade_date":"20250309"
@@ -108,6 +112,7 @@ export default{
     MidSmall:function (){
       const query_dic = {
         "para_id":1,
+        "block_id":1,
         "level":"market",
         "level_id":3,
         "trade_date":"20250309"
@@ -117,8 +122,29 @@ export default{
     ChinaNext:function (){
       const query_dic = {
         "para_id":1,
+        "block_id":1,
         "level":"market",
         "level_id":4,
+        "trade_date":"20250309"
+      }
+      this.$router.push({path:'/index/index_daily',query:query_dic})
+    },
+    KeChuang:function (){
+      const query_dic = {
+        "para_id":1,
+        "block_id":1,
+        "level":"market",
+        "level_id":5,
+        "trade_date":"20250309"
+      }
+      this.$router.push({path:'/index/index_daily',query:query_dic})
+    },
+    BeiJiao:function (){
+      const query_dic = {
+        "para_id":1,
+        "block_id":1,
+        "level":"market",
+        "level_id":6,
         "trade_date":"20250309"
       }
       this.$router.push({path:'/index/index_daily',query:query_dic})

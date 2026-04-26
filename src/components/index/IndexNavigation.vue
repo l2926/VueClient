@@ -7,40 +7,65 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="复权" style="width: 5%" @change="onMonthlyLevel">
+<!--  <el-select v-model="monthlyLevel" placeholder="复权" style="width: 5%" @change="onMonthlyLevel">-->
+<!--    <el-option-->
+<!--        v-for="item in selectPriceOptions"-->
+<!--        :key="item.value"-->
+<!--        :label="item.label"-->
+<!--        :value="item.value">-->
+<!--    </el-option>-->
+<!--  </el-select>-->
+<!--  <el-select v-model="monthlyLevel" placeholder="财务概览" style="width: 7%" @change="onMonthlyLevel">-->
+<!--    <el-option-->
+<!--        v-for="item in financeOptions"-->
+<!--        :key="item.value"-->
+<!--        :label="item.label"-->
+<!--        :value="item.value">-->
+<!--    </el-option>-->
+<!--  </el-select>-->
+<!--  <el-select v-model="monthlyLevel" placeholder="资金流向" style="width: 7%" @change="onMonthlyLevel">-->
+<!--    <el-option-->
+<!--        v-for="item in topHoldOptions"-->
+<!--        :key="item.value"-->
+<!--        :label="item.label"-->
+<!--        :value="item.value">-->
+<!--    </el-option>-->
+<!--  </el-select>-->
+  <el-select v-model="monthlyLevel" placeholder="行情纵览" style="width: 7%" @change="onSelectMarketOverview">
     <el-option
-        v-for="item in selectPriceOptions"
+        v-for="item in marketOverviewOptions"
         :key="item.value"
         :label="item.label"
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="财务概览" style="width: 7%" @change="onMonthlyLevel">
+  <el-select v-model="monthlyLevel" placeholder="板块" style="width: 7%" @change="onSelectMarketOverview">
     <el-option
-        v-for="item in financeOptions"
+        v-for="item in blockOptions"
         :key="item.value"
         :label="item.label"
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="资金流向" style="width: 7%" @change="onMonthlyLevel">
+  <el-select v-model="monthlyLevel" placeholder="涨幅" style="width: 7%" @change="onSelectMarketOverview">
     <el-option
-        v-for="item in topHoldOptions"
+        v-for="item in upPctChgOptions"
         :key="item.value"
         :label="item.label"
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="十大股东" style="width: 7%" @change="onMonthlyLevel">
+  <el-select v-model="monthlyLevel" placeholder="跌幅" style="width: 7%" @change="onSelectMarketOverview">
     <el-option
-        v-for="item in topHoldOptions"
+        v-for="item in downPctChgOptions"
         :key="item.value"
         :label="item.label"
         :value="item.value">
     </el-option>
   </el-select>
-  <el-button @click="onSelectSubordinate" style="margin-right: 0;margin-left:0">所属</el-button>
-  <el-button style="margin-right: 0;margin-left:0">对比</el-button>
+<!--  <el-button @click="onSelectSubordinate" style="margin-right: 0;margin-left:0">所属</el-button>-->
+  <el-button style="margin-right: 0;margin-left:0">所有</el-button>
+  <el-button style="margin-right: 0;margin-left:0">涨跌统计图</el-button>
 
   <el-input-number v-model="levelId" :min="1" :max="100" :step="1" controls-position="right"
                    @change="handleItemChange" style="width: 5%"></el-input-number>
@@ -71,23 +96,51 @@ const dailyLeveloptions = ref([
   {value: 'daily3', label: '日线3'}
 ]);
 
-const selectPriceOptions = ref([
-  {value: 'monthly1', label: '复权'},
-  {value: 'monthly2', label: '对数'},
-  {value: 'monthly3', label: '涨跌'}
+// const selectPriceOptions = ref([
+//   {value: 'monthly1', label: '复权'},
+//   {value: 'monthly2', label: '对数'},
+//   {value: 'monthly3', label: '涨跌'}
+// ]);
+//
+// const financeOptions = ref([
+//   {value: 'monthly1', label: '财务概览'},
+//   {value: 'monthly2', label: '净资产'},
+//   {value: 'monthly3', label: '盈利情况'},
+//   {value: 'monthly3', label: '成本中心'}
+// ]);
+//
+// const topHoldOptions = ref([
+//   {value: 'monthly1', label: '十大股东'},
+//   {value: 'monthly2', label: '十大流通股东'}
+// ]);
+
+const marketOverviewOptions = ref([
+  {value: 'market_l1', label: 'L1行情纵览'},
+  {value: 'market_l2', label: 'L2行情纵览'},
+  {value: 'market_l3', label: 'L3行情纵览'}
 ]);
 
-const financeOptions = ref([
-  {value: 'monthly1', label: '财务概览'},
-  {value: 'monthly2', label: '净资产'},
-  {value: 'monthly3', label: '盈利情况'},
-  {value: 'monthly3', label: '成本中心'}
+const blockOptions = ref([
+  {value: '', label: '所有'},
+  {value: '', label: '主板'},
+  {value: '', label: '中小板'},
+  {value: '', label: '创业板'},
+  {value: '', label: '科创板'},
+  {value: '', label: '北交所'},
 ]);
 
-const topHoldOptions = ref([
-  {value: 'monthly1', label: '十大股东'},
-  {value: 'monthly2', label: '十大流通股东'}
+const upPctChgOptions = ref([
+  {value: 'market_l1', label: '涨10点'},
+  {value: 'market_l1', label: '涨5点'},
+  {value: 'market_l1', label: '涨0点'}
 ]);
+
+const downPctChgOptions = ref([
+  {value: 'market_l1', label: '跌10点'},
+  {value: 'market_l1', label: '跌5点'},
+  {value: 'market_l1', label: '跌0点'}
+])
+
 
 const onDailyLevel= (value) => {
   console.log("mmmmmm")
@@ -109,9 +162,10 @@ const onDailyLevel= (value) => {
 };
 
 //所属行业页面条抓按
-const onSelectSubordinate = ()=>{
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  router.push({path:"/market/subordinate",query:query_dic})
+const onSelectMarketOverview = (value)=>{
+  alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path:'/index/market_overview',query:query_dic});
 }
 
 //板块id处理

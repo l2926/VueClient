@@ -103,6 +103,7 @@ export function indexParameterTransform(param_dic){
 
     var para_id = param_dic["para_id"]
     // var level = param_dic["level"];
+    var block_id = param_dic["block_id"]
     var level_id = param_dic["level_id"];
     var trade_date = param_dic["trade_date"]
 
@@ -140,6 +141,7 @@ export function indexParameterTransform(param_dic){
     para_dic_copy = {
         "index_name":name,
         "para_id":para_id,
+        "block_id":block_id,
         "trade_date":trade_date,
         "index_code":code
     }
