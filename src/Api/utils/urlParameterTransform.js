@@ -99,6 +99,7 @@ export function industryParameterTransform(param_dic){
 }
 
 export function indexParameterTransform(param_dic){
+    // alert("fdsfds")
     var para_dic_copy;
 
     if(param_dic["index_code"] == null){
@@ -137,8 +138,18 @@ export function indexParameterTransform(param_dic){
             index_name = getCookie("l3_name")
         }
 
+        // alert("aaa")
+        //如果是地域
+        if(param_dic["level"] == "area"){
+            // alert("bbb")
+            index_list = getCookie("area_list")
+            index_name = getCookie("area_list")
+        }
+        // alert("ccc")
+
         var code = index_list[level_id - 1];
         var name = index_name[level_id - 1];
+
 
         para_dic_copy = {
             "index_name":name,

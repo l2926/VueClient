@@ -188,7 +188,7 @@ export default{
         "level_id":1,
         "trade_date":"20250309"
       }
-      this.$router.push({path:'/index/market_overview',query:query_dic})
+      this.$router.push({path:'/index/market_statistics',query:query_dic})
     },
     AreaStatisticsExcel:function (){
       const query_dic = {
@@ -199,7 +199,7 @@ export default{
         "level_id":1,
         "trade_date":"20250309"
       }
-      this.$router.push({path:'/index/market_overview',query:query_dic})
+      this.$router.push({path:'/index/area_overview',query:query_dic})
     },
     onIndex:function(index,index2){
       // alert((index-1)*8 + index2)
@@ -214,6 +214,20 @@ export default{
       }
 
       this.$router.push({path:'/index/index_daily',query:query_dic})
+    },
+    onBasicInfo_area:function (index,index2){
+      // alert((index-1)*8 + index2);
+      var level = "area"
+      var query_dic = {
+        select_id:2,
+        para_id:1,
+        block_id:1,
+        level:level,
+        level_id:(index-1)*8 + index2,
+        trade_date:getCurDate()
+      }
+
+      this.$router.push({path:'/index/market_overview',query:query_dic})
     }
   },
   mounted(){

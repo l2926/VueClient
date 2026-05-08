@@ -67,6 +67,14 @@ const routes = [
         path:'/index/market_overview',
         name:'market_overview',
         component:  ()=>import('@/View/index/MarketOverview.vue')
+    },{
+        path:'/index/area_overview',
+        name:'area_overview',
+        component:  ()=>import('@/View/index/AreaOverview.vue')
+    },{
+        path:'/index/market_statistics',
+        name:'market_statistics',
+        component:()=>import('@/View/index/MarketStatistics.vue')
     }
 ]
 

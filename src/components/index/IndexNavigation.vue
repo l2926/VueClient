@@ -99,7 +99,8 @@ const dailyLeveloptions = ref([
 
 const marketOverviewOptions = ref([
   {value: 'overview', label: '行情概览'},
-  {value: 'all', label: '涨跌幅'}
+  {value: 'all', label: '涨跌幅'},
+  {value: 'area', label: '地域'}
 ]);
 
 const overviewOptions = ref([
@@ -149,10 +150,18 @@ const onDailyLevel= (value) => {
 };
 
 //所属行业页面条抓按
-const onSelectMarketOverview = ()=>{
+const onSelectMarketOverview = (value)=>{
   // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  router.push({path:'/index/market_overview',query:query_dic});
+  if(value === "overview"){
+    router.push({path:'/index/market_overview',query:query_dic});
+  }
+  if(value === "all"){
+    router.push({path:'/index/market_statistics',query:query_dic});
+  }
+  if(value === "area"){
+    router.push({path:'/index/area_overview',query:query_dic});
+  }
 }
 
 const onSelectModle = (value)=>{
