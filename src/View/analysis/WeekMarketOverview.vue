@@ -30,21 +30,11 @@ FinaMain3Page.vue
       <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            省份
+            地区
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.province }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            城市
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.city }}</a>
+          <a :href="market" style="color: gray">{{ row.area }}</a>
         </template>
       </el-table-column>
       <el-table-column width="90">
@@ -78,19 +68,139 @@ FinaMain3Page.vue
         </template>
       </el-table-column>
       <el-table-column
-          prop="address"
-          label="主营业务">
+          label="15周前">
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.main_business}}</a>
+          <a v-if="row.week_pct15 > 0" :href="market" style="color: red">{{ row.week_pct15 }}</a>
+          <a v-if="row.week_pct15 == 0" :href="market" style="color: gray">{{ row.week_pct15 }}</a>
+          <a v-if="row.week_pct15 < 0" :href="market" style="color: green">{{ row.week_pct15 }}</a>
         </template>
       </el-table-column>
       <el-table-column
-          prop="address"
-          label="业务范围">
+          label="14周前">
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.business_scope}}</a>
+          <a v-if="row.week_pct14 > 0" :href="market" style="color: red">{{ row.week_pct14 }}</a>
+          <a v-if="row.week_pct14 == 0" :href="market" style="color: gray">{{ row.week_pct14 }}</a>
+          <a v-if="row.week_pct14 < 0" :href="market" style="color: green">{{ row.week_pct14 }}</a>
         </template>
       </el-table-column>
+
+      <el-table-column
+          label="13周前">
+        <template #default="{ row }">
+          <a v-if="row.week_pct13 > 0" :href="market" style="color: red">{{ row.week_pct13 }}</a>
+          <a v-if="row.week_pct13 == 0" :href="market" style="color: gray">{{ row.week_pct13 }}</a>
+          <a v-if="row.week_pct13 < 0" :href="market" style="color: green">{{ row.week_pct13 }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          label="12周前">
+        <template #default="{ row }">
+          <a v-if="row.week_pct12 > 0" :href="market" style="color: red">{{ row.week_pct12 }}</a>
+          <a v-if="row.week_pct12 == 0" :href="market" style="color: gray">{{ row.week_pct12 }}</a>
+          <a v-if="row.week_pct12 < 0" :href="market" style="color: green">{{ row.week_pct12 }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          label="11周前">
+        <template #default="{ row }">
+          <a v-if="row.week_pct11 > 0" :href="market" style="color: red">{{ row.week_pct11 }}</a>
+          <a v-if="row.week_pct11 == 0" :href="market" style="color: gray">{{ row.week_pct11 }}</a>
+          <a v-if="row.week_pct11 < 0" :href="market" style="color: green">{{ row.week_pct11 }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          label="10周前">
+        <template #default="{ row }">
+          <a v-if="row.week_pct10 > 0" :href="market" style="color: red">{{ row.week_pct10 }}</a>
+          <a v-if="row.week_pct10 == 0" :href="market" style="color: gray">{{ row.week_pct10 }}</a>
+          <a v-if="row.week_pct10 < 0" :href="market" style="color: green">{{ row.week_pct10 }}</a>
+        </template>
+      </el-table-column>
+
+      <el-table-column
+          label="9周前">
+        <template #default="{ row }">
+          <a v-if="row.week_pct9 > 0" :href="market" style="color: red">{{ row.week_pct9 }}</a>
+          <a v-if="row.week_pct9 == 0" :href="market" style="color: gray">{{ row.week_pct9 }}</a>
+          <a v-if="row.week_pct9 < 0" :href="market" style="color: green">{{ row.week_pct9 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          label="8周前"
+          width="65">
+        <template #default="{ row }">
+          <a v-if="row.week_pct8 > 0" :href="market" style="color: red">{{ row.week_pct8 }}</a>
+          <a v-if="row.week_pct8 == 0" :href="market" style="color: gray">{{ row.week_pct8 }}</a>
+          <a v-if="row.week_pct8 < 0" :href="market" style="color: green">{{ row.week_pct8 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          label="7周前"
+          width="65">
+        <template #default="{ row }">
+          <a v-if="row.week_pct7 > 0" :href="market" style="color: red">{{ row.week_pct7 }}</a>
+          <a v-if="row.week_pct7 == 0" :href="market" style="color: gray">{{ row.week_pct7 }}</a>
+          <a v-if="row.week_pct7 < 0" :href="market" style="color: green">{{ row.week_pct7 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          label="6周前"
+          width="65">
+        <template #default="{ row }">
+          <a v-if="row.week_pct6 > 0" :href="market" style="color: red">{{ row.week_pct6 }}</a>
+          <a v-if="row.week_pct6 == 0" :href="market" style="color: gray">{{ row.week_pct6 }}</a>
+          <a v-if="row.week_pct6 < 0" :href="market" style="color: green">{{ row.week_pct6 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          label="5周前"
+          width="65">
+        <template #default="{ row }">
+          <a v-if="row.week_pct5 > 0" :href="market" style="color: red">{{ row.week_pct5 }}</a>
+          <a v-if="row.week_pct5 == 0" :href="market" style="color: gray">{{ row.week_pct5 }}</a>
+          <a v-if="row.week_pct5 < 0" :href="market" style="color: green">{{ row.week_pct5 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          label="4周前"
+          width="65">
+        <template #default="{ row }">
+          <a v-if="row.week_pct4 > 0" :href="market" style="color: red">{{ row.week_pct4 }}</a>
+          <a v-if="row.week_pct4 == 0" :href="market" style="color: gray">{{ row.week_pct4 }}</a>
+          <a v-if="row.week_pct4 < 0" :href="market" style="color: green">{{ row.week_pct4 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          label="3周前"
+          width="65">
+        <template #default="{ row }">
+          <a v-if="row.week_pct3 > 0" :href="market" style="color: red">{{ row.week_pct3 }}</a>
+          <a v-if="row.week_pct3 == 0" :href="market" style="color: gray">{{ row.week_pct3 }}</a>
+          <a v-if="row.week_pct3 < 0" :href="market" style="color: green">{{ row.week_pct3 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          label="2周前"
+          width="65">
+        <template #default="{ row }">
+          <a v-if="row.week_pct2 > 0" :href="market" style="color: red">{{ row.week_pct2 }}</a>
+          <a v-if="row.week_pct2 == 0" :href="market" style="color: gray">{{ row.week_pct2 }}</a>
+          <a v-if="row.week_pct2 < 0" :href="market" style="color: green">{{ row.week_pct2 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          label="1周前"
+          width="65">
+        <template #default="{ row }">
+          <a v-if="row.week_pct1 > 0" :href="market" style="color: red">{{ row.week_pct1 }}</a>
+          <a v-if="row.week_pct1 == 0" :href="market" style="color: gray">{{ row.week_pct1 }}</a>
+          <a v-if="row.week_pct1 < 0" :href="market" style="color: green">{{ row.week_pct1 }}</a>
+        </template>
+      </el-table-column>
+
       <el-table-column
           prop="address"
           label="板块"

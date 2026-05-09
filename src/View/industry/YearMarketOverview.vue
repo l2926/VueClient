@@ -68,128 +68,136 @@
         </template>
       </el-table-column>
       <el-table-column
-          label="14天前">
+          label="15年前">
         <template #default="{ row }">
-          <a v-if="row.ypct14 > 0" :href="market" style="color: red">{{ row.ypct14 }}</a>
-          <a v-if="row.ypct14 == 0" :href="market" style="color: gray">{{ row.ypct14 }}</a>
-          <a v-if="row.ypct14 < 0" :href="market" style="color: green">{{ row.ypct14 }}</a>
+          <a v-if="row.year_pct15 > 0" :href="market" style="color: red">{{ row.year_pct15 }}</a>
+          <a v-if="row.year_pct15 == 0" :href="market" style="color: gray">{{ row.year_pct15 }}</a>
+          <a v-if="row.year_pct15 < 0" :href="market" style="color: green">{{ row.year_pct15 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
+          label="14年前">
+        <template #default="{ row }">
+          <a v-if="row.year_pct14 > 0" :href="market" style="color: red">{{ row.year_pct14 }}</a>
+          <a v-if="row.year_pct14 == 0" :href="market" style="color: gray">{{ row.year_pct14 }}</a>
+          <a v-if="row.year_pct14 < 0" :href="market" style="color: green">{{ row.year_pct14 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
-          label="13天前">
+          label="13年前">
         <template #default="{ row }">
-          <a v-if="row.ypct13 > 0" :href="market" style="color: red">{{ row.ypct13 }}</a>
-          <a v-if="row.ypct13 == 0" :href="market" style="color: gray">{{ row.ypct13 }}</a>
-          <a v-if="row.ypct13 < 0" :href="market" style="color: green">{{ row.ypct13 }}</a>
+          <a v-if="row.year_pct13 > 0" :href="market" style="color: red">{{ row.year_pct13 }}</a>
+          <a v-if="row.year_pct13 == 0" :href="market" style="color: gray">{{ row.year_pct13 }}</a>
+          <a v-if="row.year_pct13 < 0" :href="market" style="color: green">{{ row.year_pct13 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
-          label="12天前">
+          label="12年前">
         <template #default="{ row }">
-          <a v-if="row.ypct12 > 0" :href="market" style="color: red">{{ row.ypct12 }}</a>
-          <a v-if="row.ypct12 == 0" :href="market" style="color: gray">{{ row.ypct12 }}</a>
-          <a v-if="row.ypct12 < 0" :href="market" style="color: green">{{ row.ypct12 }}</a>
+          <a v-if="row.year_pct12 > 0" :href="market" style="color: red">{{ row.year_pct12 }}</a>
+          <a v-if="row.year_pct12 == 0" :href="market" style="color: gray">{{ row.year_pct12 }}</a>
+          <a v-if="row.year_pct12 < 0" :href="market" style="color: green">{{ row.year_pct12 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
-          label="11天前">
+          label="11年前">
         <template #default="{ row }">
-          <a v-if="row.ypct11 > 0" :href="market" style="color: red">{{ row.ypct11 }}</a>
-          <a v-if="row.ypct11 == 0" :href="market" style="color: gray">{{ row.ypct11 }}</a>
-          <a v-if="row.ypct11 < 0" :href="market" style="color: green">{{ row.ypct11 }}</a>
+          <a v-if="row.year_pct11 > 0" :href="market" style="color: red">{{ row.year_pct11 }}</a>
+          <a v-if="row.year_pct11 == 0" :href="market" style="color: gray">{{ row.year_pct11 }}</a>
+          <a v-if="row.year_pct11 < 0" :href="market" style="color: green">{{ row.year_pct11 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
-          label="10天前">
+          label="10年前">
         <template #default="{ row }">
-          <a v-if="row.ypct10 > 0" :href="market" style="color: red">{{ row.ypct10 }}</a>
-          <a v-if="row.ypct10 == 0" :href="market" style="color: gray">{{ row.ypct10 }}</a>
-          <a v-if="row.ypct10 < 0" :href="market" style="color: green">{{ row.ypct10 }}</a>
+          <a v-if="row.year_pct10 > 0" :href="market" style="color: red">{{ row.year_pct10 }}</a>
+          <a v-if="row.year_pct10 == 0" :href="market" style="color: gray">{{ row.year_pct10 }}</a>
+          <a v-if="row.year_pct10 < 0" :href="market" style="color: green">{{ row.year_pct10 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
-          label="9天前">
+          label="9年前">
         <template #default="{ row }">
-          <a v-if="row.ypct9 > 0" :href="market" style="color: red">{{ row.ypct9 }}</a>
-          <a v-if="row.ypct9 == 0" :href="market" style="color: gray">{{ row.ypct9 }}</a>
-          <a v-if="row.ypct9 < 0" :href="market" style="color: green">{{ row.ypct9 }}</a>
+          <a v-if="row.year_pct9 > 0" :href="market" style="color: red">{{ row.year_pct9 }}</a>
+          <a v-if="row.year_pct9 == 0" :href="market" style="color: gray">{{ row.year_pct9 }}</a>
+          <a v-if="row.year_pct9 < 0" :href="market" style="color: green">{{ row.year_pct9 }}</a>
         </template>
       </el-table-column>
       <el-table-column
-          label="8天前"
+          label="8年前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.ypct8 > 0" :href="market" style="color: red">{{ row.ypct8 }}</a>
-          <a v-if="row.ypct8 == 0" :href="market" style="color: gray">{{ row.ypct8 }}</a>
-          <a v-if="row.ypct8 < 0" :href="market" style="color: green">{{ row.ypct8 }}</a>
+          <a v-if="row.year_pct8 > 0" :href="market" style="color: red">{{ row.year_pct8 }}</a>
+          <a v-if="row.year_pct8 == 0" :href="market" style="color: gray">{{ row.year_pct8 }}</a>
+          <a v-if="row.year_pct8 < 0" :href="market" style="color: green">{{ row.year_pct8 }}</a>
         </template>
       </el-table-column>
       <el-table-column
-          label="7天前"
+          label="7年前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.ypct7 > 0" :href="market" style="color: red">{{ row.ypct7 }}</a>
-          <a v-if="row.ypct7 == 0" :href="market" style="color: gray">{{ row.ypct7 }}</a>
-          <a v-if="row.ypct7 < 0" :href="market" style="color: green">{{ row.ypct7 }}</a>
+          <a v-if="row.year_pct7 > 0" :href="market" style="color: red">{{ row.year_pct7 }}</a>
+          <a v-if="row.year_pct7 == 0" :href="market" style="color: gray">{{ row.year_pct7 }}</a>
+          <a v-if="row.year_pct7 < 0" :href="market" style="color: green">{{ row.year_pct7 }}</a>
         </template>
       </el-table-column>
       <el-table-column
-          label="6天前"
+          label="6年前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.ypct6 > 0" :href="market" style="color: red">{{ row.ypct6 }}</a>
-          <a v-if="row.ypct6 == 0" :href="market" style="color: gray">{{ row.ypct6 }}</a>
-          <a v-if="row.ypct6 < 0" :href="market" style="color: green">{{ row.ypct6 }}</a>
+          <a v-if="row.year_pct6 > 0" :href="market" style="color: red">{{ row.year_pct6 }}</a>
+          <a v-if="row.year_pct6 == 0" :href="market" style="color: gray">{{ row.year_pct6 }}</a>
+          <a v-if="row.year_pct6 < 0" :href="market" style="color: green">{{ row.year_pct6 }}</a>
         </template>
       </el-table-column>
       <el-table-column
-          label="5天前"
+          label="5年前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.ypct5 > 0" :href="market" style="color: red">{{ row.ypct5 }}</a>
-          <a v-if="row.ypct5 == 0" :href="market" style="color: gray">{{ row.ypct5 }}</a>
-          <a v-if="row.ypct5 < 0" :href="market" style="color: green">{{ row.ypct5 }}</a>
+          <a v-if="row.year_pct5 > 0" :href="market" style="color: red">{{ row.year_pct5 }}</a>
+          <a v-if="row.year_pct5 == 0" :href="market" style="color: gray">{{ row.year_pct5 }}</a>
+          <a v-if="row.year_pct5 < 0" :href="market" style="color: green">{{ row.year_pct5 }}</a>
         </template>
       </el-table-column>
       <el-table-column
-          label="4天前"
+          label="4年前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.ypct4 > 0" :href="market" style="color: red">{{ row.ypct4 }}</a>
-          <a v-if="row.ypct4 == 0" :href="market" style="color: gray">{{ row.ypct4 }}</a>
-          <a v-if="row.ypct4 < 0" :href="market" style="color: green">{{ row.ypct4 }}</a>
+          <a v-if="row.year_pct4 > 0" :href="market" style="color: red">{{ row.year_pct4 }}</a>
+          <a v-if="row.year_pct4 == 0" :href="market" style="color: gray">{{ row.year_pct4 }}</a>
+          <a v-if="row.year_pct4 < 0" :href="market" style="color: green">{{ row.year_pct4 }}</a>
         </template>
       </el-table-column>
       <el-table-column
-          label="3天前"
+          label="3年前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.ypct3 > 0" :href="market" style="color: red">{{ row.ypct3 }}</a>
-          <a v-if="row.ypct3 == 0" :href="market" style="color: gray">{{ row.ypct3 }}</a>
-          <a v-if="row.ypct3 < 0" :href="market" style="color: green">{{ row.ypct3 }}</a>
+          <a v-if="row.year_pct3 > 0" :href="market" style="color: red">{{ row.year_pct3 }}</a>
+          <a v-if="row.year_pct3 == 0" :href="market" style="color: gray">{{ row.year_pct3 }}</a>
+          <a v-if="row.year_pct3 < 0" :href="market" style="color: green">{{ row.year_pct3 }}</a>
         </template>
       </el-table-column>
       <el-table-column
-          label="2天前"
+          label="2年前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.ypct2 > 0" :href="market" style="color: red">{{ row.ypct2 }}</a>
-          <a v-if="row.ypct2 == 0" :href="market" style="color: gray">{{ row.ypct2 }}</a>
-          <a v-if="row.ypct2 < 0" :href="market" style="color: green">{{ row.ypct2 }}</a>
+          <a v-if="row.year_pct2 > 0" :href="market" style="color: red">{{ row.year_pct2 }}</a>
+          <a v-if="row.year_pct2 == 0" :href="market" style="color: gray">{{ row.year_pct2 }}</a>
+          <a v-if="row.year_pct2 < 0" :href="market" style="color: green">{{ row.year_pct2 }}</a>
         </template>
       </el-table-column>
       <el-table-column
-          label="1天前"
+          label="1年前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.ypct1 > 0" :href="market" style="color: red">{{ row.ypct1 }}</a>
-          <a v-if="row.ypct1 == 0" :href="market" style="color: gray">{{ row.ypct1 }}</a>
-          <a v-if="row.ypct1 < 0" :href="market" style="color: green">{{ row.ypct1 }}</a>
+          <a v-if="row.year_pct1 > 0" :href="market" style="color: red">{{ row.year_pct1 }}</a>
+          <a v-if="row.year_pct1 == 0" :href="market" style="color: gray">{{ row.year_pct1 }}</a>
+          <a v-if="row.year_pct1 < 0" :href="market" style="color: green">{{ row.year_pct1 }}</a>
         </template>
       </el-table-column>
       <el-table-column width="70">
