@@ -3,7 +3,6 @@
   <el-container>
     <el-header style="">
       <IndexNavigation></IndexNavigation>
-      MarketStatistics
     </el-header>
     <el-table
         :data="tableData"
@@ -27,7 +26,7 @@
         </template>
         <template #default="{ row }">
 <!--          <e-link :href="market" style="color: gray">{{ row.industry_name_l1 }}</e-link>-->
-          <el-link :href="`/#/index/market_overview?select_id=1&p\ara_id=1&block_id=1&level=L1&index_code=${row.index_code_l1}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.industry_name_l1 }}</el-link>
+          <el-link :href="`/#/index/market_statistics?select_id=1&p\ara_id=1&block_id=1&level=L1&index_code=${row.index_code_l1}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.industry_name_l1 }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="120">
@@ -55,131 +54,121 @@
       <el-table-column width="90">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            PE
+            涨跌计数(个)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: navy">{{ row.pe }}</a>
+          <a :href="market" style="color: navy">{{ row.ct }}</a>
         </template>
       </el-table-column>
       <el-table-column width="90">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            PB
+            总计数(个)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: Olive">{{ row.pb }}</a>
+          <a :href="market" style="color: navy">{{ row.all_ct }}</a>
         </template>
       </el-table-column>
       <el-table-column width="90">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            PS
+            涨跌计数(%)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: Teal">{{ row.ps }}</a>
+          <a :href="market" style="color: navy">{{ row.ct_pct }}</a>
         </template>
       </el-table-column>
       <el-table-column width="120">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            收入(亿)
+            涨跌市值(亿)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.income }}</a>
+          <a :href="market" style="color: Olive">{{ row.mv }}</a>
         </template>
       </el-table-column>
       <el-table-column width="120">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            利润(亿)
+            总市值(亿)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.profit }}</a>
+          <a :href="market" style="color: Olive">{{ row.all_mv }}</a>
         </template>
       </el-table-column>
       <el-table-column width="120">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            交易金额(亿)
+            涨跌市值(%)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.amt }}</a>
+          <a :href="market" style="color: Olive">{{ row.mv_pct }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="90">
+      <el-table-column width="120">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            ROE
+            涨跌交易金额(亿)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: purple">{{ row.roe }}</a>
+          <a :href="market" style="color: Teal">{{ row.amt }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="90">
+      <el-table-column width="120">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            利润率(%)
+            总交易金额(亿)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: Fuchsia">{{ row.profit_rate }}</a>
+          <a :href="market" style="color: Teal">{{ row.all_amt }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="90">
+      <el-table-column width="120">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            换手率(%)
+            涨跌交易金额(%)
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: Teal">{{ row.amt_pct }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column width="120">
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            涨跌换手率(%)
           </el-link>
         </template>
         <template #default="{ row }">
           <a :href="market" style="color: Silver">{{ row.turnover }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="90">
+      <el-table-column width="120">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            计数
+            总换手率(%)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: Teal">{{ row.ct }}</a>
+          <a :href="market" style="color: Silver">{{ row.all_turnover }}</a>
         </template>
       </el-table-column>
       <el-table-column width="120">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            净资产(亿)
+            涨跌幅(%)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.asset }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="120">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            市值(亿)
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.mv }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="120">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            平均市值(亿)
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.avg_mv }}</a>
+          <a :href="market" style="color: Silver">{{ row.all_turnover }}</a>
         </template>
       </el-table-column>
       <el-table-column prop="address"
