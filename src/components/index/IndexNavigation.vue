@@ -15,7 +15,7 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="板块" style="width: 7%" @change="onSelectMarketOverview">
+  <el-select v-model="monthlyLevel" placeholder="板块" style="width: 7%" @change="onSelectBlock">
     <el-option
         v-for="item in blockOptions"
         :key="item.value"
@@ -23,7 +23,7 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="涨幅" style="width: 7%" @change="onSelectMarketOverview">
+  <el-select v-model="monthlyLevel" placeholder="涨幅" style="width: 7%" @change="onSelectUp">
     <el-option
         v-for="item in upPctChgOptions"
         :key="item.value"
@@ -31,7 +31,7 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="跌幅" style="width: 7%" @change="onSelectMarketOverview">
+  <el-select v-model="monthlyLevel" placeholder="跌幅" style="width: 7%" @change="onSelectDown">
     <el-option
         v-for="item in downPctChgOptions"
         :key="item.value"
@@ -109,24 +109,23 @@ const overviewOptions = ref([
 ]);
 
 const blockOptions = ref([
-  {value: '', label: '所有'},
-  {value: '', label: '主板'},
-  {value: '', label: '中小板'},
-  {value: '', label: '创业板'},
-  {value: '', label: '科创板'},
-  {value: '', label: '北交所'},
+  {value: 'all', label: '所有'},
+  {value: 'main_board', label: '主板'},
+  {value: 'start_up', label: '创业板'},
+  {value: 'kechuang', label: '科创板'},
+  {value: 'beijing', label: '北交所'},
 ]);
 
 const upPctChgOptions = ref([
-  {value: 'market_l1', label: '涨10点'},
-  {value: 'market_l1', label: '涨5点'},
-  {value: 'market_l1', label: '涨0点'}
+  {value: 'up_10', label: '涨10点'},
+  {value: 'up_5', label: '涨5点'},
+  {value: 'up_0', label: '涨0点'}
 ]);
 
 const downPctChgOptions = ref([
-  {value: 'market_l1', label: '跌10点'},
-  {value: 'market_l1', label: '跌5点'},
-  {value: 'market_l1', label: '跌0点'}
+  {value: 'down_10', label: '跌10点'},
+  {value: 'down_5', label: '跌5点'},
+  {value: 'down_0', label: '跌0点'}
 ])
 
 
@@ -161,6 +160,65 @@ const onSelectMarketOverview = (value)=>{
   }
   if(value === "area"){
     router.push({path:'/index/area_overview',query:query_dic});
+  }
+}
+
+const onSelectBlock = (value)=>{
+  // alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === "all"){
+    query_dic["block_id"] = 1;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "main_board"){
+    query_dic["block_id"] = 2;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "start_up"){
+    query_dic["block_id"] = 3;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "kechuang"){
+    query_dic["block_id"] = 4;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "beijing"){
+    query_dic["block_id"] = 5;
+    router.push({path:route.path,query:query_dic});
+  }
+}
+
+const onSelectUp = (value)=>{
+  // alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === "up_10"){
+    query_dic["para_id"] = 1;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "up_5"){
+    query_dic["para_id"] = 2;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "up_0"){
+    query_dic["para_id"] = 3;
+    router.push({path:route.path,query:query_dic});
+  }
+}
+
+const onSelectDown=(value)=>{
+  // alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === "down_10"){
+    query_dic["para_id"] = 4;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "down_5"){
+    query_dic["para_id"] = 5;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "down_0"){
+    query_dic["para_id"] = 6;
+    router.push({path:route.path,query:query_dic});
   }
 }
 
