@@ -166,3 +166,77 @@ export function indexParameterTransform(param_dic){
 
     return para_dic_copy;
 }
+
+export function compareParameterTransform(param_dic){
+    //定义参数副本
+    var param_dic_copy;
+
+    var para_id = param_dic["para_id"];
+    var select_id1 = param_dic["select_id1"];
+    var level1 = param_dic["level1"];
+    var level_id1 = param_dic["level_id1"];
+    var ts_code = param_dic["ts_code"]
+
+    var select_id2 = param_dic["select_id2"];
+    var level2 = param_dic["level2"];
+    var level_id2 = param_dic["level_id2"];
+    var id = param_dic["id"]
+
+    var trade_date = param_dic["trade_date"];
+    var start_date = "20200101";
+
+    var index_list;
+    if(param_dic["level"] == "market"){
+        index_list = getCookie("market_list")
+    }
+
+    //如果是L1指数
+    if(param_dic["level"] == "L1"){
+        index_list = getCookie("l1_list")
+    }
+
+    //如果是L2指数
+    if(param_dic["level"] == "L2"){
+        index_list = getCookie("l2_list")
+    }
+
+    //如果是L3指数
+    if(param_dic["level"] == "L3"){
+        index_list = getCookie("l3_list")
+    }
+
+    var ts_code1;
+    if(select_id1 === 1){
+        ts_code1 = index_list[level_id1 - 1];
+    }else{
+        ts_code1 = ts_code;
+    }
+
+
+    var ts_code2;
+    if(select_id2 === 1){
+        ts_code2 = index_list[level_id2 - 1];
+    }else{
+        var ts_code_list;
+        if(level == "analysis"){
+            ts_code_list = getCookie("analysis_code")
+        }
+
+        if(level == 'L1' || level == 'L2' || level == 'L3'){
+            ts_code_list = getCookie("industry_code")
+        }
+        ts_code2 = ts_code_list[id - 1]
+    }
+
+    var param_dic_copy = {
+        "para_id" : para_id,
+        "select_id1" : select_id1,
+        "select_id2" : select_id2,
+        "ts_code1" : ts_code1,
+        "ts_code2" : ts_code2,
+        "trade_date" : trade_date,
+        "start_date" : start_date
+    };
+
+    return param_dic_copy;
+}
