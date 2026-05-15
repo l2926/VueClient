@@ -15,7 +15,7 @@
 <!--        :value="item.value">-->
 <!--    </el-option>-->
 <!--  </el-select>-->
-  <el-select v-model="monthlyLevel" placeholder="行业" style="width: 5%" @change="onLevel1">
+  <el-select v-model="monthlyLevel" placeholder="行业1" style="width: 5%" @change="onLevel1">
     <el-option
         v-for="item in selectLevel1Options1"
         :key="item.value"
@@ -23,8 +23,8 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-input-number v-model="levelId" :min="1" :max="100" :step="1" controls-position="right"
-                   @change="handleItemChange" style="width: 5%"></el-input-number>
+  <el-input-number v-model="levelId1" :min="1" :max="100" :step="1" controls-position="right"
+                   @change="handleItemChange1" style="width: 5%"></el-input-number>
   <el-input v-model="inputValue" style="width: 5%"></el-input>
   <el-button @click="onQueryStock1">查询</el-button>
 
@@ -36,7 +36,7 @@
 <!--        :value="item.value">-->
 <!--    </el-option>-->
 <!--  </el-select>-->
-  <el-select v-model="monthlyLevel" placeholder="行业" style="width: 5%" @change="onLevel2">
+  <el-select v-model="monthlyLevel" placeholder="行业2" style="width: 5%" @change="onLevel2">
     <el-option
         v-for="item in selectLevel1Options2"
         :key="item.value"
@@ -44,10 +44,10 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-input-number v-model="levelId" :min="1" :max="100" :step="1" controls-position="right"
-                   @change="handleItemChange" style="width: 5%"></el-input-number>
-  <el-input-number v-model="levelId" :min="1" :max="100" :step="1" controls-position="right"
-                   @change="handleItemChange" style="width: 5%"></el-input-number>
+  <el-input-number v-model="levelId2" :min="1" :max="100" :step="1" controls-position="right"
+                   @change="handleItemChange2" style="width: 5%"></el-input-number>
+  <el-input-number v-model="id" :min="1" :max="100" :step="1" controls-position="right"
+                   @change="handleItemChange3" style="width: 5%"></el-input-number>
   <el-date-picker
       v-model="selectedDate"
       type="date"
@@ -64,7 +64,7 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import { useRoute,useRouter} from "vue-router";
-import {getCurDate, getNextDay, getNormDate, getPreviousDay} from "@/Api/utils/calcDate";
+import {getNextDay, getNormDate, getPreviousDay} from "@/Api/utils/calcDate";
 import {dayjs} from "element-plus";
 import axios from "axios";
 const route = useRoute();
@@ -213,15 +213,32 @@ const onLevel2=(value)=>{
 }
 
 //板块id处理
-const levelId = ref(1);
+const levelId1 = ref(1);
+const levelId2 = ref(1);
+const id = ref(1);
 
-const handleItemChange = (value) =>{
+const handleItemChange1 = (value) =>{
   // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["level_id"] = value;
-  if(query_dic["ts_code"] == null){
-    router.push({path: '/index/index_daily', query: query_dic});
-  }
+  query_dic["level_id1"] = value;
+  query_dic["select_id1"] = 1;
+  router.push({path: '/compare/daily', query: query_dic});
+};
+
+const handleItemChange2 = (value) =>{
+  // alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["level_id2"] = value;
+  query_dic["select_id2"] = 1;
+  router.push({path: '/compare/daily', query: query_dic});
+};
+
+const handleItemChange3 = (value) =>{
+  // alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["id"] = value;
+  query_dic["select_id2"] = 2;
+  router.push({path: '/compare/daily', query: query_dic});
 };
 
 //日期处理
@@ -255,7 +272,9 @@ const selectNextDay=()=>{
 onMounted(()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   selectedDate.value = new Date(dayjs(query_dic["trade_date"]).format('YYYY-MM-DD'));
-  levelId.value = query_dic["level_id"];
+  levelId1.value = query_dic["level_id1"];
+  levelId2.value = query_dic["level_id2"];
+  id.value = query_dic["id"];
 });
 
 </script>
