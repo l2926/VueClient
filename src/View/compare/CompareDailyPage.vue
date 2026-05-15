@@ -11,23 +11,28 @@ import {onMounted, onUpdated} from "vue";
 import axios from "axios";
 import {InitCompareDailyECharts} from "@/Api/echarts/compare/compare_daily";
 import CompareNavigation from "@/components/compare/CompareNavigation.vue";
-// import {useRoute} from "vue-router";
+import {compareParameterTransform} from "@/Api/utils/urlParameterTransform";
+import {useRoute} from "vue-router";
 // import {indexParameterTransform} from "@/Api/utils/urlParameterTransform";
 
-// const route = useRoute();
+const route = useRoute();
 
 const axiosEcharts = ()=>{
-  // const query_dic = JSON.parse(JSON.stringify(route.query));
   // alert(JSON.stringify(query_dic))
-  const para_dic = {
-    "para_id" : 1,
-    "ts_code1":"000001.SH",
-    "ts_code2":"000006.SZ",
-    "trade_date":"20250501",
-    "start_date":"20200101",
-    "select_id1":1,
-    "select_id2":2
-  }
+  // const para_dic = {
+  //   "para_id" : 1,
+  //   "ts_code1":"000001.SH",
+  //   "ts_code2":"000006.SZ",
+  //   "name1":"上证指数",
+  //   "name2":"平安银行",
+  //   "trade_date":"20250501",
+  //   "start_date":"20200101",
+  //   "select_id1":1,
+  //   "select_id2":2
+  // }
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  const para_dic = compareParameterTransform(query_dic);
+  // alert(JSON.stringify(para_dic))
   axios.post("http://127.0.0.1:8081/compare/daily",para_dic).then(
       response=>{
         alert(JSON.stringify(response.data));

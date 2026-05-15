@@ -185,28 +185,28 @@ export function compareParameterTransform(param_dic){
     var trade_date = param_dic["trade_date"];
     var start_date = "20200101";
 
-    var index_list;
-    if(param_dic["level"] == "market"){
-        index_list = getCookie("market_list")
-    }
-
-    //如果是L1指数
-    if(param_dic["level"] == "L1"){
-        index_list = getCookie("l1_list")
-    }
-
-    //如果是L2指数
-    if(param_dic["level"] == "L2"){
-        index_list = getCookie("l2_list")
-    }
-
-    //如果是L3指数
-    if(param_dic["level"] == "L3"){
-        index_list = getCookie("l3_list")
-    }
-
     var ts_code1;
-    if(select_id1 === 1){
+    if(select_id1 == 1){
+        var index_list;
+        if(param_dic["level1"] == "market"){
+            index_list = getCookie("market_list")
+        }
+
+        //如果是L1指数
+        if(param_dic["level1"] == "L1"){
+            index_list = getCookie("l1_list")
+        }
+
+        //如果是L2指数
+        if(param_dic["level1"] == "L2"){
+            index_list = getCookie("l2_list")
+        }
+
+        //如果是L3指数
+        if(param_dic["level1"] == "L3"){
+            index_list = getCookie("l3_list")
+        }
+
         ts_code1 = index_list[level_id1 - 1];
     }else{
         ts_code1 = ts_code;
@@ -214,15 +214,35 @@ export function compareParameterTransform(param_dic){
 
 
     var ts_code2;
-    if(select_id2 === 1){
+    if(select_id2 == 1){
+        var index_list;
+        if(param_dic["level2"] == "market"){
+            index_list = getCookie("market_list")
+        }
+
+        //如果是L1指数
+        if(param_dic["level2"] == "L1"){
+            index_list = getCookie("l1_list")
+        }
+
+        //如果是L2指数
+        if(param_dic["level2"] == "L2"){
+            index_list = getCookie("l2_list")
+        }
+
+        //如果是L3指数
+        if(param_dic["level2"] == "L3"){
+            index_list = getCookie("l3_list")
+        }
+
         ts_code2 = index_list[level_id2 - 1];
     }else{
         var ts_code_list;
-        if(level == "analysis"){
+        if(level2 == "analysis"){
             ts_code_list = getCookie("analysis_code")
         }
 
-        if(level == 'L1' || level == 'L2' || level == 'L3'){
+        if(level2 == 'L1' || level2 == 'L2' || level2 == 'L3'){
             ts_code_list = getCookie("industry_code")
         }
         ts_code2 = ts_code_list[id - 1]

@@ -24,10 +24,17 @@ export function InitCompareDailyECharts(rawData){
 
 
     const option = {
-        title: {
-            text: rawData.index_name,
-            subtext: rawData.index_code
-        },
+        title: [{
+            text: rawData.ts_first_name,
+            subtext: rawData.ts_first_code,
+            left:"0%",
+            bottom:"87%"
+        },{
+            text: rawData.ts_second_name,
+            subtext: rawData.ts_second_code,
+            left:"0%",
+            bottom:"40%"
+        }],
         legend: {
 
         },
@@ -42,8 +49,7 @@ export function InitCompareDailyECharts(rawData){
         animation:false,
         grid:[
             {top:'7%',bottom:'7%',width:'',height:'45%'},
-            {top:'58%',bottom:'7%',width:'',height:'16%'},
-            {top:'81%',bottom:'0%',width:'',height:'12%'}
+            {top:'62%',bottom:'7%',width:'',height:'30%'}
         ],
         xAxis: [{
             gridIndex:0,
@@ -51,36 +57,12 @@ export function InitCompareDailyECharts(rawData){
         },{
             gridIndex:1,
             data: dates,
-        },{
-            gridIndex:2,
-            data: dates,
         }],
         yAxis: [{
             gridIndex:0,
             scale:true
         },{
             gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 2,
-            scale: true
-        },{
-            gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 2,
-            scale: true
-        },{
-            gridIndex: 0,
-            scale: true
-        },{
-            gridIndex: 1,
-            scale: true
-        },{
-            gridIndex: 2,
             scale: true
         }],
         dataZoom: [{
