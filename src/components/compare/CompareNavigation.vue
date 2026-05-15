@@ -7,41 +7,45 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="复权" style="width: 5%" @change="onMonthlyLevel">
+<!--  <el-select v-model="monthlyLevel" placeholder="指数/股票" style="width: 5%" @change="onSelect1">-->
+<!--    <el-option-->
+<!--        v-for="item in selectOptions1"-->
+<!--        :key="item.value"-->
+<!--        :label="item.label"-->
+<!--        :value="item.value">-->
+<!--    </el-option>-->
+<!--  </el-select>-->
+  <el-select v-model="monthlyLevel" placeholder="行业" style="width: 5%" @change="onLevel1">
     <el-option
-        v-for="item in selectPriceOptions"
+        v-for="item in selectLevel1Options1"
         :key="item.value"
         :label="item.label"
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="财务概览" style="width: 7%" @change="onMonthlyLevel">
-    <el-option
-        v-for="item in financeOptions"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-    </el-option>
-  </el-select>
-  <el-select v-model="monthlyLevel" placeholder="资金流向" style="width: 7%" @change="onMonthlyLevel">
-    <el-option
-        v-for="item in topHoldOptions"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-    </el-option>
-  </el-select>
-  <el-select v-model="monthlyLevel" placeholder="十大股东" style="width: 7%" @change="onMonthlyLevel">
-    <el-option
-        v-for="item in topHoldOptions"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-    </el-option>
-  </el-select>
-  <el-button @click="onSelectSubordinate" style="margin-right: 0;margin-left:0">所属</el-button>
-  <el-button style="margin-right: 0;margin-left:0">对比</el-button>
+  <el-input-number v-model="levelId" :min="1" :max="100" :step="1" controls-position="right"
+                   @change="handleItemChange" style="width: 5%"></el-input-number>
+  <el-input v-model="inputValue" style="width: 5%"></el-input>
+  <el-button @click="onQueryStock1">查询</el-button>
 
+<!--  <el-select v-model="monthlyLevel" placeholder="指数/股票" style="width: 5%" @change="onSelect2">-->
+<!--    <el-option-->
+<!--        v-for="item in selectOptions2"-->
+<!--        :key="item.value"-->
+<!--        :label="item.label"-->
+<!--        :value="item.value">-->
+<!--    </el-option>-->
+<!--  </el-select>-->
+  <el-select v-model="monthlyLevel" placeholder="行业" style="width: 5%" @change="onLevel2">
+    <el-option
+        v-for="item in selectLevel1Options2"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+    </el-option>
+  </el-select>
+  <el-input-number v-model="levelId" :min="1" :max="100" :step="1" controls-position="right"
+                   @change="handleItemChange" style="width: 5%"></el-input-number>
   <el-input-number v-model="levelId" :min="1" :max="100" :step="1" controls-position="right"
                    @change="handleItemChange" style="width: 5%"></el-input-number>
   <el-date-picker
@@ -60,10 +64,13 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import { useRoute,useRouter} from "vue-router";
-import {getNextDay, getNormDate, getPreviousDay} from "@/Api/utils/calcDate";
+import {getCurDate, getNextDay, getNormDate, getPreviousDay} from "@/Api/utils/calcDate";
 import {dayjs} from "element-plus";
+import axios from "axios";
 const route = useRoute();
 const router = useRouter();
+
+const inputValue = ref('');
 
 const dailyLeveloptions = ref([
   {value: 'daily1', label: '日线1'},
@@ -71,47 +78,138 @@ const dailyLeveloptions = ref([
   {value: 'daily3', label: '日线3'}
 ]);
 
-const selectPriceOptions = ref([
-  {value: 'monthly1', label: '复权'},
-  {value: 'monthly2', label: '对数'},
-  {value: 'monthly3', label: '涨跌'}
+// const selectOptions1 = ref([
+//   {value: 'index', label: '指数'},
+//   {value: 'stock', label: '股票'}
+// ]);
+//
+// const selectOptions2 = ref([
+//   {value: 'index', label: '指数'},
+//   {value: 'stock', label: '股票'}
+// ]);
+
+
+const selectLevel1Options1 = ref([
+  {value:'market',label:'大盘'},
+  {value: 'l1', label: 'L1'},
+  {value: 'l2', label: 'L2'},
+  {value: 'l3', label: 'L3'}
 ]);
 
-const financeOptions = ref([
-  {value: 'monthly1', label: '财务概览'},
-  {value: 'monthly2', label: '净资产'},
-  {value: 'monthly3', label: '盈利情况'},
-  {value: 'monthly3', label: '成本中心'}
+const selectLevel1Options2 = ref([
+  {value:'market',label:'大盘'},
+  {value: 'l1', label: 'L1'},
+  {value: 'l2', label: 'L2'},
+  {value: 'l3', label: 'L3'}
 ]);
 
-const topHoldOptions = ref([
-  {value: 'monthly1', label: '十大股东'},
-  {value: 'monthly2', label: '十大流通股东'}
-]);
+const onQueryStock1 = ()=>{
+  // alert(inputValue.value)
+  axios.get("http://127.0.0.1:8081/search/stock", {
+    params: {
+      queryName: inputValue.value
+    }
+  }).then(response => {
+    alert(JSON.stringify(response.data));
+    var ts_code = response.data["ts_code"]
+    var name = response.data["name"]
+
+    const query_dic = JSON.parse(JSON.stringify(route.query));
+    query_dic["select_id1"] = 2
+    query_dic["ts_code"] = ts_code;
+    query_dic["name"] = name;
+    router.push({path: '/compare/daily', query: query_dic});
+  }).catch(function (error) {
+    // alert("shibaile")
+    alert(error)
+  })
+}
 
 const onDailyLevel= (value) => {
   console.log("mmmmmm")
-  alert("dsfds")
+  // alert("dsfds")
   const query_dic = JSON.parse(JSON.stringify(route.query));
+  // alert(JSON.stringify(route.query))
 
   if(value === "daily1"){
-    query_dic["select_id"] = 1;
-    router.push({path: '/market/price', query: query_dic});
+    query_dic["para_id"] = 1;
+    router.push({path: '/compare/daily', query: query_dic});
   }
   if(value === "daily2"){
-    query_dic["select_id"] = 2;
-    router.push({path: '/market/price', query: query_dic});
+    query_dic["para_id"] = 2;
+    router.push({path: '/compare/daily', query: query_dic});
   }
   if(value === "daily3"){
-    query_dic["select_id"] = 3;
-    router.push({path: '/market/price', query: query_dic});
+    query_dic["para_id"] = 3;
+    router.push({path: '/compare/daily', query: query_dic});
   }
 };
 
-//所属行业页面条抓按
-const onSelectSubordinate = ()=>{
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  router.push({path:"/market/subordinate",query:query_dic})
+// const onSelect1=(value)=>{
+//   // alert(value)
+//   const query_dic = JSON.parse(JSON.stringify(route.query));
+//   if(value === "index"){
+//     query_dic["select_id1"] = 1;
+//     router.push({path: '/compare/daily', query: query_dic});
+//   }
+//   if(value === "stock"){
+//     query_dic["select_id1"] = 2;
+//     router.push({path: '/compare/daily', query: query_dic});
+//   }
+// }
+
+const onLevel1=(value)=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id1"] = 1
+  if(value === "market"){
+    query_dic["level1"] = "market";
+    router.push({path: '/compare/daily', query: query_dic});
+  }
+  if(value === "l1"){
+    query_dic["level1"] = "L1";
+    router.push({path: '/compare/daily', query: query_dic});
+  }
+  if(value === "l2"){
+    query_dic["level1"] = "L2";
+    router.push({path: '/compare/daily', query: query_dic});
+  }
+  if(value === "l3"){
+    query_dic["level1"] = "L3";
+    router.push({path: '/compare/daily', query: query_dic});
+  }
+}
+
+// const onSelect2=(value)=>{
+//   const query_dic = JSON.parse(JSON.stringify(route.query));
+//   if(value === "index"){
+//     query_dic["select_id2"] = 1;
+//     router.push({path: '/compare/daily', query: query_dic});
+//   }
+//   if(value === "stock"){
+//     query_dic["select_id2"] = 2;
+//     router.push({path: '/compare/daily', query: query_dic});
+//   }
+// }
+
+const onLevel2=(value)=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id2"] = 1
+  if(value === "market"){
+    query_dic["level2"] = "market";
+    router.push({path: '/compare/daily', query: query_dic});
+  }
+  if(value === "l1"){
+    query_dic["level2"] = "L1";
+    router.push({path: '/compare/daily', query: query_dic});
+  }
+  if(value === "l2"){
+    query_dic["level2"] = "L2";
+    router.push({path: '/compare/daily', query: query_dic});
+  }
+  if(value === "l3"){
+    query_dic["level2"] = "L3";
+    router.push({path: '/compare/daily', query: query_dic});
+  }
 }
 
 //板块id处理
@@ -133,7 +231,7 @@ const handleDateChange = (value)=>{
   var date = getNormDate(value)
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["trade_date"] = date;
-  router.push({path: '/market/daily', query: query_dic});
+  router.push({path: '/compare/daily', query: query_dic});
 }
 
 const selectPreviousDay=()=>{
@@ -141,7 +239,7 @@ const selectPreviousDay=()=>{
     const day = getPreviousDay(selectedDate)
     const query_dic = JSON.parse(JSON.stringify(route.query))
     query_dic["trade_date"] = day;
-    router.push({path: '/market/daily', query: query_dic});
+    router.push({path: '/compare/daily', query: query_dic});
   }
 };
 
@@ -150,7 +248,7 @@ const selectNextDay=()=>{
     const date = getNextDay(selectedDate)
     const query_dic = JSON.parse(JSON.stringify(route.query))
     query_dic["trade_date"] = date;
-    router.push({path: '/market/daily', query: query_dic});
+    router.push({path: '/compare/daily', query: query_dic});
   }
 };
 

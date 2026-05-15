@@ -95,6 +95,7 @@ const onDailyLevel= (value) => {
   // alert(value)
 
   const query_dic = JSON.parse(JSON.stringify(route.query));
+  // alert(JSON.stringify(route.query))
 
   if(value === "daily1"){
     query_dic["para_id"] = 1;

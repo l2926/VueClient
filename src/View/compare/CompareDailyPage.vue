@@ -20,18 +20,20 @@ const axiosEcharts = ()=>{
   // const query_dic = JSON.parse(JSON.stringify(route.query));
   // alert(JSON.stringify(query_dic))
   const para_dic = {
-    "tsCode1":"000001.SZ",
+    "tsCode1":"000001.SH",
     "symbol1":"000001",
     "name1":"平安银行",
     "tsCode2":"000006.SZ",
     "symbol2":"000006",
     "name2":"万科",
     "trade_date":"20250501",
-    "start_date":"20250101"
+    "start_date":"20200101",
+    "select_id1":1,
+    "select_id2":2
   }
   axios.post("http://127.0.0.1:8081/compare/daily",para_dic).then(
       response=>{
-        alert(JSON.stringify(response.data));
+        // alert(JSON.stringify(response.data));
         try{
           InitCompareDailyECharts(response.data);
         }
