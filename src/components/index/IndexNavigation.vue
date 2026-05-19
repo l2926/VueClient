@@ -48,7 +48,16 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-button style="margin-right: 0;margin-left:0">涨跌统计图</el-button>
+
+  <el-select v-model="monthlyLevel" placeholder="市值" style="width: 7%" @change="onSelectMv">
+    <el-option
+        v-for="item in mvOptions"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+    </el-option>
+  </el-select>
+
 
   <el-input-number v-model="levelId" :min="1" :max="100" :step="1" controls-position="right"
                    @change="handleItemChange" style="width: 5%"></el-input-number>
@@ -114,6 +123,15 @@ const blockOptions = ref([
   {value: 'start_up', label: '创业板'},
   {value: 'kechuang', label: '科创板'},
   {value: 'beijing', label: '北交所'},
+]);
+
+const mvOptions = ref([
+  {value: 'all', label: '所有'},
+  {value: '1000', label: '千亿'},
+  {value: '500', label: '五百亿'},
+  {value: '100', label: '百亿'},
+  {value: '100', label: '五十亿'},
+  {value: '0', label: '其他'},
 ]);
 
 const upPctChgOptions = ref([
@@ -184,6 +202,19 @@ const onSelectBlock = (value)=>{
   }
   if(value === "beijing"){
     query_dic["block_id"] = 5;
+    router.push({path:route.path,query:query_dic});
+  }
+}
+
+const onSelectMv = (value)=>{
+  // alert(value)
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === "all"){
+    query_dic["mv_id"] = 1;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "1000"){
+    query_dic["mv_id"] = 2;
     router.push({path:route.path,query:query_dic});
   }
 }
