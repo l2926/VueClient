@@ -75,6 +75,10 @@ const routes = [
         path:'/index/market_statistics',
         name:'market_statistics',
         component:()=>import('@/View/index/MarketStatistics.vue')
+    },{
+        path:'/index/hsgt_daily',
+        name:'hsgt_daily',
+        component:()=>import('@/View/index/HsgtDailyPage.vue')
     }
 ]
 

@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <td><el-link style="width:100px;color:black" to="">地域统计图</el-link></td>
-        <td><el-link style="height:30px;width:100px;color:black" to="">北向资金</el-link></td>
+        <td><el-link style="height:30px;width:100px;color:black" @click="HsgtDaily">北向资金</el-link></td>
         <td><el-link style="color:black" to="">融资融券</el-link></td>
         <td><el-link style="color:black" @click="StatisticsExcel" to="">基本面统计</el-link></td>
         <td><el-link style="color:black" @click="MarketStatisticsExcel" to="">行情统计</el-link></td>
@@ -167,6 +167,18 @@ export default{
         "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/statistics',query:query_dic})
+    },
+    HsgtDaily:function (){
+      const query_dic = {
+        "select_id":1,
+        "para_id":1,
+        "block_id":1,
+        "mv_id":1,
+        "level":"market",
+        "level_id":1,
+        "trade_date":"20250309"
+      }
+      this.$router.push({path:'/index/hsgt_daily',query:query_dic})
     },
     StatisticsExcel:function (){
       const query_dic = {

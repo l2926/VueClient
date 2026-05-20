@@ -175,7 +175,6 @@ export function compareParameterTransform(param_dic){
 
     var para_id = param_dic["para_id"];
     var select_id1 = param_dic["select_id1"];
-    var level1 = param_dic["level1"];
     var level_id1 = param_dic["level_id1"];
     var ts_code = param_dic["ts_code"]
 
@@ -188,8 +187,9 @@ export function compareParameterTransform(param_dic){
     var start_date = "20200101";
 
     var ts_code1;
+    var index_list;
     if(select_id1 == 1){
-        var index_list;
+
         if(param_dic["level1"] == "market"){
             index_list = getCookie("market_list")
         }
@@ -217,7 +217,6 @@ export function compareParameterTransform(param_dic){
 
     var ts_code2;
     if(select_id2 == 1){
-        var index_list;
         if(param_dic["level2"] == "market"){
             index_list = getCookie("market_list")
         }
@@ -250,7 +249,7 @@ export function compareParameterTransform(param_dic){
         ts_code2 = ts_code_list[id - 1]
     }
 
-    var param_dic_copy = {
+    param_dic_copy = {
         "para_id" : para_id,
         "select_id1" : select_id1,
         "select_id2" : select_id2,

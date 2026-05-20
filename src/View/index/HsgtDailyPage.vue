@@ -1,6 +1,7 @@
 <template>
   <el-header>
     <IndexNavigation></IndexNavigation>
+    hsgt
   </el-header>
   <div id="priceCharts" class="container-fluid" style="width:99%;height:600px;margin-left: 0"></div>
 
@@ -10,9 +11,9 @@
 import IndexNavigation from "@/components/index/IndexNavigation.vue";
 import {onMounted, onUpdated} from "vue";
 import axios from "axios";
-import {InitDailyECharts} from "@/Api/echarts/index/index_daily";
 import {useRoute} from "vue-router";
 import {indexParameterTransform} from "@/Api/utils/urlParameterTransform";
+import {InitHsgtDailyECharts} from "@/Api/echarts/index/hsgt_daily";
 
 const route = useRoute();
 
@@ -21,11 +22,11 @@ const axiosEcharts = ()=>{
   // alert(JSON.stringify(query_dic))
   const para_dic = indexParameterTransform(query_dic);
   // alert(JSON.stringify(para_dic))
-  axios.post("http://127.0.0.1:8081/index/daily",para_dic).then(
+  axios.post("http://127.0.0.1:8081/index/hsgt_daily",para_dic).then(
       response=>{
         // alert(JSON.stringify(response.data));
         try{
-          InitDailyECharts(response.data);
+          InitHsgtDailyECharts(response.data);
         }
         catch (err){
           alert(err)
