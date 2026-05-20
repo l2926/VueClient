@@ -37,7 +37,7 @@
   <el-button @click="onSelectTopHold" style="margin-right: 0;margin-left:0">十大股东</el-button>
   <el-button @click="onSelectCompanyInfo" style="margin-right: 0;margin-left:0">公司信息</el-button>
   <el-button @click="onSelectSubordinate" style="margin-right: 0;margin-left:0">所属</el-button>
-  <el-button style="margin-right: 0;margin-left:0">对比</el-button>
+  <el-button @click="onClickCompare" style="margin-right: 0;margin-left:0">对比</el-button>
 
   <el-input-number v-model="levelId" :min="1" :max="1000" :step="1" controls-position="right"
                    @change="handleItemChange" style="width: 5%"></el-input-number>
@@ -176,6 +176,26 @@ const onSelectCompanyInfo = ()=>{
 const onSelectSubordinate = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   router.push({path:"/market/subordinate",query:query_dic})
+}
+
+
+const onClickCompare = ()=>{
+  // alert("compare")
+  var old_query_dic = JSON.parse(JSON.stringify(route.query))
+  var query_dic = {
+    "para_id":1,
+    "select_id1":1,
+    "level1":"market",
+    "level_id1":1,
+    "ts_code":"",
+    "name":"",
+    "select_id2":2,
+    "level2":old_query_dic["level"],
+    "level_id2":1,
+    "id":old_query_dic["id"],
+    "trade_date":old_query_dic["trade_date"]
+  }
+  router.push({path:"/compare/daily",query:query_dic});
 }
 
 //板块id处理
