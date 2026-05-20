@@ -176,6 +176,16 @@
           <a :href="market" style="color: Teal">{{ row.amount }}</a>
         </template>
       </el-table-column>
+      <el-table-column>
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            沪深股通持股
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a :href="market" style="color: gray">{{ row.ratio }}</a>
+        </template>
+      </el-table-column>
       <el-table-column
           prop="address"
           label="板块">
