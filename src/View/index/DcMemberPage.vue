@@ -1,9 +1,6 @@
 
 <template>
   <el-container>
-    <el-header>
-      <ConceptMemberNavigation></ConceptMemberNavigation>
-    </el-header>
     <el-table
         :data="tableData"
         border
@@ -79,103 +76,14 @@
         </template>
       </el-table-column>
       <el-table-column
-          prop="date"
-          label="收盘价"
-          width="70">
+          prop="address"
+          label="入选理由"
+          width="800">
         <template #default="{ row }">
-          <a :href="market" style="color: blue">{{ row.close }}</a>
+          <a :href="market" style="color: gray">{{ row.reason }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            振幅
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.amp }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="70">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            PE
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: navy">{{ row.pe_ttm }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            PB
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: Olive">{{ row.pb }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            PS
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: Teal">{{ row.ps_ttm }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            营/资
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: DarkViolet">{{ row.rev_asset_ratio }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            利润(%)
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: Fuchsia">{{ row.profit_rate }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            ROE
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: purple">{{ row.roe }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            换手(%)
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: Silver">{{ row.turnover_rate }}</a>
-        </template>
-      </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            成交金额
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: Teal">{{ row.amount }}</a>
-        </template>
-      </el-table-column>
+
       <el-table-column
           prop="address"
           label="板块">
@@ -220,7 +128,6 @@
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
 import {useRoute} from "vue-router";
-import ConceptMemberNavigation from "@/components/index/ConceptMemberNavigation.vue";
 
 //初始化所属表格内容
 var tableData = ref([]);
@@ -229,10 +136,10 @@ var tableData = ref([]);
 const route = useRoute();
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  // alert(JSON.stringify(para_dic))
-  axios.post("http://127.0.0.1:8081/index/dc_member",query_dic).then(
+  // alert(JSON.stringify(query_dic))
+  axios.post("http://127.0.0.1:8081/index/dc_member2",query_dic).then(
       (response) => {
-        // alert(JSON.stringify(response.data));
+        alert(JSON.stringify(response.data));
         tableData.value = response.data;
 
         var ts_code_list = response.data.map((item)=>{

@@ -79,6 +79,10 @@ const routes = [
         path:'/index/hsgt_daily',
         name:'hsgt_daily',
         component:()=>import('@/View/index/HsgtDailyPage.vue')
+    },{
+        path:'/index/dc_index2',
+        name:'dc_index2',
+        component:()=>import('@/View/index/DcIndex2Page.vue')
     }
 ]
 

@@ -27,6 +27,7 @@
         <td><el-link style="color:black" @click="StatisticsExcel" to="">基本面统计</el-link></td>
         <td><el-link style="color:black" @click="MarketStatisticsExcel" to="">行情统计</el-link></td>
         <td><el-link style="color:black" @click="AreaStatisticsExcel" to="">地域统计</el-link></td>
+        <td><el-link style="color:black" @click="DcIndex2" to="">东方财富</el-link></td>
       </tr>
       <tr v-for="(index) in industry_len" :key="index">
         <td v-if="index==1&&industries.length==31" rowspan="4" style="width:185px;">
@@ -213,6 +214,17 @@ export default{
         "trade_date":"20250309"
       }
       this.$router.push({path:'/index/area_overview',query:query_dic})
+    },
+    DcIndex2:function (){
+      const query_dic = {
+        "select_id":1,
+        "para_id":1,
+        "block_id":1,
+        "level":"market",
+        "level_id":1,
+        "trade_date":"20250309"
+      }
+      this.$router.push({path:'/index/dc_index2',query:query_dic})
     },
     onIndex:function(index,index2){
       // alert((index-1)*8 + index2)
