@@ -227,7 +227,7 @@ export default{
         "para_id":1,
         "block_id":1,
         "mv_id":1,
-        "sort_id":1,
+        "sort_id":2,
         "level":"market",
         "level_id":1,
         "trade_date":"20250309"

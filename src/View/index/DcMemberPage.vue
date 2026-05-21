@@ -20,7 +20,7 @@
           label="公司名称"
           width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=L1&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=20&ts_code=${row.ts_code}&name=${row.name}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="60">
@@ -55,7 +55,7 @@
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry3" style="text-decoration: none; color: inherit;">
             行业3
           </el-link>
         </template>
@@ -93,7 +93,7 @@
       </el-table-column>
       <el-table-column>
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectAsset" style="text-decoration: none; color: inherit;">
             净资产(亿)
           </el-link>
         </template>
@@ -103,7 +103,7 @@
       </el-table-column>
       <el-table-column>
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectTotalMv" style="text-decoration: none; color: inherit;">
             市值(亿)
           </el-link>
         </template>
@@ -127,7 +127,7 @@
 <script setup>
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 
 //初始化所属表格内容
 var tableData = ref([]);
@@ -165,6 +165,25 @@ onUpdated(axiosTable);
 //根据表格标题头排序
 const onSelectDate = ()=>{
   alert("dsfds")
+}
+
+const router = useRouter()
+const onSelectIndustry3 = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 1
+  router.push({path:'/index/dc_member',query:query_dic})
+}
+
+const onSelectTotalMv = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 2
+  router.push({path:'/index/dc_member',query:query_dic})
+}
+
+const onSelectAsset = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 3
+  router.push({path:'/index/dc_member',query:query_dic})
 }
 </script>
 
