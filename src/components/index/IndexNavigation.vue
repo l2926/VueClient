@@ -149,20 +149,20 @@ const downPctChgOptions = ref([
 
 const onDailyLevel= (value) => {
   console.log("mmmmmm")
-  alert("dsfds")
+  // alert("dsfds")
   const query_dic = JSON.parse(JSON.stringify(route.query));
 
   if(value === "daily1"){
-    query_dic["select_id"] = 1;
-    router.push({path: '/market/price', query: query_dic});
+    query_dic["para_id"] = 1;
+    router.push({path: '/index/index_daily', query: query_dic});
   }
   if(value === "daily2"){
-    query_dic["select_id"] = 2;
-    router.push({path: '/market/price', query: query_dic});
+    query_dic["para_id"] = 2;
+    router.push({path: '/index/index_daily', query: query_dic});
   }
   if(value === "daily3"){
-    query_dic["select_id"] = 3;
-    router.push({path: '/market/price', query: query_dic});
+    query_dic["para_id"] = 3;
+    router.push({path: '/index/index_daily', query: query_dic});
   }
 };
 

@@ -1,6 +1,10 @@
 
 <template>
   <el-container>
+    <el-header style="">
+      <IndexNavigation></IndexNavigation>
+    </el-header>
+
     <el-table
         :data="tableData"
         border
@@ -62,7 +66,7 @@
 
       <el-table-column
           prop="address"
-          label="主力流入金额">
+          label="主力流入金额(亿)">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.main_change}}</a>
         </template>
@@ -87,7 +91,7 @@
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
 import {useRoute} from "vue-router";
-import ConceptMemberNavigation from "@/components/index/ConceptMemberNavigation.vue";
+import IndexNavigation from "@/components/index/IndexNavigation.vue";
 
 //初始化所属表格内容
 var tableData = ref([]);

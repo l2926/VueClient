@@ -26,7 +26,7 @@
         </template>
         <template #default="{ row }">
 <!--          <e-link :href="market" style="color: gray">{{ row.industry_name_l1 }}</e-link>-->
-          <el-link :href="`/#/index/market_statistics?select_id=1&p\ara_id=1&block_id=1&level=L1&index_code=${row.index_code_l1}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.industry_name_l1 }}</el-link>
+          <el-link :href="`/#/index/market_statistics?select_id=1&p\ara_id=1&block_id=1&mv_id=1&sort_id=1&level=L1&index_code=${row.index_code_l1}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.industry_name_l1 }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="120">
