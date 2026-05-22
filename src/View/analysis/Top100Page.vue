@@ -4,7 +4,6 @@
     <el-header style="">
       <AnalysisNavigation></AnalysisNavigation>
     </el-header>
-    Top100
     <el-table
         :data="tableData"
         border
@@ -24,7 +23,7 @@
           label="公司名称"
           width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=analysis&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=analysis&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="60">
@@ -149,7 +148,7 @@
       </el-table-column>
       <el-table-column width="60">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectAmount" style="text-decoration: none; color: inherit;">
             成交金额
           </el-link>
         </template>
@@ -187,7 +186,7 @@
       </el-table-column>
       <el-table-column width="80">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectAsset" style="text-decoration: none; color: inherit;">
             净资产
           </el-link>
         </template>
@@ -197,7 +196,7 @@
       </el-table-column>
       <el-table-column>
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectTotalMv" style="text-decoration: none; color: inherit;">
             市值
           </el-link>
         </template>
@@ -222,7 +221,7 @@
 import {onMounted, onUpdated, ref} from "vue";
 import AnalysisNavigation from "@/components/analysis/AnalysisNavigation.vue";
 import axios from "axios";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 
 const route = useRoute();
 
@@ -231,6 +230,27 @@ var tableData = ref([]);
 
 const onSelectDate = ()=>{
   alert("dsfds")
+}
+
+const router = useRouter()
+const onSelectAmount=()=>{
+  // alert('333')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 2
+  router.push({path:'/analysis/top100',query:query_dic})
+}
+
+const onSelectAsset=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 3
+  router.push({path:'/analysis/top100',query:query_dic})
+}
+
+const onSelectTotalMv=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 1
+  router.push({path:'/analysis/top100',query:query_dic})
 }
 
 const axiosTable = ()=>{

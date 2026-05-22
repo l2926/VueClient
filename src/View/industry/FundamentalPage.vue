@@ -196,7 +196,7 @@
       </el-table-column>
       <el-table-column width="80">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectSales" style="text-decoration: none; color: inherit;">
             销售额(亿)
           </el-link>
         </template>
@@ -206,7 +206,7 @@
       </el-table-column>
       <el-table-column width="60">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectProfit" style="text-decoration: none; color: inherit;">
             盈利(亿)
           </el-link>
         </template>
@@ -323,6 +323,18 @@ const onSelectHsgt=()=>{
   // alert('mv')
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["sort_id"] = 5
+  router.push({path:'/industry/fundamental',query:query_dic})
+}
+const onSelectSales=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 6
+  router.push({path:'/industry/fundamental',query:query_dic})
+}
+const onSelectProfit=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 8
   router.push({path:'/industry/fundamental',query:query_dic})
 }
 </script>

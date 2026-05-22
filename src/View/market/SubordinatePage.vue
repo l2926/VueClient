@@ -70,7 +70,7 @@
 
 <script setup>
 import MarketNavigation from "@/components/market/MarketNavigation.vue";
-import {onMounted, ref} from "vue";
+import {onMounted, onUpdated, ref} from "vue";
 import {marketParameterTransform} from "@/Api/utils/urlParameterTransform";
 import axios from "axios";
 import {useRoute} from "vue-router";
@@ -96,7 +96,7 @@ const axiosTable = ()=>{
 }
 
 onMounted(axiosTable);
-// onUpdated(axiosTable);
+onUpdated(axiosTable);
 </script>
 
 <style scoped>

@@ -58,13 +58,13 @@
     <el-button style="margin-left:0;margin-right: 0" @click="selectPreviousDay">前一天</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="selectNextDay">后一天</el-button>
 
-    <el-date-picker
-        v-model="selectedStartDate"
-        type="date"
-        placeholder="选择日期"
-        @change="handleStartDateChange"
-        style="width: 8%"
-    ></el-date-picker>
+<!--    <el-date-picker-->
+<!--        v-model="selectedStartDate"-->
+<!--        type="date"-->
+<!--        placeholder="选择日期"-->
+<!--        @change="handleStartDateChange"-->
+<!--        style="width: 8%"-->
+<!--    ></el-date-picker>-->
   </div>
 </template>
 
