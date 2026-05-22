@@ -201,7 +201,7 @@ const axiosTable = ()=>{
   // alert(JSON.stringify(para_dic))
   axios.post("http://127.0.0.1:8081/industry/company_info",para_dic).then(
       (response) => {
-        alert(JSON.stringify(response));
+        // alert(JSON.stringify(response));
         tableData.value = response.data;
 
         var ts_code_list = response.data.map((item)=>{

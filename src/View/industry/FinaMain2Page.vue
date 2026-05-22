@@ -13,7 +13,7 @@
       <el-table-column
           prop="date"
           label="序号"
-          width="50">
+          width="40">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.idx }}</a>
         </template>
@@ -21,12 +21,12 @@
       <el-table-column
           prop="date"
           label="公司名称"
-          width="90">
+          width="80">
         <template #default="{ row }">
           <el-link :href="`/#/market/daily?select_id=20&p\ara_id=1&level=L1&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
-      <el-table-column width="60">
+      <el-table-column width="50">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             省份
@@ -46,7 +46,7 @@
           <a :href="market" style="color: gray">{{ row.city }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="90">
+      <el-table-column width="70">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             行业1
@@ -56,7 +56,7 @@
           <a :href="market" style="color: gray">{{ row.industry_name_l1 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="90">
+      <el-table-column width="70">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             行业2
@@ -66,9 +66,9 @@
           <a :href="market" style="color: gray">{{ row.industry_name_l2 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="90">
+      <el-table-column width="80">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry3" style="text-decoration: none; color: inherit;">
             行业3
           </el-link>
         </template>
@@ -78,7 +78,8 @@
       </el-table-column>
       <el-table-column
           prop="address"
-          label="主营业务">
+          label="主营业务"
+          width="800">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.introduction }}</a>
         </template>
@@ -93,7 +94,7 @@
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectAsset" style="text-decoration: none; color: inherit;">
             净资产(亿)
           </el-link>
         </template>
@@ -103,7 +104,7 @@
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectTotalMv" style="text-decoration: none; color: inherit;">
             市值(亿)
           </el-link>
         </template>
@@ -127,7 +128,7 @@
 <script setup>
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import FundamentalNavigation from "@/components/industry/FundamentalNavigation.vue";
 import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
 
@@ -168,6 +169,27 @@ onUpdated(axiosTable);
 //根据表格标题头排序
 const onSelectDate = ()=>{
   alert("dsfds")
+}
+
+const router = useRouter()
+const onSelectIndustry3=()=>{
+  // alert('333')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 2
+  router.push({path:'/industry/fina_main2',query:query_dic})
+}
+
+const onSelectAsset=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 3
+  router.push({path:'/industry/fina_main2',query:query_dic})
+}
+
+const onSelectTotalMv=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 1
+  router.push({path:'/industry/fina_main2',query:query_dic})
 }
 </script>
 

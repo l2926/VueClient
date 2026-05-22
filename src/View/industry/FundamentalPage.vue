@@ -13,7 +13,7 @@
       <el-table-column
           prop="date"
           label="序号"
-          width="50">
+          width="40">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.idx }}</a>
         </template>
@@ -21,12 +21,12 @@
       <el-table-column
           prop="date"
           label="公司名称"
-          width="90">
+          width="85">
         <template #default="{ row }">
           <el-link :href="`/#/market/daily?select_id=1&p\ara_id=20&level=L1&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
-      <el-table-column width="60">
+      <el-table-column width="55">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             地区
@@ -36,7 +36,7 @@
           <a :href="market" style="color: gray">{{ row.area }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="90">
+      <el-table-column width="85">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             行业1
@@ -46,7 +46,7 @@
           <a :href="market" style="color: gray">{{ row.industry_name_l1 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="90">
+      <el-table-column width="95">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             行业2
@@ -56,9 +56,9 @@
           <a :href="market" style="color: gray">{{ row.industry_name_l2 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="90">
+      <el-table-column width="95">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry3" style="text-decoration: none; color: inherit;">
             行业3
           </el-link>
         </template>
@@ -68,7 +68,7 @@
       </el-table-column>
       <el-table-column width="70">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
             涨跌幅(%)
           </el-link>
         </template>
@@ -86,7 +86,7 @@
           <a :href="market" style="color: blue">{{ row.close }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
+      <el-table-column width="55">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             振幅
@@ -96,7 +96,7 @@
           <a :href="market" style="color: gray">{{ row.amp }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="70">
+      <el-table-column width="55">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             PE
@@ -106,7 +106,7 @@
           <a :href="market" style="color: navy">{{ row.pe_ttm }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
+      <el-table-column width="55">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             PB
@@ -116,7 +116,7 @@
           <a :href="market" style="color: Olive">{{ row.pb }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
+      <el-table-column width="55">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             PS
@@ -126,7 +126,7 @@
           <a :href="market" style="color: Teal">{{ row.ps_ttm }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
+      <el-table-column width="55">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             营/资
@@ -136,7 +136,7 @@
           <a :href="market" style="color: DarkViolet">{{ row.rev_asset_ratio }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
+      <el-table-column width="55">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             利润(%)
@@ -156,7 +156,7 @@
           <a :href="market" style="color: purple">{{ row.roe }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
+      <el-table-column width="55">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             换手(%)
@@ -176,9 +176,9 @@
           <a :href="market" style="color: Teal">{{ row.amount }}</a>
         </template>
       </el-table-column>
-      <el-table-column>
+      <el-table-column width="60">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectHsgt" style="text-decoration: none; color: inherit;">
             沪深股通持股
           </el-link>
         </template>
@@ -188,12 +188,13 @@
       </el-table-column>
       <el-table-column
           prop="address"
-          label="板块">
+          label="板块"
+          width="60">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.market }}</a>
         </template>
       </el-table-column>
-      <el-table-column>
+      <el-table-column width="80">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             销售额(亿)
@@ -203,7 +204,7 @@
           <a :href="market" style="color: gray">{{ row.revenue }}</a>
         </template>
       </el-table-column>
-      <el-table-column>
+      <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             盈利(亿)
@@ -215,7 +216,7 @@
       </el-table-column>
       <el-table-column>
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectAsset" style="text-decoration: none; color: inherit;">
             净资产(亿)
           </el-link>
         </template>
@@ -225,7 +226,7 @@
       </el-table-column>
       <el-table-column>
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectTotalMv" style="text-decoration: none; color: inherit;">
             市值(亿)
           </el-link>
         </template>
@@ -249,7 +250,7 @@
 <script setup>
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import FundamentalNavigation from "@/components/industry/FundamentalNavigation.vue";
 import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
 
@@ -290,6 +291,39 @@ onUpdated(axiosTable);
 //根据表格标题头排序
 const onSelectDate = ()=>{
   alert("dsfds")
+}
+
+const router = useRouter()
+const onSelectIndustry3=()=>{
+  // alert('333')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 2
+  router.push({path:'/industry/fundamental',query:query_dic})
+}
+
+const onSelectAsset=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 3
+  router.push({path:'/industry/fundamental',query:query_dic})
+}
+
+const onSelectTotalMv=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 1
+  router.push({path:'/industry/fundamental',query:query_dic})
+}
+const onSelectPctChg=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 4
+  router.push({path:'/industry/fundamental',query:query_dic})
+}
+const onSelectHsgt=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 5
+  router.push({path:'/industry/fundamental',query:query_dic})
 }
 </script>
 
