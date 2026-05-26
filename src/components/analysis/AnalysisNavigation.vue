@@ -272,12 +272,12 @@ const handleDateChange = (selectDate)=>{
   router.push({path: '/analysis/limit', query: query_dic});
 }
 
-const handleStartDateChange = (selectDate)=>{
-  var date = getNormDate(selectDate)
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["start_date"] = date;
-  router.push({path: '/analysis/two_days_diff', query: query_dic});
-}
+// const handleStartDateChange = (selectDate)=>{
+//   var date = getNormDate(selectDate)
+//   const query_dic = JSON.parse(JSON.stringify(route.query))
+//   query_dic["start_date"] = date;
+//   router.push({path: '/analysis/two_days_diff', query: query_dic});
+// }
 
 const selectPreviousDay=()=>{
   if (selectedDate.value) {
