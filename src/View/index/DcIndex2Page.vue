@@ -24,7 +24,7 @@
           label="公司名称"
           width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/index/dc_member?theme_code=${row.theme_code}&name=${row.name}&sort_id=1`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/index/dc_member?theme_code=${row.theme_code}&name=${row.name}&sort_id=1&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
 

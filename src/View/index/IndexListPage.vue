@@ -100,7 +100,7 @@ export default{
         "block_id":1,
         "level":"market",
         "level_id":1,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/index_daily',query:query_dic})
     },
@@ -111,7 +111,7 @@ export default{
         "block_id":1,
         "level":"market",
         "level_id":2,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/index_daily',query:query_dic})
     },
@@ -122,7 +122,7 @@ export default{
         "block_id":1,
         "level":"market",
         "level_id":3,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/index_daily',query:query_dic})
     },
@@ -133,7 +133,7 @@ export default{
         "block_id":1,
         "level":"market",
         "level_id":4,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/index_daily',query:query_dic})
     },
@@ -144,7 +144,7 @@ export default{
         "block_id":1,
         "level":"market",
         "level_id":5,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/index_daily',query:query_dic})
     },
@@ -155,7 +155,7 @@ export default{
         "block_id":1,
         "level":"market",
         "level_id":6,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/index_daily',query:query_dic})
     },
@@ -178,7 +178,7 @@ export default{
         "sort_id":1,
         "level":"market",
         "level_id":1,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/hsgt_daily',query:query_dic})
     },
@@ -191,7 +191,7 @@ export default{
         "sort_id":1,
         "level":"market",
         "level_id":1,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/market_overview',query:query_dic})
     },
@@ -204,7 +204,7 @@ export default{
         "sort_id":1,
         "level":"market",
         "level_id":1,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/market_statistics',query:query_dic})
     },
@@ -217,7 +217,7 @@ export default{
         "sort_id":1,
         "level":"market",
         "level_id":1,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/area_overview',query:query_dic})
     },
@@ -230,7 +230,7 @@ export default{
         "sort_id":2,
         "level":"market",
         "level_id":1,
-        "trade_date":"20250309"
+        "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/dc_index2',query:query_dic})
     },

@@ -287,7 +287,7 @@ const handleDateChange = (value)=>{
   var date = getNormDate(value)
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["trade_date"] = date;
-  router.push({path: '/market/daily', query: query_dic});
+  router.push({path: route.path, query: query_dic});
 }
 
 const selectPreviousDay=()=>{
@@ -295,7 +295,7 @@ const selectPreviousDay=()=>{
     const day = getPreviousDay(selectedDate)
     const query_dic = JSON.parse(JSON.stringify(route.query))
     query_dic["trade_date"] = day;
-    router.push({path: '/market/daily', query: query_dic});
+    router.push({path: route.path, query: query_dic});
   }
 };
 
@@ -304,7 +304,7 @@ const selectNextDay=()=>{
     const date = getNextDay(selectedDate)
     const query_dic = JSON.parse(JSON.stringify(route.query))
     query_dic["trade_date"] = date;
-    router.push({path: '/market/daily', query: query_dic});
+    router.push({path: route.path, query: query_dic});
   }
 };
 
