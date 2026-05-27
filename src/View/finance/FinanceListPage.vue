@@ -19,16 +19,16 @@
         <td v-if="index==1&&industries.length==134" rowspan="17" style="width:185px;">
           <text>申万行业(L2)</text>
           <br>
-          <router-link style="color: black;" to="/industry/industry_list?level=L1" >L1 </router-link>
-          <router-link style="color: black;" to="/industry/industry_list?level=L2" >L2 </router-link>
-          <router-link style="color: black;" to="/industry/industry_list?level=L3" >L3 </router-link>
+          <router-link style="color: black;" to="/finance/finance_list?level=L1" >L1 </router-link>
+          <router-link style="color: black;" to="/finance/finance_list?level=L2" >L2 </router-link>
+          <router-link style="color: black;" to="/finance/finance_list?level=L3" >L3 </router-link>
         </td>
         <td v-if="index==1&&industries.length==346" rowspan="44" style="width:185px;">
           <text>申万行业(L3)</text>
           <br>
-          <router-link style="color: black;" to="/industry/industry_list?level=L1" >L1 </router-link>
-          <router-link style="color: black;" to="/industry/industry_list?level=L2" >L2 </router-link>
-          <router-link style="color: black;" to="/industry/industry_list?level=L3" >L3 </router-link>
+          <router-link style="color: black;" to="/finance/finance_list?level=L1" >L1 </router-link>
+          <router-link style="color: black;" to="/finance/finance_list?level=L2" >L2 </router-link>
+          <router-link style="color: black;" to="/finance/finance_list?level=L3" >L3 </router-link>
         </td>
         <td v-for="(index2) in 8" :key="index2" >
           <el-link style="width:100px;color:black;" to="" @click="onBasicInfo(index,index2)" >{{industries[(index-1)*8 + index2-1]}}</el-link>
