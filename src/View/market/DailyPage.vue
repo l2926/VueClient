@@ -20,6 +20,7 @@ const axiosEcharts = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   // alert(JSON.stringify(query_dic))
   const para_dic = marketParameterTransform(query_dic);
+  // alert(JSON.stringify(para_dic))
   axios.post("http://127.0.0.1:8081/market/daily",para_dic).then(
       response=>{
         // alert(JSON.stringify(response.data));

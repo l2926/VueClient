@@ -5,8 +5,8 @@
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickTotalAssets">总资产</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickTotalLiab">总债务</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickLevel">杠杆</el-button>
-    <el-button style="margin-left:0;margin-right: 0" @click="handleClickRevenue">总营收</el-button>
-    <el-button style="margin-left:0;margin-right: 0" @click="handleClickProfit">总利润</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickRevenue">营收</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickProfit">利润</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickProfitRate">利润率</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickROE">ROE</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickROA">ROA</el-button>
@@ -78,6 +78,34 @@ const handleClickProfit = ()=>{
   // alert("profit")
   const query_dic = JSON.parse(JSON.stringify(route.query));
   query_dic["select_id"] = 4;
+  router.push({path: '/finance/finance_history', query: query_dic});
+}
+
+const handleClickLevel = ()=>{
+  // alert("aaa")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id"] = 6;
+  router.push({path: '/finance/finance_history', query: query_dic});
+}
+
+const handleClickProfitRate = ()=>{
+  // alert("bbb")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id"] = 7;
+  router.push({path: '/finance/finance_history', query: query_dic});
+}
+
+const handleClickROE = ()=>{
+  // alert("ccc")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id"] = 8;
+  router.push({path: '/finance/finance_history', query: query_dic});
+}
+
+const handleClickROA = ()=>{
+  // alert("ddd")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id"] = 9;
   router.push({path: '/finance/finance_history', query: query_dic});
 }
 

@@ -12,9 +12,9 @@
         <td v-if="index==1&&industries.length==31" rowspan="4" style="width:185px;">
           <text>申万行业(L1)</text>
           <br>
-          <router-link style="color: black;" to="/industry/industry_list?level=L1" >L1 </router-link>
-          <router-link style="color: black;" to="/industry/industry_list?level=L2" >L2 </router-link>
-          <router-link style="color: black;" to="/industry/industry_list?level=L3" >L3 </router-link>
+          <router-link style="color: black;" to="/finance/finance_list?level=L1" >L1 </router-link>
+          <router-link style="color: black;" to="/finance/finance_list?level=L2" >L2 </router-link>
+          <router-link style="color: black;" to="/finance/finance_list?level=L3" >L3 </router-link>
         </td>
         <td v-if="index==1&&industries.length==134" rowspan="17" style="width:185px;">
           <text>申万行业(L2)</text>
