@@ -1,16 +1,16 @@
 <template>
   <div>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickFinance">财务概览</el-button>
-    <el-button style="margin-left:0;margin-right: 0" @click="hanleClickFundmental">净资产</el-button>
-    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">总资产</el-button>
-    <el-select v-model="dailyLevel" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
-      <el-option
-          v-for="item in dailyLeveloptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
+    <el-button style="margin-left:0;margin-right: 0" @click="hanleClickNetAssets">净资产</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTotalAssets">总资产</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTotalLiab">总债务</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickLevel">杠杆</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickRevenue">总营收</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickProfit">总利润</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickProfitRate">利润率</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickROE">ROE</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickROA">ROA</el-button>
+
     <el-input-number v-model="levelId" :min="1" :max="500" :step="1" controls-position="right"
                      @change="handleItemChange" style="width: 5%"></el-input-number>
 
@@ -41,42 +41,45 @@ const levelId = ref(1);
 
 const handleClickFinance = ()=>{
   alert("finance_overview");
+
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path: '/finance/finance_overview', query: query_dic});
 }
 
-const dailyLeveloptions = ref([
-  {value: 'fina_main1', label: '主营业务1'},
-  {value: 'fina_main2', label: '主营业务2'},
-  {value: 'fina_main3', label: '主营业务3'}
-]);
-
-const hanleClickFundmental = ()=>{
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  router.push({path:'/industry/fundamental',query:query_dic});
+const hanleClickNetAssets = ()=>{
+  // alert("netAssets")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id"] = 5;
+  router.push({path: '/finance/finance_history', query: query_dic});
 }
 
-const handleClickTenDays = ()=>{
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  router.push({path:'/industry/ten_days',query:query_dic});
+const handleClickTotalAssets = ()=>{
+  // alert("totalAssets")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id"] = 1;
+  router.push({path: '/finance/finance_history', query: query_dic});
 }
 
-const handleSelectFinaMain = (value)=>{
-  // alert(value);
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  if(value === "fina_main1"){
-    router.push({path:'/industry/fina_main',query:query_dic})
-  }
-
-  if(value === "fina_main2"){
-    router.push({path:'/industry/fina_main2',query:query_dic})
-  }
-
-  if(value === "fina_main3"){
-    router.push({path:'/industry/fina_main3',query:query_dic})
-  }
-
+const handleClickTotalLiab = ()=>{
+  // alert("totalLiab")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id"] = 2;
+  router.push({path: '/finance/finance_history', query: query_dic});
 }
 
+const handleClickRevenue = ()=>{
+  // alert("revenue")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id"] = 3;
+  router.push({path: '/finance/finance_history', query: query_dic});
+}
 
+const handleClickProfit = ()=>{
+  // alert("profit")
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  query_dic["select_id"] = 4;
+  router.push({path: '/finance/finance_history', query: query_dic});
+}
 
 const selectedDate = ref(new Date()); // 响应式变量，用于存储选择的日期
 
