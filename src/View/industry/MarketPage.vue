@@ -76,7 +76,7 @@
 <!--      </el-table-column>-->
       <el-table-column width="70">
         <template #header>
-          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectPctChg1" style="text-decoration: none; color: inherit;">
             开盘(%)
           </el-link>
         </template>
@@ -88,7 +88,7 @@
       </el-table-column>
       <el-table-column width="70">
         <template #header>
-          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectPctChg2" style="text-decoration: none; color: inherit;">
             最低(%)
           </el-link>
         </template>
@@ -100,7 +100,7 @@
       </el-table-column>
       <el-table-column width="70">
         <template #header>
-          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectPctChg3" style="text-decoration: none; color: inherit;">
             最高(%)
           </el-link>
         </template>
@@ -203,16 +203,16 @@
           <a :href="market" style="color: Teal">{{ row.amount }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="60">
-        <template #header>
-          <el-link class="headItem" @click="onSelectHsgt" style="text-decoration: none; color: inherit;">
-            沪深股通持股
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.ratio }}</a>
-        </template>
-      </el-table-column>
+<!--      <el-table-column width="60">-->
+<!--        <template #header>-->
+<!--          <el-link class="headItem" @click="onSelectHsgt" style="text-decoration: none; color: inherit;">-->
+<!--            沪深股通持股-->
+<!--          </el-link>-->
+<!--        </template>-->
+<!--        <template #default="{ row }">-->
+<!--          <a :href="market" style="color: gray">{{ row.ratio }}</a>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column
           prop="address"
           label="板块"
@@ -305,33 +305,33 @@ const onSelectIndustry3=()=>{
   // alert('333')
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["sort_id"] = 2
-  router.push({path:'/industry/fundamental',query:query_dic})
+  router.push({path:'/industry/market',query:query_dic})
 }
 
 const onSelectAsset=()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["sort_id"] = 3
-  router.push({path:'/industry/fundamental',query:query_dic})
+  router.push({path:'/industry/market',query:query_dic})
 }
 
 const onSelectTotalMv=()=>{
   // alert('mv')
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["sort_id"] = 1
-  router.push({path:'/industry/fundamental',query:query_dic})
+  router.push({path:'/industry/market',query:query_dic})
 }
 const onSelectPctChg=()=>{
   // alert('mv')
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["sort_id"] = 4
-  router.push({path:'/industry/fundamental',query:query_dic})
+  router.push({path:'/industry/market',query:query_dic})
 }
-const onSelectHsgt=()=>{
-  // alert('mv')
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 5
-  router.push({path:'/industry/fundamental',query:query_dic})
-}
+// const onSelectHsgt=()=>{
+//   // alert('mv')
+//   const query_dic = JSON.parse(JSON.stringify(route.query))
+//   query_dic["sort_id"] = 5
+//   router.push({path:'/industry/market',query:query_dic})
+// }
 </script>
 
 <style scoped>

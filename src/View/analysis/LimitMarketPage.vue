@@ -60,7 +60,7 @@
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry3" style="text-decoration: none; color: inherit;">
             行业3
           </el-link>
         </template>
@@ -197,7 +197,7 @@
       </el-table-column>
       <el-table-column width="60">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectAmount" style="text-decoration: none; color: inherit;">
             成交金额
           </el-link>
         </template>
@@ -207,7 +207,7 @@
       </el-table-column>
       <el-table-column width="60">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectContiUp1" style="text-decoration: none; color: inherit;">
             连扳
           </el-link>
         </template>
@@ -226,7 +226,7 @@
 
       <el-table-column width="80">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectAssets" style="text-decoration: none; color: inherit;">
             净资产
           </el-link>
         </template>
@@ -236,7 +236,7 @@
       </el-table-column>
       <el-table-column>
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectTotalMv" style="text-decoration: none; color: inherit;">
             市值
           </el-link>
         </template>
@@ -261,9 +261,10 @@
 import {onMounted, onUpdated, ref} from "vue";
 import AnalysisNavigation from "@/components/analysis/AnalysisNavigation.vue";
 import axios from "axios";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 
 const route = useRoute();
+const router = useRouter();
 
 
 var tableData = ref([]);
@@ -271,6 +272,43 @@ var tableData = ref([]);
 const onSelectDate = ()=>{
   alert("dsfds")
 }
+
+const onSelectTotalMv = ()=>{
+  // alert("total_mv")
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 1
+  router.push({path:'/analysis/limit_market',query:query_dic})
+}
+
+const onSelectIndustry3=()=>{
+  // alert('industry3')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 2
+  router.push({path:'/analysis/limit_market',query:query_dic})
+}
+
+const onSelectAssets = ()=>{
+  // alert("assets")
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 3
+  router.push({path:'/analysis/limit_market',query:query_dic})
+}
+
+// const onSelectContiUp = ()=>{
+//   // alert("conti_up")
+//   const query_dic = JSON.parse(JSON.stringify(route.query))
+//   query_dic["sort_id"] = 4
+//   router.push({path:'/analysis/limit_market',query:query_dic})
+//
+// }
+
+const onSelectAmount = ()=>{
+  // alert("amount")
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 5
+  router.push({path:'/analysis/limit_market',query:query_dic})
+}
+
 
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
