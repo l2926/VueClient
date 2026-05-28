@@ -2,7 +2,7 @@
 <template>
   <el-container>
     <el-header style="">
-      <FundamentalNavigation></FundamentalNavigation>
+      <AnalysisNavigation></AnalysisNavigation>
     </el-header>
     <el-table
         :data="tableData"
@@ -13,7 +13,7 @@
       <el-table-column
           prop="date"
           label="序号"
-          width="40">
+          width="50">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.idx }}</a>
         </template>
@@ -21,12 +21,12 @@
       <el-table-column
           prop="date"
           label="公司名称"
-          width="85">
+          width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=20&level=L1&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=20&level=analysis&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
-      <el-table-column width="55">
+      <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             地区
@@ -36,59 +36,54 @@
           <a :href="market" style="color: gray">{{ row.area }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="85">
+      <el-table-column width="90">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             行业1
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.industry_name_l1 }}</a>
+<!--          <a :href="market" style="color: gray">{{ row.industry_name_l1 }}</a>-->
+          <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L1&industry_code=${row.index_code_l1}&trade_date=${row.trade_date}&start_date=20251231`" style="color: gray" target="_blank">{{ row.industry_name_l1 }}</el-link>
         </template>
       </el-table-column>
-      <el-table-column width="95">
+      <el-table-column width="90">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             行业2
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.industry_name_l2 }}</a>
+<!--          <a :href="market" style="color: gray">{{ row.industry_name_l2 }}</a>-->
+          <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L2&industry_code=${row.index_code_l2}&trade_date=${row.trade_date}&start_date=20251231`" style="color: gray" target="_blank">{{ row.industry_name_l2 }}</el-link>
         </template>
       </el-table-column>
-      <el-table-column width="95">
+      <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectIndustry3" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             行业3
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.industry_name_l3 }}</a>
+<!--          <a :href="market" style="color: gray">{{ row.industry_name_l3 }}</a>-->
+          <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L3&industry_code=${row.index_code_l3}&trade_date=${row.trade_date}&start_date=20251231`" style="color: gray" target="_blank">{{ row.industry_name_l3 }}</el-link>
         </template>
       </el-table-column>
-<!--      <el-table-column-->
-<!--          prop="date"-->
-<!--          label="收盘价"-->
-<!--          width="70">-->
-<!--        <template #default="{ row }">-->
-<!--          <a :href="market" style="color: blue">{{ row.close }}</a>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
       <el-table-column width="70">
         <template #header>
-          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             开盘(%)
           </el-link>
         </template>
         <template #default="{ row }">
-          <a v-if="row.oepn_chg > 0" :href="market" style="color: red">{{ row.oepn_chg }}</a>
-          <a v-if="row.oepn_chg == 0" :href="market" style="color: gray">{{ row.oepn_chg }}</a>
-          <a v-if="row.oepn_chg < 0" :href="market" style="color: green">{{ row.oepn_chg }}</a>
+          <a v-if="row.open_chg > 0" :href="market" style="color: red">{{ row.open_chg }}</a>
+          <a v-if="row.open_chg == 0" :href="market" style="color: gray">{{ row.open_chg }}</a>
+          <a v-if="row.open_chg < 0" :href="market" style="color: green">{{ row.open_chg }}</a>
         </template>
       </el-table-column>
       <el-table-column width="70">
         <template #header>
-          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             最低(%)
           </el-link>
         </template>
@@ -100,7 +95,7 @@
       </el-table-column>
       <el-table-column width="70">
         <template #header>
-          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             最高(%)
           </el-link>
         </template>
@@ -112,7 +107,7 @@
       </el-table-column>
       <el-table-column width="70">
         <template #header>
-          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             收盘(%)
           </el-link>
         </template>
@@ -122,8 +117,15 @@
           <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
         </template>
       </el-table-column>
-
-      <el-table-column width="55">
+<!--      <el-table-column-->
+<!--          prop="date"-->
+<!--          label="收盘价"-->
+<!--          width="70">-->
+<!--        <template #default="{ row }">-->
+<!--          <a :href="market" style="color: blue">{{ row.close }}</a>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
+      <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             振幅
@@ -133,7 +135,7 @@
           <a :href="market" style="color: gray">{{ row.amp }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="55">
+      <el-table-column width="70">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             PE
@@ -143,7 +145,7 @@
           <a :href="market" style="color: navy">{{ row.pe_ttm }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="55">
+      <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             PB
@@ -153,7 +155,7 @@
           <a :href="market" style="color: Olive">{{ row.pb }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="55">
+      <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             PS
@@ -163,7 +165,7 @@
           <a :href="market" style="color: Teal">{{ row.ps_ttm }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="55">
+      <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             利润(%)
@@ -183,7 +185,7 @@
           <a :href="market" style="color: purple">{{ row.roe }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="55">
+      <el-table-column width="60">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             换手(%)
@@ -205,26 +207,27 @@
       </el-table-column>
       <el-table-column width="60">
         <template #header>
-          <el-link class="headItem" @click="onSelectHsgt" style="text-decoration: none; color: inherit;">
-            沪深股通持股
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            连扳
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: gray">{{ row.ratio }}</a>
+          <a :href="market" style="color: DarkViolet">{{ row.conti_up }}</a>
         </template>
       </el-table-column>
       <el-table-column
           prop="address"
           label="板块"
-          width="60">
+          width="70">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.market }}</a>
         </template>
       </el-table-column>
-      <el-table-column>
+
+      <el-table-column width="80">
         <template #header>
-          <el-link class="headItem" @click="onSelectAsset" style="text-decoration: none; color: inherit;">
-            净资产(亿)
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            净资产
           </el-link>
         </template>
         <template #default="{ row }">
@@ -233,8 +236,8 @@
       </el-table-column>
       <el-table-column>
         <template #header>
-          <el-link class="headItem" @click="onSelectTotalMv" style="text-decoration: none; color: inherit;">
-            市值(亿)
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            市值
           </el-link>
         </template>
         <template #default="{ row }">
@@ -256,36 +259,38 @@
 
 <script setup>
 import {onMounted, onUpdated, ref} from "vue";
+import AnalysisNavigation from "@/components/analysis/AnalysisNavigation.vue";
 import axios from "axios";
-import {useRoute, useRouter} from "vue-router";
-import FundamentalNavigation from "@/components/industry/FundamentalNavigation.vue";
-import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
+import {useRoute} from "vue-router";
 
-//初始化所属表格内容
+const route = useRoute();
+
+
 var tableData = ref([]);
 
-//ajax获取行业信息
-const route = useRoute();
+const onSelectDate = ()=>{
+  alert("dsfds")
+}
+
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  const para_dic = industryParameterTransform(query_dic);
-  // alert(JSON.stringify(para_dic))
-  axios.post("http://127.0.0.1:8081/industry/market",para_dic).then(
+  axios.post("http://127.0.0.1:8081/analysis/limit_market",query_dic).then(
       (response) => {
-        // alert(JSON.stringify(response.data));
-        tableData.value = response.data;
+        var raw_data = response.data;
+        // alert(JSON.stringify(raw_data));
+        tableData.value = raw_data;
 
-        var ts_code_list = response.data.map((item)=>{
-          return item["ts_code"]
-        });
+        var ts_code_list = raw_data.map((item)=>{
+          return item["ts_code"];
+        })
 
-        var name_list = response.data.map((item)=>{
-          return item["name"]
-        });
+        var name_list = raw_data.map((item)=>{
+          return item["name"];
+        })
 
-        localStorage.setItem("industry_code",ts_code_list);
-        localStorage.setItem("industry_name",name_list);
-      }
+        localStorage.setItem("analysis_code",ts_code_list);
+        localStorage.setItem("analysis_name",name_list);
+    }
   ).catch(error => {
     console.log(error);
     alert("axios请求错误");
@@ -294,44 +299,6 @@ const axiosTable = ()=>{
 
 onMounted(axiosTable);
 onUpdated(axiosTable);
-
-//根据表格标题头排序
-const onSelectDate = ()=>{
-  alert("dsfds")
-}
-
-const router = useRouter()
-const onSelectIndustry3=()=>{
-  // alert('333')
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 2
-  router.push({path:'/industry/fundamental',query:query_dic})
-}
-
-const onSelectAsset=()=>{
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 3
-  router.push({path:'/industry/fundamental',query:query_dic})
-}
-
-const onSelectTotalMv=()=>{
-  // alert('mv')
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 1
-  router.push({path:'/industry/fundamental',query:query_dic})
-}
-const onSelectPctChg=()=>{
-  // alert('mv')
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 4
-  router.push({path:'/industry/fundamental',query:query_dic})
-}
-const onSelectHsgt=()=>{
-  // alert('mv')
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 5
-  router.push({path:'/industry/fundamental',query:query_dic})
-}
 </script>
 
 <style scoped>

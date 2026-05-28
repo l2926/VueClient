@@ -4,6 +4,10 @@ const routes = [
         name:'limit',
         component: ()=>import('@/View/analysis/LimitPage.vue')
     },{
+        path:'/analysis/limit_market',
+        name:'limit_market',
+        component: ()=>import('@/View/analysis/LimitMarketPage.vue')
+    },{
         path:'/analysis/company_info',
         name:'company_info_analysis',
         component: ()=>import('@/View/analysis/CompanyInfoPage.vue')

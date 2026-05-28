@@ -4,6 +4,16 @@
 <!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectMarket">行情</el-button>-->
 
     <el-select v-model="defaultLimit2" placeholder="行情" style="width: 6%" popper-class="horizontal-select"
+               @change="hanldeSelectMarket">
+      <el-option
+          v-for="item in marketOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
+
+    <el-select v-model="defaultLimit2" placeholder="基本面" style="width: 6%" popper-class="horizontal-select"
                @change="hanldeSelectLimit">
       <el-option
           v-for="item in dailyOptions"
@@ -111,10 +121,19 @@ const MarketOverviewOpetions = ref([
 
 // const defaultLimit = ref('');
 
+const marketOptions = ref([
+  {value:"limit1",label:"涨停1"},
+  {value:"limit2",label:"涨停2"},
+  {value:"limit3",label:"涨停3"},
+  {value:"limit4",label:"涨停4"},
+  {value:"limit5",label:"涨停5"}
+]);
+
 const dailyOptions = ref([
   {value:"limit1",label:"涨停1"},
   {value:"limit2",label:"涨停2"},
   {value:"limit3",label:"涨停3"},
+  {value:"limit4",label:"涨停4"},
   {value:"limit5",label:"涨停5"}
 ]);
 
@@ -218,6 +237,33 @@ const handleSelectTop100Amount = () => {
   router.push({path:'/analysis/top100',query:query_dic});
 }
 
+const hanldeSelectMarket = (value)=>{
+  // alert(value)
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+
+  if(value == "limit1"){
+    query_dic["para_id"] = 1;
+  }
+
+  if(value == "limit2"){
+    query_dic["para_id"] = 2;
+  }
+
+  if(value == "limit3"){
+    query_dic["para_id"] = 3;
+  }
+
+  if(value == "limit4"){
+    query_dic["para_id"] = 4;
+  }
+
+  if(value == "limit5"){
+    query_dic["para_id"] = 5;
+  }
+
+  router.push({path:'/analysis/limit_market',query:query_dic});
+}
+
 const hanldeSelectLimit = (value)=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
 
@@ -231,6 +277,10 @@ const hanldeSelectLimit = (value)=>{
 
   if(value == "limit3"){
     query_dic["para_id"] = 3;
+  }
+
+  if(value == "limit4"){
+    query_dic["para_id"] = 4;
   }
 
   if(value == "limit5"){
@@ -269,7 +319,7 @@ const handleDateChange = (selectDate)=>{
   var date = getNormDate(selectDate)
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["trade_date"] = date;
-  router.push({path: '/analysis/limit', query: query_dic});
+  router.push({path: route.path, query: query_dic});
 }
 
 // const handleStartDateChange = (selectDate)=>{
@@ -284,7 +334,7 @@ const selectPreviousDay=()=>{
     const day = getPreviousDay(selectedDate);
     const query_dic = JSON.parse(JSON.stringify(route.query))
     query_dic["trade_date"] = day;
-    router.push({path: '/analysis/limit', query: query_dic});
+    router.push({path: route.path, query: query_dic});
   }
 };
 
@@ -293,7 +343,7 @@ const selectNextDay=()=>{
     const day = getNextDay(selectedDate)
     const query_dic = JSON.parse(JSON.stringify(route.query))
     query_dic["trade_date"] = day;
-    router.push({path: '/analysis/limit', query: query_dic});
+    router.push({path: route.path, query: query_dic});
   }
 };
 
