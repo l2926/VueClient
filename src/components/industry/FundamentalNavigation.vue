@@ -108,6 +108,11 @@ const hanleClickFundmental = ()=>{
   router.push({path:'/industry/fundamental',query:query_dic});
 }
 
+const handleClickMarket = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  router.push({path:'/industry/market',query:query_dic});
+}
+
 const handleClickFiveDaysLimit = ()=> {
   // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query));

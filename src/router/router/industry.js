@@ -4,6 +4,10 @@ const routes = [
         name:'industryList',
         component:  ()=>import('@/View/industry/IndustryListPage.vue')
     },{
+        path:'/industry/market',
+        name:'industry_market',
+        component:()=>import('@/View/industry/MarketPage.vue')
+    },{
         path:'/industry/fundamental',
         name:'fundamental',
         component: ()=>import('@/View/industry/FundamentalPage.vue')
