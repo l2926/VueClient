@@ -58,7 +58,7 @@
       </el-table-column>
       <el-table-column width="80">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustryL3" style="text-decoration: none; color: inherit;">
             行业3
           </el-link>
         </template>
@@ -156,7 +156,7 @@
       </el-table-column>
       <el-table-column>
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectAssets" style="text-decoration: none; color: inherit;">
             净资产(亿)
           </el-link>
         </template>
@@ -166,7 +166,7 @@
       </el-table-column>
       <el-table-column>
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectTotalMv" style="text-decoration: none; color: inherit;">
             市值(亿)
           </el-link>
         </template>
@@ -190,7 +190,7 @@
 <script setup>
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
 import FinanceNavigation from "@/components/finance/FinanceNavigation.vue";
 
@@ -199,6 +199,8 @@ var tableData = ref([]);
 
 //ajax获取行业信息
 const route = useRoute();
+const router = useRouter();
+
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   const para_dic = industryParameterTransform(query_dic);
@@ -231,6 +233,24 @@ onUpdated(axiosTable);
 //根据表格标题头排序
 const onSelectDate = ()=>{
   alert("dsfds")
+}
+
+const onSelectIndustryL3 = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 2
+  router.push({path:'/finance/finance_overview',query:query_dic})
+}
+
+const onSelectTotalMv = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 1
+  router.push({path:'/finance/finance_overview',query:query_dic})
+}
+
+const onSelectAssets = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 3
+  router.push({path:'/finance/finance_overview',query:query_dic})
 }
 </script>
 

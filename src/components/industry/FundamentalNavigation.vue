@@ -44,6 +44,15 @@
       </el-option>
     </el-select>
 
+    <el-select v-model="dailyLevel" placeholder="增长率" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
+      <el-option
+          v-for="item in growthOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
+
     <el-input-number v-model="levelId" :min="1" :max="500" :step="1" controls-position="right"
                      @change="handleItemChange" style="width: 5%"></el-input-number>
 

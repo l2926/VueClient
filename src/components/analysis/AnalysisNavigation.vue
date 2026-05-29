@@ -71,7 +71,7 @@
 
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTop100">A股百强</el-button>
-    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTop100Amount">TOP成交量</el-button>
+<!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTop100Amount">TOP成交量</el-button>-->
 
 
     <el-date-picker
@@ -231,11 +231,11 @@ const handleSelectTop100 = () => {
   router.push({path:'/analysis/top100',query:query_dic});
 }
 
-const handleSelectTop100Amount = () => {
-  const query_dic = JSON.parse(JSON.stringify(route.query));
-  query_dic["select_id"] = 2;
-  router.push({path:'/analysis/top100',query:query_dic});
-}
+// const handleSelectTop100Amount = () => {
+//   const query_dic = JSON.parse(JSON.stringify(route.query));
+//   query_dic["select_id"] = 2;
+//   router.push({path:'/analysis/top100',query:query_dic});
+// }
 
 const hanldeSelectMarket = (value)=>{
   // alert(value)
