@@ -40,7 +40,7 @@ const route = useRoute();
 const levelId = ref(1);
 
 const handleClickFinance = ()=>{
-  alert("finance_overview");
+  // alert("finance_overview");
 
   const query_dic = JSON.parse(JSON.stringify(route.query));
   router.push({path: '/finance/finance_overview', query: query_dic});

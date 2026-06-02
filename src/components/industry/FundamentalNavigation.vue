@@ -32,21 +32,20 @@
           :value="item.value">
       </el-option>
     </el-select>
+    <el-select v-model="dailyLevel" placeholder="选项" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
+      <el-option
+          v-for="item in growthOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickCompanyInfo">公司信息</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickTopHold">十大股东</el-button>
 
     <el-select v-model="dailyLevel" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
       <el-option
           v-for="item in moneyFlowOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
-
-    <el-select v-model="dailyLevel" placeholder="增长率" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
-      <el-option
-          v-for="item in growthOptions"
           :key="item.value"
           :label="item.label"
           :value="item.value">
@@ -112,6 +111,13 @@ const moneyFlowOptions = ref([
   {value:'money_flow_pct',label:'资金流向(%)'}
 ])
 
+const growthOptions = ref([
+  {value:'margin',label:'边际行情'},
+  {value:'accumulate',label:'累计行情'},
+  {value:'pb',label:'PB'},
+  {value:'growth_rate',label:'资产增长(%)'}
+])
+
 const hanleClickFundmental = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
   router.push({path:'/industry/fundamental',query:query_dic});
@@ -158,6 +164,7 @@ const handleSelectFinaMain = (value)=>{
 const handleSelectMarketOverview = (value)=>{
   // alert(value)
   const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["select_id"] = 1;
   if(value == "weekPctChg"){
     router.push(({path:'/industry/week_overview',query:query_dic}))
   }
@@ -193,6 +200,25 @@ const handleSelectMoneyFlow = (value) => {
   }
 }
 
+const handleSelectGrowthRate = (value) =>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'margin'){
+    query_dic["select_id"] = 1
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'accumulate'){
+    query_dic["select_id"] = 2
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'pb'){
+    query_dic["select_id"] = 3
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'growth_rate'){
+    query_dic["select_id"] = 4
+    router.push({path:route.path,query:query_dic});
+  }
+}
 
 const selectedDate = ref(new Date()); // 响应式变量，用于存储选择的日期
 const selectedStartDate = ref(new Date());
