@@ -168,7 +168,9 @@
           </el-link>
         </template>
         <template #default="{ row }">
-          <a :href="market" style="color: Silver">{{ row.all_turnover }}</a>
+          <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
         </template>
       </el-table-column>
       <el-table-column prop="address"
