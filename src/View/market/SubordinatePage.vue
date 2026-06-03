@@ -37,7 +37,7 @@
         label="行业1"
         width="150">
       <template #default="{ row }">
-        <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L1&industry_code=${row.index_code_l1}&trade_date=${row.trade_date}&start_date=20251231`" style="color: gray" target="_blank">{{ row.industry_name_l1 }}</el-link>
+        <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L1&industry_code=${row.index_code_l1}&trade_date=${$route.query.trade_date}`" style="color: gray" target="_blank">{{ row.industry_name_l1 }}</el-link>
       </template>
     </el-table-column>
     <el-table-column
@@ -46,7 +46,7 @@
         width="150">
       <template #default="{ row }">
 <!--        <a :href="market" style="color: gray">{{ row.industry_name_l2 }}</a>-->
-        <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L2&industry_code=${row.index_code_l2}&trade_date=${row.trade_date}&start_date=20251231`" style="color: gray" target="_blank">{{ row.industry_name_l2 }}</el-link>
+        <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L2&industry_code=${row.index_code_l2}&trade_date=${$route.query.trade_date}`" style="color: gray" target="_blank">{{ row.industry_name_l2 }}</el-link>
       </template>
     </el-table-column>
     <el-table-column
@@ -55,7 +55,7 @@
         width="150">
       <template #default="{ row }">
 <!--        <a :href="market" style="color: gray">{{ row.industry_name_l3 }}</a>-->
-        <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L3&industry_code=${row.index_code_l3}&trade_date=${row.trade_date}&start_date=20251231`" style="color: gray" target="_blank">{{ row.industry_name_l3 }}</el-link>
+        <el-link :href="`/#/industry/fundamental?select_id=1&p\ara_id=1&sort_id=1&level=L3&industry_code=${row.index_code_l3}&trade_date=${$route.query.trade_date}&start_date=20251231`" style="color: gray" target="_blank">{{ row.industry_name_l3 }}</el-link>
       </template>
     </el-table-column>
     <el-table-column
@@ -70,7 +70,7 @@
 
 <script setup>
 import MarketNavigation from "@/components/market/MarketNavigation.vue";
-import {onMounted, onUpdated, ref} from "vue";
+import {onMounted, ref} from "vue";
 import {marketParameterTransform} from "@/Api/utils/urlParameterTransform";
 import axios from "axios";
 import {useRoute} from "vue-router";
@@ -96,7 +96,7 @@ const axiosTable = ()=>{
 }
 
 onMounted(axiosTable);
-onUpdated(axiosTable);
+// onUpdated(axiosTable);
 </script>
 
 <style scoped>
