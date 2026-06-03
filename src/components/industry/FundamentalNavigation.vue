@@ -94,6 +94,7 @@ const finaMainOptions = ref([
 ]);
 
 const MarketOverviewOpetions = ref([
+  {value: 'dailyPctChg', label: '日度行情'},
   {value: 'weekPctChg', label: '周度行情'},
   {value: 'monthPctChg', label: '月度行情'},
   {value: 'seasonPctChg', label: '季度行情'},
@@ -165,6 +166,9 @@ const handleSelectMarketOverview = (value)=>{
   // alert(value)
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["select_id"] = 1;
+  if(value == "dailyPctChg"){
+    router.push(({path:'/industry/daily_overview',query:query_dic}))
+  }
   if(value == "weekPctChg"){
     router.push(({path:'/industry/week_overview',query:query_dic}))
   }

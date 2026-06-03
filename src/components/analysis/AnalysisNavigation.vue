@@ -54,7 +54,14 @@
           :value="item.value">
       </el-option>
     </el-select>
-
+    <el-select v-model="dailyLevel" placeholder="选项" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
+      <el-option
+          v-for="item in growthOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickCompanyInfo">公司信息</el-button>
 
@@ -113,11 +120,20 @@ const finaMainOptions = ref([
 ]);
 
 const MarketOverviewOpetions = ref([
+  {value: 'dailyPctChg', label: '日度行情'},
   {value: 'weekPctChg', label: '周度行情'},
   {value: 'monthPctChg', label: '月度行情'},
   {value: 'seasonPctChg', label: '季度行情'},
   {value: 'yearPctChg',label: '年度行情'}
 ]);
+
+const growthOptions = ref([
+  {value:'margin',label:'边际行情'},
+  {value:'accumulate',label:'累计行情'},
+  {value:'pb',label:'PB'},
+  {value:'growth_rate',label:'资产增长(%)'}
+])
+
 
 // const defaultLimit = ref('');
 
@@ -148,6 +164,26 @@ const moneyFlowOptions = ref([
   {value:'money_flow',label:'资金流向'},
   {value:'money_flow_pct',label:'资金流向(%)'}
 ])
+
+const handleSelectGrowthRate = (value) =>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'margin'){
+    query_dic["select_id"] = 1
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'accumulate'){
+    query_dic["select_id"] = 2
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'pb'){
+    query_dic["select_id"] = 3
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'growth_rate'){
+    query_dic["select_id"] = 4
+    router.push({path:route.path,query:query_dic});
+  }
+}
 
 const handleSelectMoneyFlow = (value) => {
   // alert(value);
@@ -201,6 +237,9 @@ const handleSelectFinaMain = (value)=>{
 const handleSelectMarketOverview = (value)=>{
   // alert(value)
   const query_dic = JSON.parse(JSON.stringify(route.query))
+  if(value == "dailyPctChg"){
+    router.push(({path:'/analysis/daily_overview',query:query_dic}))
+  }
   if(value == "weekPctChg"){
     router.push(({path:'/analysis/week_overview',query:query_dic}))
   }

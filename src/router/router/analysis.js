@@ -73,6 +73,10 @@ const routes = [
         path:'/analysis/year_overview',
         name:'year_overview_analysis',
         component:  ()=>import('@/View/analysis/YearMarketOverview.vue')
+    },{
+        path:'/analysis/daily_overview',
+        name:'daily_overview_analysis',
+        component:  ()=>import('@/View/analysis/DailyMarketOverview.vue')
     }
 ]
 
