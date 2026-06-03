@@ -23,7 +23,7 @@
           label="公司名称"
           width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=analysis&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=20&ts_code=${row.ts_code}&name=${row.name}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="60">
@@ -182,16 +182,16 @@ const axiosTable = ()=>{
         // alert(JSON.stringify(raw_data));
         tableData.value = raw_data;
 
-        var ts_code_list = raw_data.map((item)=>{
-          return item["ts_code"];
-        })
-
-        var name_list = raw_data.map((item)=>{
-          return item["name"];
-        })
-
-        localStorage.setItem("analysis_code",ts_code_list);
-        localStorage.setItem("analysis_name",name_list);
+        // var ts_code_list = raw_data.map((item)=>{
+        //   return item["ts_code"];
+        // })
+        //
+        // var name_list = raw_data.map((item)=>{
+        //   return item["name"];
+        // })
+        //
+        // localStorage.setItem("analysis_code",ts_code_list);
+        // localStorage.setItem("analysis_name",name_list);
       }
   ).catch(error => {
     console.log(error);

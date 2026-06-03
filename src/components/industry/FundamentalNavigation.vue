@@ -53,7 +53,7 @@
     </el-select>
 
     <el-input-number v-model="levelId" :min="1" :max="500" :step="1" controls-position="right"
-                     @change="handleItemChange" style="width: 5%"></el-input-number>
+                     @change="handleItemChange" style="width: 6%"></el-input-number>
 
     <el-date-picker
         v-model="selectedDate"

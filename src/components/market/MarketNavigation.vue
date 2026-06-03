@@ -40,7 +40,7 @@
   <el-button @click="onClickCompare" style="margin-right: 0;margin-left:0">对比</el-button>
 
   <el-input-number v-model="levelId" :min="1" :max="1000" :step="1" controls-position="right"
-                   @change="handleItemChange" style="width: 5%"></el-input-number>
+                   @change="handleItemChange" style="width: 6%"></el-input-number>
   <el-date-picker
       v-model="selectedDate"
       type="date"
