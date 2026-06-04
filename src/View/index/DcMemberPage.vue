@@ -65,7 +65,7 @@
       </el-table-column>
       <el-table-column width="70">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
             涨跌幅(%)
           </el-link>
         </template>
@@ -139,7 +139,7 @@ const axiosTable = ()=>{
   // alert(JSON.stringify(query_dic))
   axios.post("http://127.0.0.1:8081/index/dc_member2",query_dic).then(
       (response) => {
-        alert(JSON.stringify(response.data));
+        // alert(JSON.stringify(response.data));
         tableData.value = response.data;
 
         var ts_code_list = response.data.map((item)=>{
@@ -170,13 +170,19 @@ const onSelectDate = ()=>{
 const router = useRouter()
 const onSelectIndustry3 = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 1
+  query_dic["sort_id"] = 2
+  router.push({path:'/index/dc_member',query:query_dic})
+}
+
+const onSelectPctChg = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 4
   router.push({path:'/index/dc_member',query:query_dic})
 }
 
 const onSelectTotalMv = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 2
+  query_dic["sort_id"] = 1
   router.push({path:'/index/dc_member',query:query_dic})
 }
 
