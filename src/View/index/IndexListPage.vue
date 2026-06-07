@@ -9,7 +9,7 @@
       </thead>
       <tbody id="m_table">
       <tr>
-        <td rowspan="2">大盘指数</td>
+        <td rowspan="3">大盘指数</td>
         <td><el-link style="width:100px;color:black" @click="ShangHai" to="">上证指数</el-link></td>
         <td><el-link style="width:100px;color:black" @click="ShenZhen" to="">深证指数</el-link></td>
         <td><el-link style="width:100px;color:black" @click="MidSmall" to="">中小板指</el-link></td>
@@ -27,6 +27,10 @@
         <td><el-link style="color:black" @click="StatisticsExcel" to="">基本面统计</el-link></td>
         <td><el-link style="color:black" @click="MarketStatisticsExcel" to="">行情统计</el-link></td>
         <td><el-link style="color:black" @click="AreaStatisticsExcel" to="">地域统计</el-link></td>
+        <td><el-link style="color:black" @click="LimitCptList" to="">行情概览</el-link> </td>
+        <td><el-link style="color:black" @click="LimitCptList" to="">历史行情</el-link> </td>
+      </tr>
+      <tr>
         <td><el-link style="color:black" @click="DcIndex2" to="">东方财富</el-link></td>
         <td><el-link style="color:black" @click="LimitCptList" to="">最强板块</el-link> </td>
       </tr>
