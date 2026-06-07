@@ -11,6 +11,10 @@ const routes = [
         path:'/finance/finance_history',
         name:'finance_history',
         component:()=>import('@/View/finance/FinanceHistoryPage.vue')
+    },{
+        path:'/finance/hsgt_history',
+        name:'hsgt_history',
+        component:()=>import('@/View/finance/HsgtHistoryPage.vue')
     }
 ]
 

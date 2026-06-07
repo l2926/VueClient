@@ -10,6 +10,7 @@
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickProfitRate">利润率</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickROE">ROE</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickROA">ROA</el-button>
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickHsgt">沪深股通持股历史</el-button>
 
     <el-input-number v-model="levelId" :min="1" :max="500" :step="1" controls-position="right"
                      @change="handleItemChange" style="width: 5%"></el-input-number>
@@ -107,6 +108,11 @@ const handleClickROA = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   query_dic["select_id"] = 9;
   router.push({path: '/finance/finance_history', query: query_dic});
+}
+
+const handleClickHsgt = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  router.push({path: '/finance/hsgt_history', query: query_dic});
 }
 
 const selectedDate = ref(new Date()); // 响应式变量，用于存储选择的日期
