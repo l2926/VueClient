@@ -83,6 +83,10 @@ const routes = [
         path:'/index/dc_index2',
         name:'dc_index2',
         component:()=>import('@/View/index/DcIndex2Page.vue')
+    },{
+        path:'/index/limit_cpt_list',
+        name:'limit_cpt_list',
+        component:()=>import('@/View/index/LimitCptListPage.vue')
     }
 ]
 

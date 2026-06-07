@@ -28,6 +28,7 @@
         <td><el-link style="color:black" @click="MarketStatisticsExcel" to="">行情统计</el-link></td>
         <td><el-link style="color:black" @click="AreaStatisticsExcel" to="">地域统计</el-link></td>
         <td><el-link style="color:black" @click="DcIndex2" to="">东方财富</el-link></td>
+        <td><el-link style="color:black" @click="LimitCptList" to="">最强板块</el-link> </td>
       </tr>
       <tr v-for="(index) in industry_len" :key="index">
         <td v-if="index==1&&industries.length==31" rowspan="4" style="width:185px;">
@@ -233,6 +234,19 @@ export default{
         "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/dc_index2',query:query_dic})
+    },
+    LimitCptList:function (){
+      const query_dic={
+        "select_id":1,
+        "para_id":1,
+        "block_id":1,
+        "mv_id":1,
+        "sort_id":2,
+        "level":"market",
+        "level_id":1,
+        "trade_date":getCurDate()
+      }
+      this.$router.push({path:'/index/limit_cpt_list',query:query_dic})
     },
     onIndex:function(index,index2){
       // alert((index-1)*8 + index2)
