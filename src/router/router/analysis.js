@@ -77,6 +77,10 @@ const routes = [
         path:'/analysis/daily_overview',
         name:'daily_overview_analysis',
         component:  ()=>import('@/View/analysis/DailyMarketOverview.vue')
+    },{
+        path:'/analysis/hot_money_review',
+        name:'hot_money_review',
+        component:()=>import('@/View/analysis/HotMoneyReviewPage.vue')
     }
 ]
 
