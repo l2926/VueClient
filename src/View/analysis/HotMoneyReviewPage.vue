@@ -38,7 +38,7 @@
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry1" style="text-decoration: none; color: inherit;">
             行业1
           </el-link>
         </template>
@@ -49,7 +49,7 @@
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry2" style="text-decoration: none; color: inherit;">
             行业2
           </el-link>
         </template>
@@ -237,32 +237,43 @@ const onSelectDate = ()=>{
   alert("dsfds")
 }
 
+const onSelectIndustry1 = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 1
+  router.push({path:'/analysis/hot_money_review',query:query_dic})
+}
+
+const onSelectIndustry2 = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 2
+  router.push({path:'/analysis/hot_money_review',query:query_dic})
+}
+
+const onSelectIndustry3 = ()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 3
+  router.push({path:'/analysis/hot_money_review',query:query_dic})
+}
+
 const onSelectTotalMv = ()=>{
   // alert("total_mv")
   const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 1
-  router.push({path:'/analysis/limit',query:query_dic})
-}
-
-const onSelectIndustry3=()=>{
-  // alert('industry3')
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 2
-  router.push({path:'/analysis/limit',query:query_dic})
+  query_dic["sort_id"] = 4
+  router.push({path:'/analysis/hot_money_review',query:query_dic})
 }
 
 const onSelectAssets = ()=>{
   // alert("assets")
   const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["sort_id"] = 3
-  router.push({path:'/analysis/limit',query:query_dic})
+  query_dic["sort_id"] = 5
+  router.push({path:'/analysis/hot_money_review',query:query_dic})
 }
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   axios.post("http://127.0.0.1:8081/analysis/hot_money",query_dic).then(
       (response) => {
         var raw_data = response.data;
-        alert(JSON.stringify(raw_data));
+        // alert(JSON.stringify(raw_data));
         tableData.value = raw_data;
 
         var ts_code_list = raw_data.map((item)=>{
