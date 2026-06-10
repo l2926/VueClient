@@ -13,7 +13,7 @@ WeekMarketOverview.vue
 
       <el-table-column
           prop="date"
-          label="序号123"
+          label="序号"
           width="50">
         <template #default="{ row }">
           <a :href="market" style="color: gray">{{ row.idx }}</a>
