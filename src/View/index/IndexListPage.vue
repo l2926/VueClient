@@ -18,20 +18,20 @@
         <td><el-link style="width:100px;color:black" @click="BeiJiao" to="">北交所指</el-link></td>
 <!--        <td><el-link style="width:100px;color:black" to="">深证余指</el-link></td>-->
         <td><el-link style="width:100px;color:black" @click="Statistic" to="">行业统计图</el-link></td>
-        <td><el-link style="width:100px;color:black" to="">涨跌统计图</el-link></td>
+        <td><el-link style="height:30px;width:100px;color:black" @click="HsgtDaily">北向资金</el-link></td>
       </tr>
       <tr>
-        <td><el-link style="width:100px;color:black" to="">地域统计图</el-link></td>
-        <td><el-link style="height:30px;width:100px;color:black" @click="HsgtDaily">北向资金</el-link></td>
         <td><el-link style="color:black" to="">融资融券</el-link></td>
         <td><el-link style="color:black" @click="StatisticsExcel" to="">基本面统计</el-link></td>
         <td><el-link style="color:black" @click="MarketStatisticsExcel" to="">行情统计</el-link></td>
         <td><el-link style="color:black" @click="AreaStatisticsExcel" to="">地域统计</el-link></td>
-        <td><el-link style="color:black" @click="LimitCptList" to="">行情概览</el-link> </td>
-        <td><el-link style="color:black" @click="LimitCptList" to="">历史行情</el-link> </td>
+        <td><el-link style="color:black" @click="StatisticsLevelExcel" to="">行情概览</el-link> </td>
+        <td><el-link style="color:black" @click="StatisticsLevelAllExcel" to="">基本面概览</el-link> </td>
+        <td><el-link style="color:black" @click="IndexHistroy" to="">历史行情</el-link> </td>
+        <td><el-link style="color:black" @click="DcIndex2" to="">东方财富</el-link></td>
+
       </tr>
       <tr>
-        <td><el-link style="color:black" @click="DcIndex2" to="">东方财富</el-link></td>
         <td><el-link style="color:black" @click="LimitCptList" to="">最强板块</el-link> </td>
       </tr>
       <tr v-for="(index) in industry_len" :key="index">
@@ -225,6 +225,45 @@ export default{
         "trade_date":getCurDate()
       }
       this.$router.push({path:'/index/area_overview',query:query_dic})
+    },
+    StatisticsLevelExcel:function (){
+      const query_dic = {
+        "select_id":1,
+        "para_id":1,
+        "block_id":1,
+        "mv_id":1,
+        "sort_id":1,
+        "level":"L1",
+        "level_id":1,
+        "trade_date":getCurDate()
+      }
+      this.$router.push({path:'/index/statistics_level_excel',query:query_dic})
+    },
+    StatisticsLevelAllExcel:function (){
+      const query_dic = {
+        "select_id":1,
+        "para_id":1,
+        "block_id":1,
+        "mv_id":1,
+        "sort_id":1,
+        "level":"L1",
+        "level_id":1,
+        "trade_date":getCurDate()
+      }
+      this.$router.push({path:'/index/statistics_level_all_excel',query:query_dic})
+    },
+    IndexHistroy:function (){
+      const query_dic = {
+        "select_id":1,
+        "para_id":1,
+        "block_id":1,
+        "mv_id":1,
+        "sort_id":1,
+        "level":"L1",
+        "level_id":1,
+        "trade_date":getCurDate()
+      }
+      this.$router.push({path:'/index/daily_overview',query:query_dic})
     },
     DcIndex2:function (){
       const query_dic = {

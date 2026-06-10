@@ -87,6 +87,34 @@ const routes = [
         path:'/index/limit_cpt_list',
         name:'limit_cpt_list',
         component:()=>import('@/View/index/LimitCptListPage.vue')
+    },{
+        path:'/index/statistics_level_excel',
+        name:'statistics_level_excel',
+        component:()=>import('@/View/index/StatisticsLevelExcel.vue')
+    },{
+        path:'/index/statistics_level_all_excel',
+        name:'statistics_level_all_excel',
+        component:()=>import('@/View/index/StatisticsLevelAllExcel.vue')
+    },{
+        path:'/index/daily_overview',
+        name:'index_daily_overview',
+        component:()=>import('@/View/index/DailyMarketOverview.vue')
+    },{
+        path:'/index/week_overview',
+        name:'index_week_overview',
+        component:()=>import('@/View/index/WeekMarketOverview.vue')
+    },{
+        path:'/index/month_overview',
+        name:'index_month_overview',
+        component:()=>import('@/View/index/MonthMarketOverview.vue')
+    },{
+        path:'/index/season_overview',
+        name:'index_season_overview',
+        component:()=>import('@/View/index/SeasonMarketOverview.vue')
+    },{
+        path:'/index/year_overview',
+        name:'index_year_overview',
+        component:()=>import('@/View/index/YearMarketOverview.vue')
     }
 ]
 

@@ -1,13 +1,5 @@
 <template>
-  <el-select v-model="dailyLevel" placeholder="日线" style="width: 5%" @change="onDailyLevel" id="test_select">
-    <el-option
-        v-for="item in dailyLeveloptions"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-    </el-option>
-  </el-select>
-  <el-select v-model="monthlyLevel" placeholder="行情统计" style="width: 7%" @change="onSelectMarketOverview">
+  <el-select v-model="monthlyLevel" placeholder="行情概览" style="width: 7%" @change="onSelectMarketOverview">
     <el-option
         v-for="item in marketOverviewOptions"
         :key="item.value"
@@ -39,19 +31,27 @@
         :value="item.value">
     </el-option>
   </el-select>
-<!--  <el-button @click="onSelectSubordinate" style="margin-right: 0;margin-left:0">所属</el-button>-->
-  <el-select v-model="monthlyLevel" placeholder="模式" style="width: 7%" @change="onSelectModle">
+
+  <el-select v-model="monthlyLevel" placeholder="市值" style="width: 7%" @change="onSelectMv">
     <el-option
-        v-for="item in overviewOptions"
+        v-for="item in mvOptions"
         :key="item.value"
         :label="item.label"
         :value="item.value">
     </el-option>
   </el-select>
 
-  <el-select v-model="monthlyLevel" placeholder="市值" style="width: 7%" @change="onSelectMv">
+  <el-select v-model="dailyLevel" placeholder="历史行情" style="width: 7%" @change="handleSelectMarketOverview" id="test_select">
     <el-option
-        v-for="item in mvOptions"
+        v-for="item in MarketOverviewOpetions"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+    </el-option>
+  </el-select>
+  <el-select v-model="dailyLevel" placeholder="选项" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
+    <el-option
+        v-for="item in growthOptions"
         :key="item.value"
         :label="item.label"
         :value="item.value">
@@ -82,12 +82,6 @@ import {dayjs} from "element-plus";
 const route = useRoute();
 const router = useRouter();
 
-const dailyLeveloptions = ref([
-  {value: 'daily1', label: '日线1'},
-  {value: 'daily2', label: '日线2'},
-  {value: 'daily3', label: '日线3'}
-]);
-
 // const selectPriceOptions = ref([
 //   {value: 'monthly1', label: '复权'},
 //   {value: 'monthly2', label: '对数'},
@@ -107,15 +101,10 @@ const dailyLeveloptions = ref([
 // ]);
 
 const marketOverviewOptions = ref([
-  {value: 'overview', label: '基本面统计'},
-  {value: 'all', label: '涨跌幅统计'},
-  {value: 'area', label: '地域统计'}
+  {value: 'overview', label: '行情概览'},
+  {value: 'all', label: '基本面概览'}
 ]);
 
-const overviewOptions = ref([
-  {value: 'spread', label: '概览'},
-  {value: 'agg', label: '聚合'}
-]);
 
 const blockOptions = ref([
   {value: 'all', label: '所有'},
@@ -147,37 +136,29 @@ const downPctChgOptions = ref([
 ])
 
 
-const onDailyLevel= (value) => {
-  console.log("mmmmmm")
-  // alert("dsfds")
-  const query_dic = JSON.parse(JSON.stringify(route.query));
+const MarketOverviewOpetions = ref([
+  {value: 'dailyPctChg', label: '日度行情'},
+  {value: 'weekPctChg', label: '周度行情'},
+  {value: 'monthPctChg', label: '月度行情'},
+  {value: 'seasonPctChg', label: '季度行情'},
+  {value: 'yearPctChg',label: '年度行情'}
+]);
 
-  if(value === "daily1"){
-    query_dic["para_id"] = 1;
-    router.push({path: '/index/index_daily', query: query_dic});
-  }
-  if(value === "daily2"){
-    query_dic["para_id"] = 2;
-    router.push({path: '/index/index_daily', query: query_dic});
-  }
-  if(value === "daily3"){
-    query_dic["para_id"] = 3;
-    router.push({path: '/index/index_daily', query: query_dic});
-  }
-};
+const growthOptions = ref([
+  {value:'margin',label:'边际行情'},
+  {value:'accumulate',label:'累计行情'},
+  {value:'pb',label:'PB'}
+])
 
 //所属行业页面条抓按
 const onSelectMarketOverview = (value)=>{
   // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query));
   if(value === "overview"){
-    router.push({path:'/index/market_overview',query:query_dic});
+    router.push({path:'/index/statistics_level_excel',query:query_dic});
   }
   if(value === "all"){
-    router.push({path:'/index/market_statistics',query:query_dic});
-  }
-  if(value === "area"){
-    router.push({path:'/index/area_overview',query:query_dic});
+    router.push({path:'/index/statistics_level_all_excel',query:query_dic});
   }
 }
 
@@ -219,6 +200,48 @@ const onSelectMv = (value)=>{
   }
 }
 
+const handleSelectMarketOverview = (value)=>{
+  // alert(value)
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["select_id"] = 1;
+  if(value == "dailyPctChg"){
+    router.push(({path:'/index/daily_overview',query:query_dic}))
+  }
+  if(value == "weekPctChg"){
+    router.push(({path:'/index/week_overview',query:query_dic}))
+  }
+  if(value == "monthPctChg"){
+    router.push(({path:'/index/month_overview',query:query_dic}))
+  }
+  if(value == "seasonPctChg"){
+    router.push(({path:'/index/season_overview',query:query_dic}))
+  }
+  if(value == "yearPctChg"){
+    router.push(({path:'/index/year_overview',query:query_dic}))
+  }
+}
+
+const handleSelectGrowthRate = (value) =>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'margin'){
+    query_dic["select_id"] = 1
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'accumulate'){
+    query_dic["select_id"] = 2
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'pb'){
+    query_dic["select_id"] = 3
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'growth_rate'){
+    query_dic["select_id"] = 4
+    router.push({path:route.path,query:query_dic});
+  }
+}
+
+
 const onSelectUp = (value)=>{
   // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query));
@@ -249,21 +272,6 @@ const onSelectDown=(value)=>{
   }
   if(value === "down_0"){
     query_dic["para_id"] = 6;
-    router.push({path:route.path,query:query_dic});
-  }
-}
-
-const onSelectModle = (value)=>{
-  // alert(value)
-  const query_dic = JSON.parse(JSON.stringify(route.query));
-
-  if(value === "spread"){
-    query_dic["select_id"] = 1
-    router.push({path:route.path,query:query_dic});
-  }
-
-  if(value === "agg"){
-    query_dic["select_id"] = 2
     router.push({path:route.path,query:query_dic});
   }
 }
