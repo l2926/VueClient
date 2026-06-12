@@ -76,6 +76,18 @@
           <a :href="market" style="color: gray">{{ row.industry_name_l3 }}</a>
         </template>
       </el-table-column>
+      <el-table-column width="70">
+        <template #header>
+          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
+            涨跌幅(%)
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
+        </template>
+      </el-table-column>
       <el-table-column
           prop="address"
           label="主营业务"
@@ -189,6 +201,13 @@ const onSelectTotalMv=()=>{
   // alert('mv')
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["sort_id"] = 1
+  router.push({path:'/industry/fina_main2',query:query_dic})
+}
+
+const onSelectPctChg=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 4
   router.push({path:'/industry/fina_main2',query:query_dic})
 }
 </script>
