@@ -133,7 +133,7 @@ const mvOptions = ref([
   {value: '1000', label: '千亿'},
   {value: '500', label: '五百亿'},
   {value: '100', label: '百亿'},
-  {value: '100', label: '五十亿'},
+  {value: '50', label: '五十亿'},
   {value: '0', label: '其他'},
 ]);
 
@@ -231,6 +231,22 @@ const onSelectMv = (value)=>{
   }
   if(value === "1000"){
     query_dic["mv_id"] = 2;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "500"){
+    query_dic["mv_id"] = 3;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "100"){
+    query_dic["mv_id"] = 4;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "50"){
+    query_dic["mv_id"] = 5;
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "0"){
+    query_dic["mv_id"] = 6;
     router.push({path:route.path,query:query_dic});
   }
 }
