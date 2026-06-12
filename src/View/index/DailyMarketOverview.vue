@@ -52,9 +52,9 @@
       <el-table-column
           label="15日前">
         <template #default="{ row }">
-          <a v-if="row.day_pct15 > 0" :href="market" style="color: red">{{ row.day_pct15 }}</a>
-          <a v-if="row.day_pct15 == 0" :href="market" style="color: gray">{{ row.day_pct15 }}</a>
-          <a v-if="row.day_pct15 < 0" :href="market" style="color: green">{{ row.day_pct15 }}</a>
+          <a v-if="row.day15 > 0" :href="market" style="color: red">{{ row.day15 }}</a>
+          <a v-if="row.day15 == 0" :href="market" style="color: gray">{{ row.day15 }}</a>
+          <a v-if="row.day15 < 0" :href="market" style="color: green">{{ row.day15 }}</a>
         </template>
       </el-table-column>
       <el-table-column

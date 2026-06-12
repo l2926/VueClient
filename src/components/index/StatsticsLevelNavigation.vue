@@ -7,6 +7,14 @@
         :value="item.value">
     </el-option>
   </el-select>
+  <el-select v-model="monthlyLevel" placeholder="行业级别" style="width: 7%" @change="onSelectLevel">
+    <el-option
+        v-for="item in levelOptions"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+    </el-option>
+  </el-select>
   <el-select v-model="monthlyLevel" placeholder="板块" style="width: 7%" @change="onSelectBlock">
     <el-option
         v-for="item in blockOptions"
@@ -105,6 +113,12 @@ const marketOverviewOptions = ref([
   {value: 'all', label: '基本面概览'}
 ]);
 
+const levelOptions = ref([
+  {value:'all',label:'所有'},
+  {value:'l1',label:'行业L1'},
+  {value:'l2',label:'行业L2'},
+  {value:'l3',label:'行业L3'},
+]);
 
 const blockOptions = ref([
   {value: 'all', label: '所有'},
@@ -149,6 +163,27 @@ const growthOptions = ref([
   {value:'accumulate',label:'累计行情'},
   {value:'pb',label:'PB'}
 ])
+
+const onSelectLevel = (value)=>{
+  // alert(value);
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === "all"){
+    query_dic["level"] = 'market'
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "l1"){
+    query_dic["level"] = 'L1'
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "l2"){
+    query_dic["level"] = 'L2'
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === "l3"){
+    query_dic["level"] = 'L3'
+    router.push({path:route.path,query:query_dic});
+  }
+}
 
 //所属行业页面条抓按
 const onSelectMarketOverview = (value)=>{
@@ -262,7 +297,7 @@ const onSelectUp = (value)=>{
 const onSelectDown=(value)=>{
   // alert(value);
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  if(value === "down_10"){
+  if(value === "down_0"){
     query_dic["para_id"] = 4;
     router.push({path:route.path,query:query_dic});
   }
@@ -270,7 +305,7 @@ const onSelectDown=(value)=>{
     query_dic["para_id"] = 5;
     router.push({path:route.path,query:query_dic});
   }
-  if(value === "down_0"){
+  if(value === "down_10"){
     query_dic["para_id"] = 6;
     router.push({path:route.path,query:query_dic});
   }

@@ -3,7 +3,6 @@
   <el-container>
     <el-header style="">
       <StatsticsLevelNavigation></StatsticsLevelNavigation>
-      statistics_level_excel
     </el-header>
     <el-table
         :data="tableData"
@@ -21,7 +20,7 @@
       </el-table-column>
       <el-table-column width="120">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry1" style="text-decoration: none; color: inherit;">
             行业1
           </el-link>
         </template>
@@ -32,7 +31,7 @@
       </el-table-column>
       <el-table-column width="120">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry2" style="text-decoration: none; color: inherit;">
             行业2
           </el-link>
         </template>
@@ -43,7 +42,7 @@
       </el-table-column>
       <el-table-column width="150">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry3" style="text-decoration: none; color: inherit;">
             行业3
           </el-link>
         </template>
@@ -54,7 +53,7 @@
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectCt" style="text-decoration: none; color: inherit;">
             涨跌计数(个)
           </el-link>
         </template>
@@ -84,7 +83,7 @@
       </el-table-column>
       <el-table-column width="120">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectMv" style="text-decoration: none; color: inherit;">
             涨跌市值(亿)
           </el-link>
         </template>
@@ -145,6 +144,18 @@
       <el-table-column width="120">
         <template #header>
           <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+            涨跌幅(%)
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column width="120">
+        <template #header>
+          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
             涨跌换手率(%)
           </el-link>
         </template>
@@ -162,18 +173,6 @@
           <a :href="market" style="color: Silver">{{ row.all_turnover }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="120">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            涨跌幅(%)
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>
-          <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>
-          <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
-        </template>
-      </el-table-column>
       <el-table-column prop="address"
                        label="日期">
         <template #default="{ row }">
@@ -189,7 +188,7 @@
 <script setup>
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {indexParameterTransform} from "@/Api/utils/urlParameterTransform";
 import StatsticsLevelNavigation from "@/components/index/StatsticsLevelNavigation.vue";
 
@@ -198,6 +197,8 @@ var tableData = ref([]);
 
 //ajax获取行业信息
 const route = useRoute();
+const router = useRouter();
+
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   const para_dic = indexParameterTransform(query_dic);
@@ -229,7 +230,37 @@ onUpdated(axiosTable);
 
 //根据表格标题头排序
 const onSelectDate = ()=>{
-  alert("dsfds")
+  // alert("dsfds")
+}
+
+const onSelectCt=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 1
+  router.push({path:'/index/statistics_level_excel',query:query_dic})
+}
+
+const onSelectMv=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 2
+  router.push({path:'/index/statistics_level_excel',query:query_dic})
+}
+
+const onSelectIndustry1=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 3
+  router.push({path:'/index/statistics_level_excel',query:query_dic})
+}
+
+const onSelectIndustry2=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 4
+  router.push({path:'/index/statistics_level_excel',query:query_dic})
+}
+
+const onSelectIndustry3=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 5
+  router.push({path:'/index/statistics_level_excel',query:query_dic})
 }
 </script>
 

@@ -110,6 +110,7 @@ export function indexParameterTransform(param_dic){
         var mv_id = param_dic["mv_id"]
         var level_id = param_dic["level_id"];
         var trade_date = param_dic["trade_date"]
+        var sort_id = param_dic["sort_id"]
 
         //定义指数列表和名称列表
         var index_list;
@@ -159,6 +160,7 @@ export function indexParameterTransform(param_dic){
             "block_id":block_id,
             "mv_id":mv_id,
             "level":level,
+            "sort_id":sort_id,
             "trade_date":trade_date,
             "index_code":code
         }
