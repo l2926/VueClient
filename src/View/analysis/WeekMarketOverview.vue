@@ -259,7 +259,7 @@ const axiosTable = ()=>{
   // alert(JSON.stringify(para_dic))
   axios.post("http://127.0.0.1:8081/analysis/week_overview",para_dic).then(
       (response) => {
-        alert(JSON.stringify(response.data));
+        // alert(JSON.stringify(response.data));
         tableData.value = response.data;
 
         var ts_code_list = response.data.map((item)=>{
