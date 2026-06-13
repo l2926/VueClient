@@ -52,134 +52,134 @@ WeekMarketOverview.vue
       <el-table-column
           label="15月前">
         <template #default="{ row }">
-          <a v-if="row.month_pct15 > 0" :href="market" style="color: red">{{ row.month_pct15 }}</a>
-          <a v-if="row.month_pct15 == 0" :href="market" style="color: gray">{{ row.month_pct15 }}</a>
-          <a v-if="row.month_pct15 < 0" :href="market" style="color: green">{{ row.month_pct15 }}</a>
+          <a v-if="row.month15 > 0" :href="market" style="color: red">{{ row.month15 }}</a>
+          <a v-if="row.month15 == 0" :href="market" style="color: gray">{{ row.month15 }}</a>
+          <a v-if="row.month15 < 0" :href="market" style="color: green">{{ row.month15 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="14月前">
         <template #default="{ row }">
-          <a v-if="row.month_pct14 > 0" :href="market" style="color: red">{{ row.month_pct14 }}</a>
-          <a v-if="row.month_pct14 == 0" :href="market" style="color: gray">{{ row.month_pct14 }}</a>
-          <a v-if="row.month_pct14 < 0" :href="market" style="color: green">{{ row.month_pct14 }}</a>
+          <a v-if="row.month14 > 0" :href="market" style="color: red">{{ row.month14 }}</a>
+          <a v-if="row.month14 == 0" :href="market" style="color: gray">{{ row.month14 }}</a>
+          <a v-if="row.month14 < 0" :href="market" style="color: green">{{ row.month14 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
           label="13月前">
         <template #default="{ row }">
-          <a v-if="row.month_pct13 > 0" :href="market" style="color: red">{{ row.month_pct13 }}</a>
-          <a v-if="row.month_pct13 == 0" :href="market" style="color: gray">{{ row.month_pct13 }}</a>
-          <a v-if="row.month_pct13 < 0" :href="market" style="color: green">{{ row.month_pct13 }}</a>
+          <a v-if="row.month13 > 0" :href="market" style="color: red">{{ row.month13 }}</a>
+          <a v-if="row.month13 == 0" :href="market" style="color: gray">{{ row.month13 }}</a>
+          <a v-if="row.month13 < 0" :href="market" style="color: green">{{ row.month13 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
           label="12月前">
         <template #default="{ row }">
-          <a v-if="row.month_pct12 > 0" :href="market" style="color: red">{{ row.month_pct12 }}</a>
-          <a v-if="row.month_pct12 == 0" :href="market" style="color: gray">{{ row.month_pct12 }}</a>
-          <a v-if="row.month_pct12 < 0" :href="market" style="color: green">{{ row.month_pct12 }}</a>
+          <a v-if="row.month12 > 0" :href="market" style="color: red">{{ row.month12 }}</a>
+          <a v-if="row.month12 == 0" :href="market" style="color: gray">{{ row.month12 }}</a>
+          <a v-if="row.month12 < 0" :href="market" style="color: green">{{ row.month12 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
           label="11月前">
         <template #default="{ row }">
-          <a v-if="row.month_pct11 > 0" :href="market" style="color: red">{{ row.month_pct11 }}</a>
-          <a v-if="row.month_pct11 == 0" :href="market" style="color: gray">{{ row.month_pct11 }}</a>
-          <a v-if="row.month_pct11 < 0" :href="market" style="color: green">{{ row.month_pct11 }}</a>
+          <a v-if="row.month11 > 0" :href="market" style="color: red">{{ row.month11 }}</a>
+          <a v-if="row.month11 == 0" :href="market" style="color: gray">{{ row.month11 }}</a>
+          <a v-if="row.month11 < 0" :href="market" style="color: green">{{ row.month11 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
           label="10月前">
         <template #default="{ row }">
-          <a v-if="row.month_pct10 > 0" :href="market" style="color: red">{{ row.month_pct10 }}</a>
-          <a v-if="row.month_pct10 == 0" :href="market" style="color: gray">{{ row.month_pct10 }}</a>
-          <a v-if="row.month_pct10 < 0" :href="market" style="color: green">{{ row.month_pct10 }}</a>
+          <a v-if="row.month10 > 0" :href="market" style="color: red">{{ row.month10 }}</a>
+          <a v-if="row.month10 == 0" :href="market" style="color: gray">{{ row.month10 }}</a>
+          <a v-if="row.month10 < 0" :href="market" style="color: green">{{ row.month10 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
           label="9月前">
         <template #default="{ row }">
-          <a v-if="row.month_pct9 > 0" :href="market" style="color: red">{{ row.month_pct9 }}</a>
-          <a v-if="row.month_pct9 == 0" :href="market" style="color: gray">{{ row.month_pct9 }}</a>
-          <a v-if="row.month_pct9 < 0" :href="market" style="color: green">{{ row.month_pct9 }}</a>
+          <a v-if="row.month9 > 0" :href="market" style="color: red">{{ row.month9 }}</a>
+          <a v-if="row.month9 == 0" :href="market" style="color: gray">{{ row.month9 }}</a>
+          <a v-if="row.month9 < 0" :href="market" style="color: green">{{ row.month9 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="8月前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.month_pct8 > 0" :href="market" style="color: red">{{ row.month_pct8 }}</a>
-          <a v-if="row.month_pct8 == 0" :href="market" style="color: gray">{{ row.month_pct8 }}</a>
-          <a v-if="row.month_pct8 < 0" :href="market" style="color: green">{{ row.month_pct8 }}</a>
+          <a v-if="row.month8 > 0" :href="market" style="color: red">{{ row.month8 }}</a>
+          <a v-if="row.month8 == 0" :href="market" style="color: gray">{{ row.month8 }}</a>
+          <a v-if="row.month8 < 0" :href="market" style="color: green">{{ row.month8 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="7月前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.month_pct7 > 0" :href="market" style="color: red">{{ row.month_pct7 }}</a>
-          <a v-if="row.month_pct7 == 0" :href="market" style="color: gray">{{ row.month_pct7 }}</a>
-          <a v-if="row.month_pct7 < 0" :href="market" style="color: green">{{ row.month_pct7 }}</a>
+          <a v-if="row.month7 > 0" :href="market" style="color: red">{{ row.month7 }}</a>
+          <a v-if="row.month7 == 0" :href="market" style="color: gray">{{ row.month7 }}</a>
+          <a v-if="row.month7 < 0" :href="market" style="color: green">{{ row.month7 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="6月前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.month_pct6 > 0" :href="market" style="color: red">{{ row.month_pct6 }}</a>
-          <a v-if="row.month_pct6 == 0" :href="market" style="color: gray">{{ row.month_pct6 }}</a>
-          <a v-if="row.month_pct6 < 0" :href="market" style="color: green">{{ row.month_pct6 }}</a>
+          <a v-if="row.month6 > 0" :href="market" style="color: red">{{ row.month6 }}</a>
+          <a v-if="row.month6 == 0" :href="market" style="color: gray">{{ row.month6 }}</a>
+          <a v-if="row.month6 < 0" :href="market" style="color: green">{{ row.month6 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="5月前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.month_pct5 > 0" :href="market" style="color: red">{{ row.month_pct5 }}</a>
-          <a v-if="row.month_pct5 == 0" :href="market" style="color: gray">{{ row.month_pct5 }}</a>
-          <a v-if="row.month_pct5 < 0" :href="market" style="color: green">{{ row.month_pct5 }}</a>
+          <a v-if="row.month5 > 0" :href="market" style="color: red">{{ row.month5 }}</a>
+          <a v-if="row.month5 == 0" :href="market" style="color: gray">{{ row.month5 }}</a>
+          <a v-if="row.month5 < 0" :href="market" style="color: green">{{ row.month5 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="4月前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.month_pct4 > 0" :href="market" style="color: red">{{ row.month_pct4 }}</a>
-          <a v-if="row.month_pct4 == 0" :href="market" style="color: gray">{{ row.month_pct4 }}</a>
-          <a v-if="row.month_pct4 < 0" :href="market" style="color: green">{{ row.month_pct4 }}</a>
+          <a v-if="row.month4 > 0" :href="market" style="color: red">{{ row.month4 }}</a>
+          <a v-if="row.month4 == 0" :href="market" style="color: gray">{{ row.month4 }}</a>
+          <a v-if="row.month4 < 0" :href="market" style="color: green">{{ row.month4 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="3月前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.month_pct3 > 0" :href="market" style="color: red">{{ row.month_pct3 }}</a>
-          <a v-if="row.month_pct3 == 0" :href="market" style="color: gray">{{ row.month_pct3 }}</a>
-          <a v-if="row.month_pct3 < 0" :href="market" style="color: green">{{ row.month_pct3 }}</a>
+          <a v-if="row.month3 > 0" :href="market" style="color: red">{{ row.month3 }}</a>
+          <a v-if="row.month3 == 0" :href="market" style="color: gray">{{ row.month3 }}</a>
+          <a v-if="row.month3 < 0" :href="market" style="color: green">{{ row.month3 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="2月前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.month_pct2 > 0" :href="market" style="color: red">{{ row.month_pct2 }}</a>
-          <a v-if="row.month_pct2 == 0" :href="market" style="color: gray">{{ row.month_pct2 }}</a>
-          <a v-if="row.month_pct2 < 0" :href="market" style="color: green">{{ row.month_pct2 }}</a>
+          <a v-if="row.month2 > 0" :href="market" style="color: red">{{ row.month2 }}</a>
+          <a v-if="row.month2 == 0" :href="market" style="color: gray">{{ row.month2 }}</a>
+          <a v-if="row.month2 < 0" :href="market" style="color: green">{{ row.month2 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="1月前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.month_pct1 > 0" :href="market" style="color: red">{{ row.month_pct1 }}</a>
-          <a v-if="row.month_pct1 == 0" :href="market" style="color: gray">{{ row.month_pct1 }}</a>
-          <a v-if="row.month_pct1 < 0" :href="market" style="color: green">{{ row.month_pct1 }}</a>
+          <a v-if="row.month1 > 0" :href="market" style="color: red">{{ row.month1 }}</a>
+          <a v-if="row.month1 == 0" :href="market" style="color: gray">{{ row.month1 }}</a>
+          <a v-if="row.month1 < 0" :href="market" style="color: green">{{ row.month1 }}</a>
         </template>
       </el-table-column>
       <el-table-column width="70">
@@ -189,9 +189,9 @@ WeekMarketOverview.vue
           </el-link>
         </template>
         <template #default="{ row }">
-          <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>
-          <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>
-          <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_change > 0" :href="market" style="color: red">{{ row.pct_change }}</a>
+          <a v-if="row.pct_change == 0" :href="market" style="color: gray">{{ row.pct_change }}</a>
+          <a v-if="row.pct_change < 0" :href="market" style="color: green">{{ row.pct_change }}</a>
         </template>
       </el-table-column>
 
@@ -244,7 +244,7 @@ const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   const para_dic = industryParameterTransform(query_dic);
   // alert(JSON.stringify(para_dic))
-  axios.post("http://127.0.0.1:8081/industry/month_overview",para_dic).then(
+  axios.post("http://127.0.0.1:8081/index/month_overview",para_dic).then(
       (response) => {
         alert(JSON.stringify(response.data));
         tableData.value = response.data;

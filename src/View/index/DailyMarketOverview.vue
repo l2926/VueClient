@@ -60,126 +60,126 @@
       <el-table-column
           label="14日前">
         <template #default="{ row }">
-          <a v-if="row.day_pct14 > 0" :href="market" style="color: red">{{ row.day_pct14 }}</a>
-          <a v-if="row.day_pct14 == 0" :href="market" style="color: gray">{{ row.day_pct14 }}</a>
-          <a v-if="row.day_pct14 < 0" :href="market" style="color: green">{{ row.day_pct14 }}</a>
+          <a v-if="row.day14 > 0" :href="market" style="color: red">{{ row.day14 }}</a>
+          <a v-if="row.day14 == 0" :href="market" style="color: gray">{{ row.day14 }}</a>
+          <a v-if="row.day14 < 0" :href="market" style="color: green">{{ row.day14 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
           label="13日前">
         <template #default="{ row }">
-          <a v-if="row.day_pct13 > 0" :href="market" style="color: red">{{ row.day_pct13 }}</a>
-          <a v-if="row.day_pct13 == 0" :href="market" style="color: gray">{{ row.day_pct13 }}</a>
-          <a v-if="row.day_pct13 < 0" :href="market" style="color: green">{{ row.day_pct13 }}</a>
+          <a v-if="row.day13 > 0" :href="market" style="color: red">{{ row.day13 }}</a>
+          <a v-if="row.day13 == 0" :href="market" style="color: gray">{{ row.day13 }}</a>
+          <a v-if="row.day13 < 0" :href="market" style="color: green">{{ row.day13 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
           label="12日前">
         <template #default="{ row }">
-          <a v-if="row.day_pct12 > 0" :href="market" style="color: red">{{ row.day_pct12 }}</a>
-          <a v-if="row.day_pct12 == 0" :href="market" style="color: gray">{{ row.day_pct12 }}</a>
-          <a v-if="row.day_pct12 < 0" :href="market" style="color: green">{{ row.day_pct12 }}</a>
+          <a v-if="row.day12 > 0" :href="market" style="color: red">{{ row.day12 }}</a>
+          <a v-if="row.day12 == 0" :href="market" style="color: gray">{{ row.day12 }}</a>
+          <a v-if="row.day12 < 0" :href="market" style="color: green">{{ row.day12 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
           label="11日前">
         <template #default="{ row }">
-          <a v-if="row.day_pct11 > 0" :href="market" style="color: red">{{ row.day_pct11 }}</a>
-          <a v-if="row.day_pct11 == 0" :href="market" style="color: gray">{{ row.day_pct11 }}</a>
-          <a v-if="row.day_pct11 < 0" :href="market" style="color: green">{{ row.day_pct11 }}</a>
+          <a v-if="row.day11 > 0" :href="market" style="color: red">{{ row.day11 }}</a>
+          <a v-if="row.day11 == 0" :href="market" style="color: gray">{{ row.day11 }}</a>
+          <a v-if="row.day11 < 0" :href="market" style="color: green">{{ row.day11 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
           label="10日前">
         <template #default="{ row }">
-          <a v-if="row.day_pct10 > 0" :href="market" style="color: red">{{ row.day_pct10 }}</a>
-          <a v-if="row.day_pct10 == 0" :href="market" style="color: gray">{{ row.day_pct10 }}</a>
-          <a v-if="row.day_pct10 < 0" :href="market" style="color: green">{{ row.day_pct10 }}</a>
+          <a v-if="row.day10 > 0" :href="market" style="color: red">{{ row.day10 }}</a>
+          <a v-if="row.day10 == 0" :href="market" style="color: gray">{{ row.day10 }}</a>
+          <a v-if="row.day10 < 0" :href="market" style="color: green">{{ row.day10 }}</a>
         </template>
       </el-table-column>
 
       <el-table-column
           label="9日前">
         <template #default="{ row }">
-          <a v-if="row.day_pct9 > 0" :href="market" style="color: red">{{ row.day_pct9 }}</a>
-          <a v-if="row.day_pct9 == 0" :href="market" style="color: gray">{{ row.day_pct9 }}</a>
-          <a v-if="row.day_pct9 < 0" :href="market" style="color: green">{{ row.day_pct9 }}</a>
+          <a v-if="row.day9 > 0" :href="market" style="color: red">{{ row.day9 }}</a>
+          <a v-if="row.day9 == 0" :href="market" style="color: gray">{{ row.day9 }}</a>
+          <a v-if="row.day9 < 0" :href="market" style="color: green">{{ row.day9 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="8日前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.day_pct8 > 0" :href="market" style="color: red">{{ row.day_pct8 }}</a>
-          <a v-if="row.day_pct8 == 0" :href="market" style="color: gray">{{ row.day_pct8 }}</a>
-          <a v-if="row.day_pct8 < 0" :href="market" style="color: green">{{ row.day_pct8 }}</a>
+          <a v-if="row.day8 > 0" :href="market" style="color: red">{{ row.day8 }}</a>
+          <a v-if="row.day8 == 0" :href="market" style="color: gray">{{ row.day8 }}</a>
+          <a v-if="row.day8 < 0" :href="market" style="color: green">{{ row.day8 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="7日前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.day_pct7 > 0" :href="market" style="color: red">{{ row.day_pct7 }}</a>
-          <a v-if="row.day_pct7 == 0" :href="market" style="color: gray">{{ row.day_pct7 }}</a>
-          <a v-if="row.day_pct7 < 0" :href="market" style="color: green">{{ row.day_pct7 }}</a>
+          <a v-if="row.day7 > 0" :href="market" style="color: red">{{ row.day7 }}</a>
+          <a v-if="row.day7 == 0" :href="market" style="color: gray">{{ row.day7 }}</a>
+          <a v-if="row.day7 < 0" :href="market" style="color: green">{{ row.day7 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="6日前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.day_pct6 > 0" :href="market" style="color: red">{{ row.day_pct6 }}</a>
-          <a v-if="row.day_pct6 == 0" :href="market" style="color: gray">{{ row.day_pct6 }}</a>
-          <a v-if="row.day_pct6 < 0" :href="market" style="color: green">{{ row.day_pct6 }}</a>
+          <a v-if="row.day6 > 0" :href="market" style="color: red">{{ row.day6 }}</a>
+          <a v-if="row.day6 == 0" :href="market" style="color: gray">{{ row.day6 }}</a>
+          <a v-if="row.day6 < 0" :href="market" style="color: green">{{ row.day6 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="5日前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.day_pct5 > 0" :href="market" style="color: red">{{ row.day_pct5 }}</a>
-          <a v-if="row.day_pct5 == 0" :href="market" style="color: gray">{{ row.day_pct5 }}</a>
-          <a v-if="row.day_pct5 < 0" :href="market" style="color: green">{{ row.day_pct5 }}</a>
+          <a v-if="row.day5 > 0" :href="market" style="color: red">{{ row.day5 }}</a>
+          <a v-if="row.day5 == 0" :href="market" style="color: gray">{{ row.day5 }}</a>
+          <a v-if="row.day5 < 0" :href="market" style="color: green">{{ row.day5 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="4日前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.day_pct4 > 0" :href="market" style="color: red">{{ row.day_pct4 }}</a>
-          <a v-if="row.day_pct4 == 0" :href="market" style="color: gray">{{ row.day_pct4 }}</a>
-          <a v-if="row.day_pct4 < 0" :href="market" style="color: green">{{ row.day_pct4 }}</a>
+          <a v-if="row.day4 > 0" :href="market" style="color: red">{{ row.day4 }}</a>
+          <a v-if="row.day4 == 0" :href="market" style="color: gray">{{ row.day4 }}</a>
+          <a v-if="row.day4 < 0" :href="market" style="color: green">{{ row.day4 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="3日前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.day_pct3 > 0" :href="market" style="color: red">{{ row.day_pct3 }}</a>
-          <a v-if="row.day_pct3 == 0" :href="market" style="color: gray">{{ row.day_pct3 }}</a>
-          <a v-if="row.day_pct3 < 0" :href="market" style="color: green">{{ row.day_pct3 }}</a>
+          <a v-if="row.day3 > 0" :href="market" style="color: red">{{ row.day3 }}</a>
+          <a v-if="row.day3 == 0" :href="market" style="color: gray">{{ row.day3 }}</a>
+          <a v-if="row.day3 < 0" :href="market" style="color: green">{{ row.day3 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="2日前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.day_pct2 > 0" :href="market" style="color: red">{{ row.day_pct2 }}</a>
-          <a v-if="row.day_pct2 == 0" :href="market" style="color: gray">{{ row.day_pct2 }}</a>
-          <a v-if="row.day_pct2 < 0" :href="market" style="color: green">{{ row.day_pct2 }}</a>
+          <a v-if="row.day2 > 0" :href="market" style="color: red">{{ row.day2 }}</a>
+          <a v-if="row.day2 == 0" :href="market" style="color: gray">{{ row.day2 }}</a>
+          <a v-if="row.day2 < 0" :href="market" style="color: green">{{ row.day2 }}</a>
         </template>
       </el-table-column>
       <el-table-column
           label="1日前"
           width="65">
         <template #default="{ row }">
-          <a v-if="row.day_pct1 > 0" :href="market" style="color: red">{{ row.day_pct1 }}</a>
-          <a v-if="row.day_pct1 == 0" :href="market" style="color: gray">{{ row.day_pct1 }}</a>
-          <a v-if="row.day_pct1 < 0" :href="market" style="color: green">{{ row.day_pct1 }}</a>
+          <a v-if="row.day1 > 0" :href="market" style="color: red">{{ row.day1 }}</a>
+          <a v-if="row.day1 == 0" :href="market" style="color: gray">{{ row.day1 }}</a>
+          <a v-if="row.day1 < 0" :href="market" style="color: green">{{ row.day1 }}</a>
         </template>
       </el-table-column>
       <el-table-column width="70">
@@ -189,9 +189,9 @@
           </el-link>
         </template>
         <template #default="{ row }">
-          <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>
-          <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>
-          <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_change > 0" :href="market" style="color: red">{{ row.pct_change }}</a>
+          <a v-if="row.pct_change == 0" :href="market" style="color: gray">{{ row.pct_change }}</a>
+          <a v-if="row.pct_change < 0" :href="market" style="color: green">{{ row.pct_change }}</a>
         </template>
       </el-table-column>
 
