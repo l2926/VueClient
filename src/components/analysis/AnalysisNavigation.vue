@@ -24,22 +24,43 @@
     </el-select>
 
 
-    <el-select v-model="defaultLimit" placeholder="五日涨停" style="width: 7%" popper-class="horizontal-select"
-               @change="handleSelectFiveDaysLimitChange">
+<!--    <el-select v-model="defaultLimit" placeholder="五日涨停" style="width: 7%" popper-class="horizontal-select"-->
+<!--               @change="handleSelectFiveDaysLimitChange">-->
+<!--      <el-option-->
+<!--          v-for="item in limitOptions"-->
+<!--          :key="item.value"-->
+<!--          :label="item.label"-->
+<!--          :value="item.value">-->
+<!--      </el-option>-->
+<!--    </el-select>-->
+
+<!--    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>-->
+    <el-select v-model="dailyLevel" placeholder="十日统计" style="width: 7%" @change="handleSelectTenDays" id="test_select">
       <el-option
-          v-for="item in limitOptions"
+          v-for="item in tenDaysOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
+<!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>-->
+
+    <el-select v-model="dailyLevel" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
+      <el-option
+          v-for="item in finaMainOptions"
           :key="item.value"
           :label="item.label"
           :value="item.value">
       </el-option>
     </el-select>
 
-    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>
-<!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>-->
+    <el-button style="margin-left:0;margin-right: 0" @click="handleClickCompanyInfo">公司信息</el-button>
 
-    <el-select v-model="dailyLevel" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
+    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>
+
+    <el-select v-model="dailyLevel2" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
       <el-option
-          v-for="item in finaMainOptions"
+          v-for="item in moneyFlowOptions"
           :key="item.value"
           :label="item.label"
           :value="item.value">
@@ -62,20 +83,6 @@
           :value="item.value">
       </el-option>
     </el-select>
-
-    <el-button style="margin-left:0;margin-right: 0" @click="handleClickCompanyInfo">公司信息</el-button>
-
-    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>
-
-    <el-select v-model="dailyLevel2" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
-      <el-option
-          v-for="item in moneyFlowOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-      </el-option>
-    </el-select>
-
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTop100">A股百强</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleHotMoneyReview">游资复盘</el-button>
@@ -112,6 +119,11 @@ import {dayjs} from "element-plus";
 
 const router = useRouter();
 const route = useRoute();
+
+const tenDaysOptions = ref([
+  {value: 'ten_days', label: '十日统计'},
+  {value: 'five_days', label: '五日统计'}
+]);
 
 const finaMainOptions = ref([
   {value: 'fina_main1', label: '主营业务1'},
@@ -153,12 +165,12 @@ const dailyOptions = ref([
   {value:"limit5",label:"涨停5"}
 ]);
 
-const limitOptions = ref([
-  {value:'fiveDays',label:'五日涨停'},
-  {value:'tenDays',label:'十日涨停'},
-  {value: 'fifteenDays',label: '十五涨停'},
-  {value: 'twentyDays',label: '二十涨停'}
-]);
+// const limitOptions = ref([
+//   {value:'fiveDays',label:'五日涨停'},
+//   {value:'tenDays',label:'十日涨停'},
+//   {value: 'fifteenDays',label: '十五涨停'},
+//   {value: 'twentyDays',label: '二十涨停'}
+// ]);
 
 const moneyFlowOptions = ref([
   {value:'money_flow',label:'资金流向'},
@@ -207,9 +219,17 @@ const handleSelectLimitBoard = ()=>{
 //   router.push({path:'/analysis/limit',query:query_dic});
 // }
 
-const handleClickTenDays = () => {
+const handleSelectTenDays = (value) => {
+  // alert(value)
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  router.push({path:'/analysis/ten_days',query:query_dic});
+  if(value === "ten_days"){
+    query_dic["para_id"] = 1
+    router.push({path:'/analysis/ten_days',query:query_dic});
+  }
+  if(value === "five_days"){
+    query_dic["para_id"] = 2
+    router.push({path:'/analysis/ten_days',query:query_dic});
+  }
 }
 
 // const handleSelectFinaMain = () =>{
@@ -333,28 +353,28 @@ const hanldeSelectLimit = (value)=>{
 
   router.push({path:'/analysis/limit',query:query_dic});
 }
-const handleSelectFiveDaysLimitChange = (value)=> {
-  // alert(value);
-  const query_dic = JSON.parse(JSON.stringify(route.query));
-
-  if(value === "fiveDays"){
-    query_dic["select_id"] = 2;
-  }
-
-  if(value === "tenDays"){
-    query_dic["select_id"] = 3;
-  }
-
-  if(value === "fifteenDays"){
-    query_dic["select_id"] = 4;
-  }
-
-  if(value === "twentyDays"){
-    query_dic["select_id"] = 5;
-  }
-
-  router.push({path:'/analysis/five_days_limit',query:query_dic});
-};
+// const handleSelectFiveDaysLimitChange = (value)=> {
+//   // alert(value);
+//   const query_dic = JSON.parse(JSON.stringify(route.query));
+//
+//   if(value === "fiveDays"){
+//     query_dic["select_id"] = 2;
+//   }
+//
+//   if(value === "tenDays"){
+//     query_dic["select_id"] = 3;
+//   }
+//
+//   if(value === "fifteenDays"){
+//     query_dic["select_id"] = 4;
+//   }
+//
+//   if(value === "twentyDays"){
+//     query_dic["select_id"] = 5;
+//   }
+//
+//   router.push({path:'/analysis/five_days_limit',query:query_dic});
+// };
 
 const selectedDate = ref(new Date()); // 响应式变量，用于存储选择的日期
 const selectedStartDate = ref(new Date());

@@ -66,6 +66,14 @@
         </template>
       </el-table-column>
       <el-table-column
+          label="15天前">
+        <template #default="{ row }">
+          <a v-if="row.ypct15 > 0" :href="market" style="color: red">{{ row.ypct15 }}</a>
+          <a v-if="row.ypct15 == 0" :href="market" style="color: gray">{{ row.ypct15 }}</a>
+          <a v-if="row.ypct15 < 0" :href="market" style="color: green">{{ row.ypct15 }}</a>
+        </template>
+      </el-table-column>
+      <el-table-column
           label="14天前">
         <template #default="{ row }">
           <a v-if="row.ypct14 > 0" :href="market" style="color: red">{{ row.ypct14 }}</a>
@@ -185,18 +193,18 @@
           <a v-if="row.ypct1 < 0" :href="market" style="color: green">{{ row.ypct1 }}</a>
         </template>
       </el-table-column>
-      <el-table-column width="70">
-        <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
-            涨跌幅(%)
-          </el-link>
-        </template>
-        <template #default="{ row }">
-          <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>
-          <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>
-          <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
-        </template>
-      </el-table-column>
+<!--      <el-table-column width="70">-->
+<!--        <template #header>-->
+<!--          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">-->
+<!--            涨跌幅(%)-->
+<!--          </el-link>-->
+<!--        </template>-->
+<!--        <template #default="{ row }">-->
+<!--          <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>-->
+<!--          <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>-->
+<!--          <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
 
       <el-table-column
           prop="address"
@@ -258,7 +266,7 @@ const axiosTable = ()=>{
   // alert(JSON.stringify(para_dic))
   axios.post("http://127.0.0.1:8081/analysis/ten_days_market",para_dic).then(
       (response) => {
-        // alert(JSON.stringify(response.data));
+        alert(JSON.stringify(response.data));
         tableData.value = response.data;
 
         var ts_code_list = response.data.map((item)=>{
