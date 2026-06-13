@@ -3,7 +3,6 @@ FinaMain3Page.vue
   <el-container>
     <el-header style="">
       <AnalysisNavigation></AnalysisNavigation>
-      daily analysis
     </el-header>
     <el-table
         :data="tableData"

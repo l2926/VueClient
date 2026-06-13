@@ -3,7 +3,6 @@
   <el-container>
     <el-header style="">
       <AnalysisNavigation></AnalysisNavigation>
-      month analysis
     </el-header>
     <el-table
         :data="tableData"
