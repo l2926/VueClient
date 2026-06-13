@@ -14,7 +14,7 @@
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickFiveDaysLimit">五日涨停</el-button>
 
-    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>
+<!--    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>-->
 <!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>-->
     <el-select v-model="dailyLevel" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
       <el-option
@@ -135,10 +135,10 @@ const handleClickFiveDaysLimit = ()=> {
   router.push({path:'/industry/five_days_limit',query:query_dic});
 };
 
-const handleClickTenDays = ()=>{
-  const query_dic = JSON.parse(JSON.stringify(route.query))
-  router.push({path:'/industry/ten_days',query:query_dic});
-}
+// const handleClickTenDays = ()=>{
+//   const query_dic = JSON.parse(JSON.stringify(route.query))
+//   router.push({path:'/industry/ten_days',query:query_dic});
+// }
 
 // const handleClickFinaMain = ()=>{
 //   const query_dic = JSON.parse(JSON.stringify(route.query))
