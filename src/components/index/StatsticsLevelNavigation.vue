@@ -1,5 +1,5 @@
 <template>
-  <el-select v-model="monthlyLevel" placeholder="行情概览" style="width: 7%" @change="onSelectMarketOverview">
+  <el-select v-model="market" placeholder="行情概览" style="width: 7%" @change="onSelectMarketOverview">
     <el-option
         v-for="item in marketOverviewOptions"
         :key="item.value"
@@ -7,7 +7,7 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="行业级别" style="width: 7%" @change="onSelectLevel">
+  <el-select v-model="level" placeholder="行业级别" style="width: 7%" @change="onSelectLevel">
     <el-option
         v-for="item in levelOptions"
         :key="item.value"
@@ -15,7 +15,7 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="板块" style="width: 7%" @change="onSelectBlock">
+  <el-select v-model="block" placeholder="板块" style="width: 7%" @change="onSelectBlock">
     <el-option
         v-for="item in blockOptions"
         :key="item.value"
@@ -23,7 +23,7 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="涨幅" style="width: 7%" @change="onSelectUp">
+  <el-select v-model="up_pct" placeholder="涨幅" style="width: 7%" @change="onSelectUp">
     <el-option
         v-for="item in upPctChgOptions"
         :key="item.value"
@@ -31,7 +31,7 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="monthlyLevel" placeholder="跌幅" style="width: 7%" @change="onSelectDown">
+  <el-select v-model="down_pct" placeholder="跌幅" style="width: 7%" @change="onSelectDown">
     <el-option
         v-for="item in downPctChgOptions"
         :key="item.value"
@@ -40,7 +40,7 @@
     </el-option>
   </el-select>
 
-  <el-select v-model="monthlyLevel" placeholder="市值" style="width: 7%" @change="onSelectMv">
+  <el-select v-model="mv" placeholder="市值" style="width: 7%" @change="onSelectMv">
     <el-option
         v-for="item in mvOptions"
         :key="item.value"
@@ -49,7 +49,7 @@
     </el-option>
   </el-select>
 
-  <el-select v-model="dailyLevel" placeholder="历史行情" style="width: 7%" @change="handleSelectMarketOverview" id="test_select">
+  <el-select v-model="his" placeholder="历史行情" style="width: 7%" @change="handleSelectMarketOverview" id="test_select">
     <el-option
         v-for="item in MarketOverviewOpetions"
         :key="item.value"
@@ -57,7 +57,7 @@
         :value="item.value">
     </el-option>
   </el-select>
-  <el-select v-model="dailyLevel" placeholder="选项" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
+  <el-select v-model="opt" placeholder="选项" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
     <el-option
         v-for="item in growthOptions"
         :key="item.value"
@@ -254,7 +254,7 @@ const onSelectMv = (value)=>{
 const handleSelectMarketOverview = (value)=>{
   // alert(value)
   const query_dic = JSON.parse(JSON.stringify(route.query))
-  query_dic["select_id"] = 1;
+  // query_dic["select_id"] = 1;
   if(value == "dailyPctChg"){
     router.push(({path:'/index/daily_overview',query:query_dic}))
   }
