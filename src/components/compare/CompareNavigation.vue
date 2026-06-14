@@ -15,7 +15,7 @@
 <!--        :value="item.value">-->
 <!--    </el-option>-->
 <!--  </el-select>-->
-  <el-select v-model="monthlyLevel" placeholder="行业1" style="width: 5%" @change="onLevel1">
+  <el-select v-model="monthlyLevel" placeholder="行业1" style="width: 6%" @change="onLevel1">
     <el-option
         v-for="item in selectLevel1Options1"
         :key="item.value"
@@ -36,7 +36,7 @@
 <!--        :value="item.value">-->
 <!--    </el-option>-->
 <!--  </el-select>-->
-  <el-select v-model="monthlyLevel" placeholder="行业2" style="width: 5%" @change="onLevel2">
+  <el-select v-model="monthlyLevel" placeholder="行业2" style="width: 6%" @change="onLevel2">
     <el-option
         v-for="item in selectLevel1Options2"
         :key="item.value"
@@ -110,7 +110,7 @@ const onQueryStock1 = ()=>{
       queryName: inputValue.value
     }
   }).then(response => {
-    alert(JSON.stringify(response.data));
+    // alert(JSON.stringify(response.data));
     var ts_code = response.data["ts_code"]
     var name = response.data["name"]
 

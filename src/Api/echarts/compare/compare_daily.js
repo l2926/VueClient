@@ -21,7 +21,13 @@ export function InitCompareDailyECharts(rawData){
         return [+item["open2"], +item["close2"], +item["low2"], +item["high2"]];
     });
 
+    var pct_chg1 = priceData.map(item=>{
+        return item['pct_chg1']
+    });
 
+    var pct_chg2 = priceData.map(item=>{
+        return item['pct_chg2']
+    });
 
     const option = {
         title: [{
@@ -61,6 +67,12 @@ export function InitCompareDailyECharts(rawData){
         yAxis: [{
             gridIndex:0,
             scale:true
+        },{
+            gridIndex: 1,
+            scale: true
+        },{
+            gridIndex:0,
+            scale: true
         },{
             gridIndex: 1,
             scale: true
@@ -108,6 +120,28 @@ export function InitCompareDailyECharts(rawData){
                 xAxisIndex:1,
                 yAxisIndex:1,
                 data:data2,
+            },{
+                name:'涨跌幅1(%)',
+                type:'line',
+                xAxisIndex: 0,
+                yAxisIndex: 2,
+                data: pct_chg1,
+                itemStyle:{
+                    normal:{
+                        color:'transparent'
+                    }
+                }
+            },{
+                name:'涨跌幅2(%)',
+                type:'line',
+                xAxisIndex: 1,
+                yAxisIndex: 3,
+                data: pct_chg2,
+                itemStyle:{
+                    normal:{
+                        color:'transparent'
+                    }
+                }
             }
         ],
     };
