@@ -214,9 +214,51 @@ export function InitLogDailyECharts(rawData){
                         return value >= 0 ? 'red' : 'green';
                     }
                 }
+            },
+            {
+                name: 'MA5',
+                type: 'line',
+                xAxisIndex:0,
+                yAxisIndex:0,
+                data: calculateMA(5, data),
+                smooth: true,
+                showSymbol: false
+            },
+            {
+                name: 'MA10',
+                type: 'line',
+                data: calculateMA(10, data),
+                smooth: true,
+                showSymbol: false
+            },
+            {
+                name: 'MA30',
+                type: 'line',
+                data: calculateMA(30, data),
+                smooth: true,
+                showSymbol: false
             }
         ],
     };
+
+    //计算均线
+    function calculateMA(dayCount, data) {
+        var result = [];
+        for (var i = 0, len = data.length; i < len; i++) {
+            if (i < dayCount) {
+                result.push('-');
+                continue;
+            }
+            var sum = 0;
+            for (var j = 0; j < dayCount; j++) {
+                sum += data[i - j][1];
+            }
+
+            var res = sum/dayCount
+            result.push(res.toFixed(2));
+        }
+        return result;
+    }
 
     const mychart = echarts.init(document.getElementById("priceCharts"));
     mychart.setOption(option)

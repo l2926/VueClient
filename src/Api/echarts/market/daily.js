@@ -251,6 +251,7 @@ export function InitDailyECharts(rawData){
         ],
     };
 
+
     const mychart = echarts.init(document.getElementById("priceCharts"));
     mychart.setOption(option)
 }

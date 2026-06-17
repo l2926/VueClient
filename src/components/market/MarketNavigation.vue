@@ -120,9 +120,28 @@ const onDailyLevel= (value) => {
 };
 
 const onLogDailyLevel = (value) => {
-  alert(value)
+  // alert(value)
   const query_dic = JSON.parse(JSON.stringify(route.query));
-  router.push({path: '/market/log_daily', query: query_dic});
+  if(value === "log1"){
+    query_dic["para_id"] = 1;
+    router.push({path: '/market/log_daily', query: query_dic});
+  }
+  if(value === 'log2'){
+    query_dic["para_id"] = 3;
+    router.push({path: '/market/log_daily', query: query_dic});
+  }
+  if(value === 'log3'){
+    query_dic["para_id"] = 5;
+    router.push({path: '/market/log_daily', query: query_dic});
+  }
+  if(value === "log4"){
+    query_dic["para_id"] = 10;
+    router.push({path: '/market/log_daily', query: query_dic});
+  }
+  if(value === "log5"){
+    query_dic["para_id"] = 20;
+    router.push({path: '/market/log_daily', query: query_dic});
+  }
 }
 
 const onFinanceLevel = (value) => {
