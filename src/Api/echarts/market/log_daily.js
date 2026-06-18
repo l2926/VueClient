@@ -2,6 +2,7 @@ import * as echarts from "echarts";
 
 export function InitLogDailyECharts(rawData){
     var priceData = rawData.log_daily_vo_list;
+    // alert(JSON.stringify(priceData));
 
     if(priceData == null){
         alert("daily_vo_list为null");
@@ -19,15 +20,18 @@ export function InitLogDailyECharts(rawData){
         return [+item["log_open"], +item["log_close"], +item["log_low"], +item["log_high"]];
     });
 
-    //
-    // var amount = priceData.map(item => {
-    //     return item["amount"];
-    // });
+
+    var amount = priceData.map(item => {
+        return item["amount"];
+    });
 
     var total_mv = priceData.map(item=>{
         return item['total_mv']
     });
 
+    var pct_change = priceData.map(item=>{
+        return item['pct_change']
+    });
     // var pe = priceData.map(item=>{
     //     return item["pe"]
     // })
@@ -124,6 +128,12 @@ export function InitLogDailyECharts(rawData){
         },{
             gridIndex: 2,
             scale: true
+        },{
+            gridIndex: 1,
+            scale: true
+        },{
+            gridIndex:0,
+            scale: true
         }],
         dataZoom: [{
             textStyle: {
@@ -202,7 +212,7 @@ export function InitLogDailyECharts(rawData){
                     }
                 }
             },{
-                name: '涨跌幅',
+                name: '涨跌停',
                 type: 'bar',
                 xAxisIndex:2,
                 yAxisIndex:8,
@@ -212,6 +222,38 @@ export function InitLogDailyECharts(rawData){
                     color: function(params) {
                         const value = params.value;
                         return value >= 0 ? 'red' : 'green';
+                    }
+                }
+            },
+            {
+                name:'成交量',
+                type:'bar',
+                xAxisIndex: 1,
+                yAxisIndex: 9,
+                data: amount,
+                itemStyle:{
+                    normal:{
+                        color:(params)=>{
+                            var colorList;
+                            if (data[params.dataIndex][1]>data[params.dataIndex][0]) {
+                                colorList = '#ff5900';
+                            } else {
+                                colorList = 'rgba(0,255,0,0.62)';
+                            }
+                            return colorList
+                        }
+                    }
+                }
+            },
+            {
+                name:'涨跌幅(%)',
+                type:'line',
+                xAxisIndex: 0,
+                yAxisIndex: 10,
+                data:pct_change,
+                itemStyle:{
+                    normal:{
+                        color:'transparent'
                     }
                 }
             },
