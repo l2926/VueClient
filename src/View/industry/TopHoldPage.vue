@@ -23,7 +23,7 @@
           label="公司名称"
           width="90">
         <template #default="{ row }">
-          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=L1&id=${row.idx}&trade_date=20240926`" style="color: gray" target="_blank">{{ row.name }}</el-link>
+          <el-link :href="`/#/market/daily?select_id=1&p\ara_id=1&level=L1&id=${row.idx}&trade_date=${row.trade_date}`" style="color: gray" target="_blank">{{ row.name }}</el-link>
         </template>
       </el-table-column>
       <el-table-column width="60">
@@ -58,7 +58,7 @@
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry3" style="text-decoration: none; color: inherit;">
             行业3
           </el-link>
         </template>
@@ -68,7 +68,7 @@
       </el-table-column>
       <el-table-column width="70">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
             涨跌幅(%)
           </el-link>
         </template>
@@ -95,7 +95,7 @@
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectAsset" style="text-decoration: none; color: inherit;">
             净资产(亿)
           </el-link>
         </template>
@@ -105,7 +105,7 @@
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectTotalMv" style="text-decoration: none; color: inherit;">
             市值(亿)
           </el-link>
         </template>
@@ -129,7 +129,7 @@
 <script setup>
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import FundamentalNavigation from "@/components/industry/FundamentalNavigation.vue";
 import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
 
@@ -138,6 +138,7 @@ var tableData = ref([]);
 
 //ajax获取行业信息
 const route = useRoute();
+const router = useRouter();
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   const para_dic = industryParameterTransform(query_dic);
@@ -170,6 +171,33 @@ onUpdated(axiosTable);
 //根据表格标题头排序
 const onSelectDate = ()=>{
   alert("dsfds")
+}
+
+const onSelectIndustry3=()=>{
+  // alert('333')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 2
+  router.push({path:route.path,query:query_dic})
+}
+
+const onSelectAsset=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 3
+  router.push({path:route.path,query:query_dic})
+}
+
+const onSelectTotalMv=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 1
+  router.push({path:route.path,query:query_dic})
+}
+
+const onSelectPctChg=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 4
+  router.push({path:route.path,query:query_dic})
 }
 </script>
 
