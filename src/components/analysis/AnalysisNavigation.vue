@@ -56,7 +56,7 @@
 
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickCompanyInfo">公司信息</el-button>
 
-    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>
+<!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>-->
 
     <el-select v-model="dailyLevel2" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
       <el-option
@@ -279,10 +279,10 @@ const handleClickCompanyInfo = ()=>{
   router.push({path:'/analysis/company_info',query:query_dic});
 }
 
-const handleSelectTopHold = () =>{
-  const query_dic = JSON.parse(JSON.stringify(route.query));
-  router.push({path:'/analysis/top_hold',query:query_dic});
-}
+// const handleSelectTopHold = () =>{
+//   const query_dic = JSON.parse(JSON.stringify(route.query));
+//   router.push({path:'/analysis/top_hold',query:query_dic});
+// }
 
 const handleSelectTop100 = () => {
   const query_dic = JSON.parse(JSON.stringify(route.query));
