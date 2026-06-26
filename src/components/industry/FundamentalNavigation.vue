@@ -16,7 +16,7 @@
 
 <!--    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>-->
 <!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>-->
-    <el-select v-model="dailyLevel" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
+    <el-select v-model="dailyLevel1" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
       <el-option
           v-for="item in finaMainOptions"
           :key="item.value"
@@ -24,7 +24,7 @@
           :value="item.value">
       </el-option>
     </el-select>
-    <el-select v-model="dailyLevel" placeholder="历史行情" style="width: 7%" @change="handleSelectMarketOverview" id="test_select">
+    <el-select v-model="dailyLevel2" placeholder="历史行情" style="width: 7%" @change="handleSelectMarketOverview" id="test_select">
       <el-option
           v-for="item in MarketOverviewOpetions"
           :key="item.value"
@@ -32,7 +32,7 @@
           :value="item.value">
       </el-option>
     </el-select>
-    <el-select v-model="dailyLevel" placeholder="选项" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
+    <el-select v-model="dailyLevel3" placeholder="选项" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
       <el-option
           v-for="item in growthOptions"
           :key="item.value"
@@ -43,7 +43,7 @@
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickCompanyInfo">公司信息</el-button>
     <el-button style="margin-left:0;margin-right: 0" @click="handleClickTopHold">十大股东</el-button>
 
-    <el-select v-model="dailyLevel" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
+    <el-select v-model="dailyLevel5" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
       <el-option
           v-for="item in moneyFlowOptions"
           :key="item.value"
