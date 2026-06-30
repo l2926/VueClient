@@ -35,7 +35,7 @@
 <!--    </el-select>-->
 
 <!--    <el-button style="margin-left:0;margin-right: 0" @click="handleClickTenDays">十日统计</el-button>-->
-    <el-select v-model="dailyLevel" placeholder="十日统计" style="width: 7%" @change="handleSelectTenDays" id="test_select">
+    <el-select v-model="dailyLevel1" placeholder="十日统计" style="width: 7%" @change="handleSelectTenDays" id="test_select">
       <el-option
           v-for="item in tenDaysOptions"
           :key="item.value"
@@ -45,7 +45,7 @@
     </el-select>
 <!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectFinaMain">主营业务</el-button>-->
 
-    <el-select v-model="dailyLevel" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
+    <el-select v-model="dailyLevel2" placeholder="主营业务" style="width: 7%" @change="handleSelectFinaMain" id="test_select">
       <el-option
           v-for="item in finaMainOptions"
           :key="item.value"
@@ -58,7 +58,7 @@
 
 <!--    <el-button style="margin-left:0;margin-right: 0" @click="handleSelectTopHold">十大股东</el-button>-->
 
-    <el-select v-model="dailyLevel2" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
+    <el-select v-model="dailyLeve3" placeholder="资金流向" style="width: 7%" @change="handleSelectMoneyFlow" id="test_select">
       <el-option
           v-for="item in moneyFlowOptions"
           :key="item.value"
@@ -67,7 +67,7 @@
       </el-option>
     </el-select>
 
-    <el-select v-model="dailyLevel" placeholder="历史行情" style="width: 7%" @change="handleSelectMarketOverview" id="test_select">
+    <el-select v-model="dailyLevel4" placeholder="历史行情" style="width: 7%" @change="handleSelectMarketOverview" id="test_select">
       <el-option
           v-for="item in MarketOverviewOpetions"
           :key="item.value"
@@ -75,9 +75,17 @@
           :value="item.value">
       </el-option>
     </el-select>
-    <el-select v-model="dailyLevel" placeholder="选项" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
+    <el-select v-model="dailyLevel5" placeholder="选项" style="width: 7%" @change="handleSelectGrowthRate" id="test_select">
       <el-option
           v-for="item in growthOptions"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+      </el-option>
+    </el-select>
+    <el-select v-model="dailyLevel6" placeholder="筛选" style="width: 7%" @change="handleFiltGrowthRate" id="test_select">
+      <el-option
+          v-for="item in filtOptions"
           :key="item.value"
           :label="item.label"
           :value="item.value">
@@ -146,6 +154,11 @@ const growthOptions = ref([
   {value:'growth_rate',label:'资产增长(%)'}
 ])
 
+const filtOptions = ref([
+  {value:'margin1',label:'边际行情'},
+  {value:'accumulate1',label:'累计行情'},
+  {value:'growth_rate1',label:'资产增长'}
+])
 
 // const defaultLimit = ref('');
 
@@ -193,6 +206,22 @@ const handleSelectGrowthRate = (value) =>{
   }
   if(value === 'growth_rate'){
     query_dic["select_id"] = 4
+    router.push({path:route.path,query:query_dic});
+  }
+}
+
+const handleFiltGrowthRate = (value)=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query));
+  if(value === 'margin1'){
+    query_dic["para_id"] = 1
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'accumulate1'){
+    query_dic["para_id"] = 2
+    router.push({path:route.path,query:query_dic});
+  }
+  if(value === 'growth_rate1'){
+    query_dic["para_id"] = 4
     router.push({path:route.path,query:query_dic});
   }
 }
