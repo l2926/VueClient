@@ -190,9 +190,12 @@
           <a v-if="row.week_pct2 < 0" :href="market" style="color: green">{{ row.week_pct2 }}</a>
         </template>
       </el-table-column>
-      <el-table-column
-          label="1周前"
-          width="65">
+      <el-table-column width="65">
+        <template #header>
+          <el-link class="headItem" @click="onPreWeek1" style="text-decoration: none; color: inherit;">
+            1周前
+          </el-link>
+        </template>
         <template #default="{ row }">
           <a v-if="row.week_pct1 > 0" :href="market" style="color: red">{{ row.week_pct1 }}</a>
           <a v-if="row.week_pct1 == 0" :href="market" style="color: gray">{{ row.week_pct1 }}</a>
@@ -324,6 +327,12 @@ const onSelectPctChg=()=>{
   // alert('mv')
   const query_dic = JSON.parse(JSON.stringify(route.query))
   query_dic["sort_id"] = 4
+  router.push({path:route.path,query:query_dic})
+}
+
+const onPreWeek1=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 5
   router.push({path:route.path,query:query_dic})
 }
 </script>
