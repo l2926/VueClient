@@ -155,8 +155,8 @@ const growthOptions = ref([
 ])
 
 const filtOptions = ref([
-  {value:'margin1',label:'边际行情'},
-  {value:'accumulate1',label:'累计行情'},
+  {value:'margin1',label:'日线涨停'},
+  {value:'accumulate1',label:'累计最强'},
   {value:'growth_rate1',label:'资产增长'}
 ])
 

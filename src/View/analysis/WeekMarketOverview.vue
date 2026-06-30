@@ -38,7 +38,7 @@ FinaMain3Page.vue
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry1" style="text-decoration: none; color: inherit;">
             行业1
           </el-link>
         </template>
@@ -48,7 +48,7 @@ FinaMain3Page.vue
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry2" style="text-decoration: none; color: inherit;">
             行业2
           </el-link>
         </template>
@@ -58,7 +58,7 @@ FinaMain3Page.vue
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectIndustry3" style="text-decoration: none; color: inherit;">
             行业3
           </el-link>
         </template>
@@ -190,16 +190,30 @@ FinaMain3Page.vue
           <a v-if="row.week_pct2 < 0" :href="market" style="color: green">{{ row.week_pct2 }}</a>
         </template>
       </el-table-column>
-      <el-table-column
-          label="1周前"
-          width="65">
+      <el-table-column width="65">
+        <template #header>
+          <el-link class="headItem" @click="onPreWeek1" style="text-decoration: none; color: inherit;">
+            1周前
+          </el-link>
+        </template>
         <template #default="{ row }">
           <a v-if="row.week_pct1 > 0" :href="market" style="color: red">{{ row.week_pct1 }}</a>
           <a v-if="row.week_pct1 == 0" :href="market" style="color: gray">{{ row.week_pct1 }}</a>
           <a v-if="row.week_pct1 < 0" :href="market" style="color: green">{{ row.week_pct1 }}</a>
         </template>
       </el-table-column>
-
+      <el-table-column width="70">
+        <template #header>
+          <el-link class="headItem" @click="onSelectPctChg" style="text-decoration: none; color: inherit;">
+            涨跌幅(%)
+          </el-link>
+        </template>
+        <template #default="{ row }">
+          <a v-if="row.pct_chg > 0" :href="market" style="color: red">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_chg == 0" :href="market" style="color: gray">{{ row.pct_chg }}</a>
+          <a v-if="row.pct_chg < 0" :href="market" style="color: green">{{ row.pct_chg }}</a>
+        </template>
+      </el-table-column>
       <el-table-column
           prop="address"
           label="板块"
@@ -210,7 +224,7 @@ FinaMain3Page.vue
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectAsset" style="text-decoration: none; color: inherit;">
             净资产(亿)
           </el-link>
         </template>
@@ -220,7 +234,7 @@ FinaMain3Page.vue
       </el-table-column>
       <el-table-column width="90">
         <template #header>
-          <el-link class="headItem" @click="onSelectDate" style="text-decoration: none; color: inherit;">
+          <el-link class="headItem" @click="onSelectTotalMv" style="text-decoration: none; color: inherit;">
             市值(亿)
           </el-link>
         </template>
@@ -244,7 +258,7 @@ FinaMain3Page.vue
 <script setup>
 import {onMounted, onUpdated, ref} from "vue";
 import axios from "axios";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {industryParameterTransform} from "@/Api/utils/urlParameterTransform";
 import AnalysisNavigation from "@/components/analysis/AnalysisNavigation.vue";
 
@@ -253,6 +267,7 @@ var tableData = ref([]);
 
 //ajax获取行业信息
 const route = useRoute();
+const router = useRouter();
 const axiosTable = ()=>{
   const query_dic = JSON.parse(JSON.stringify(route.query));
   const para_dic = industryParameterTransform(query_dic);
@@ -286,6 +301,54 @@ onUpdated(axiosTable);
 const onSelectDate = ()=>{
   alert("dsfds")
 }
+
+const onSelectIndustry1=()=>{
+  // alert('333')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 6
+  router.push({path:route.path,query:query_dic})
+}
+
+const onSelectIndustry2=()=>{
+  // alert('333')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 8
+  router.push({path:route.path,query:query_dic})
+}
+
+const onSelectIndustry3=()=>{
+  // alert('333')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 2
+  router.push({path:route.path,query:query_dic})
+}
+
+const onSelectAsset=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 3
+  router.push({path:route.path,query:query_dic})
+}
+
+const onSelectTotalMv=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 1
+  router.push({path:route.path,query:query_dic})
+}
+
+const onSelectPctChg=()=>{
+  // alert('mv')
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 4
+  router.push({path:route.path,query:query_dic})
+}
+
+const onPreWeek1=()=>{
+  const query_dic = JSON.parse(JSON.stringify(route.query))
+  query_dic["sort_id"] = 5
+  router.push({path:route.path,query:query_dic})
+}
+
 </script>
 
 <style scoped>
